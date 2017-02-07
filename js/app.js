@@ -1,11 +1,13 @@
-// Ionic Starter App
+ var config = {
+    apiKey: "AIzaSyBV-JAYS7noyD20hpSEUbDnYnzxZ6Jm4WU",
+    authDomain: "mush-e7c8f.firebaseapp.com",
+    databaseURL: "https://mush-e7c8f.firebaseio.com",
+    storageBucket: "mush-e7c8f.appspot.com",
+    messagingSenderId: "934980040091"
+  };
+  firebase.initializeApp(config);
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('bandmates', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,10 +27,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
 
   // setup an abstract state for the tabs directive
@@ -54,8 +52,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/chats',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+          templateUrl: 'templates/tab-bands.html',
+          controller: 'BandsCtrl'
         }
       }
     })
