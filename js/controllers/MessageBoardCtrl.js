@@ -8,5 +8,8 @@ bandmates.controller('MessageBoardCtrl', function($scope, $stateParams, MessageF
   MessageFactory.getThings().then((val) => {
   	$scope.messages = val
   })
-  $scope.addMessage = MessageFactory.addMessage
+  $scope.addMessage = function(message) { 
+  	MessageFactory.addMessage(message);
+  	$scope.message = ''
+  }
 })
