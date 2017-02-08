@@ -1,3 +1,3 @@
 bandmates.controller('CalenderDetailCtrl', function($scope) {
-	console.log('CalenderDetailCtrl')
+	$scope.band = 'The Common Tiger'
 })

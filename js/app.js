@@ -52,7 +52,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       url: '/bands',
       views: {
         'tab-messageboards': {
-          templateUrl: 'templates/tab-bands.html',
+          templateUrl: 'templates/bands.html',
           controller: 'BandsCtrl'
         }
       }
@@ -71,7 +71,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     url: '/calenders',
     views: {
       'tab-calenders': {
-        templateUrl: 'templates/tab-calenders.html',
+        templateUrl: 'templates/calenders.html',
         controller: 'CalenderCtrl'
       }
     }
@@ -81,8 +81,35 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     url: '/calenders/:calenderId',
     views: {
       'tab-calenders': {
-        templateUrl: 'templates/tab-calender-detail.html',
+        templateUrl: 'templates/calender-detail.html',
         controller: 'CalenderDetailCtrl'
+      }
+    }
+  })
+  .state('tab.settings', {
+    url: '/settings',
+    views: {
+      'tab-settings': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsCtrl'
+      }
+    }
+  })
+  .state('tab.login', {
+    url: '/login',
+    views: {
+      'tab-settings': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
+      }
+    }
+  })
+  .state('tab.register', {
+    url: '/login',
+    views: {
+      'tab-settings': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
       }
     }
   });

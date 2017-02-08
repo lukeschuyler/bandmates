@@ -1,1 +1,9 @@
-/* Empty. Add your own CSS if you like */
+.message-name {
+  color: grey;
+}
+
+.message-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}

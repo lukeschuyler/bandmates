@@ -2,11 +2,27 @@
 <ion-view view-title="{{chat}}">
   <ion-content class="padding">
 	<ion-list>
-		<ion-item ng-repeat="thing in things">
-			<h1>{{ thing.name }}</h1>
-			<p>{{ thing.description }}</p>
-			<h4>{{ thing.edible }}</h4>
+		<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in messages">
+			<img class="message-img" src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/c45.13.445.445/s160x160/11200874_10204545045495407_8566812377740472419_n.jpg?oh=2b4295a2a08a725e0f3bc5c882ff3d60&oe=5907A82B">
+			<h5 class="message-name">{{ message.name }}</h5>
+			<p>{{ message.message }}</p>
 		</ion-item>
 	</ion-list>
+	
   </ion-content>
+   <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+<!-- 		<label class="item item-input">
+		    <i class="icon ion-search placeholder-icon"></i>
+		    <input ng-model="message" type="text" placeholder="Send Message...">
+	  </label> -->
+<!-- 	  <button ng-click="" class="button button-dark">
+			  Send
+		</button>   --> 
+		<label class="item-input-wrapper">
+        <input type="text" placeholder="Send Message..." on-return="sendMessage(); closeKeyboard()" ng-model="message" on-focus="inputUp()" on-blur="inputDown()" />
+      </label>
+      <button class="button button-clear" ng-click="addMessage(message)">
+        Send
+      </button>
+</ion-footer-bar>
 </ion-view>
