@@ -57,12 +57,21 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
     .state('tab.band-messages', {
       url: '/bands/:bandId',
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/band-messages.html',
-          controller: 'MessageBoardCtrl'
+          controller: 'MessageBoardCtrl',
+          resolve: {
+            user (AuthFactory, $location) {
+              return AuthFactory.getUser().catch(() => $location.url('/tab/settings/login'))
+            },
+            messages (MessageFactory) {
+             return MessageFactory.getMessages()
+            }
+          }
         }
       }
     })

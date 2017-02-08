@@ -1,10 +1,18 @@
-bandmates.factory('AuthFactory', function($http) {
+bandmates.factory('AuthFactory', function($http, $q) {
 	return {
 		login(email, password) {
 			firebase.auth().signInWithEmailAndPassword(email, password)
 		},
-		register(email, password) {
+		register(email, password, firstName, lastName) {
 			firebase.auth().createUserWithEmailAndPassword(email, password)
+			  .then(function() {
+				  const id = firebase.auth().currentUser.uid
+				  $http({
+					  method : 'POST',
+					  url : 'https://mush-e7c8f.firebaseio.com/users.json',
+					  data : { id : id, firstName : firstName, lastName : lastName }
+				  })
+			  })
 		},
 		logout() {
 			firebase.auth().signOut()
