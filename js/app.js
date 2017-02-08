@@ -53,7 +53,8 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/bands.html',
-          controller: 'BandsCtrl'
+          controller: 'BandsCtrl',
+          
         }
       }
     })

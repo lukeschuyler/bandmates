@@ -15,7 +15,7 @@
 		<label class="item-input-wrapper">
         <input type="text" placeholder="Send Message..." on-return="sendMessage(); closeKeyboard()" ng-model="message" on-focus="inputUp()" on-blur="inputDown()" />
       </label>
-      <button class="button button-clear" ng-click="addMessage(message)">
+      <button class="button button-clear" ng-click="addMessage(message, name)">
         Send
       </button>
 </ion-footer-bar>

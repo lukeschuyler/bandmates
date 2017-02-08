@@ -9,7 +9,7 @@ bandmates.controller('MessageBoardCtrl', function($scope, $stateParams, MessageF
 	  })
 	})
 
-	console.log(messages)
+	$scope.name = user.email
 
 	// MessageFactory.getMessages().then((val) => {
 	//  $scope.messages = val

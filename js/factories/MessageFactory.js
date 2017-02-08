@@ -8,7 +8,6 @@ bandmates.factory('MessageFactory', function($http) {
 				})
 		},
 		addMessage(message, name) {
-			const messages = 'messages'
 				if(message) {
 					$http({
 					method : 'POST',
