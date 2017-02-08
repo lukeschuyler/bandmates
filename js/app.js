@@ -1,4 +1,4 @@
- var config = {
+ const config = {
     apiKey: "AIzaSyBV-JAYS7noyD20hpSEUbDnYnzxZ6Jm4WU",
     authDomain: "mush-e7c8f.firebaseapp.com",
     databaseURL: "https://mush-e7c8f.firebaseio.com",
@@ -7,9 +7,9 @@
   };
   firebase.initializeApp(config);
 
-angular.module('bandmates', ['ionic', 'starter.controllers', 'starter.services'])
+const bandmates = angular.module('bandmates', ['ionic'])
 
-.run(function($ionicPlatform) {
+bandmates.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,7 +25,7 @@ angular.module('bandmates', ['ionic', 'starter.controllers', 'starter.services']
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+bandmates.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
@@ -48,31 +48,41 @@ angular.module('bandmates', ['ionic', 'starter.controllers', 'starter.services']
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.bands', {
+      url: '/bands',
       views: {
-        'tab-chats': {
+        'tab-messageboards': {
           templateUrl: 'templates/tab-bands.html',
           controller: 'BandsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.band-messages', {
+      url: '/bands/:bandId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-messageboards': {
+          templateUrl: 'templates/band-messages.html',
+          controller: 'MessageBoardCtrl'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.calenders', {
+    url: '/calenders',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-calenders': {
+        templateUrl: 'templates/tab-calenders.html',
+        controller: 'CalenderCtrl'
+      }
+    }
+  })
+
+  .state('tab.calender-detail', {
+    url: '/calenders/:calenderId',
+    views: {
+      'tab-calenders': {
+        templateUrl: 'templates/tab-calender-detail.html',
+        controller: 'CalenderDetailCtrl'
       }
     }
   });

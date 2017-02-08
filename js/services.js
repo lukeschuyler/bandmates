@@ -1,9 +1,6 @@
 angular.module('starter.services', [])
 
 .factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
