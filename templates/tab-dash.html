@@ -1,11 +1,12 @@
 <ion-view view-title="Home">
   <ion-content class="padding">
-    <h2>Bandmates</h2>
+    <div class="container">
+    	<h2>Bandmates</h2>
     	<div class="row">
     		<img class="main-pic" src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/c45.13.445.445/s160x160/11200874_10204545045495407_8566812377740472419_n.jpg?oh=2b4295a2a08a725e0f3bc5c882ff3d60&oe=5907A82B">
-	    <h3 class="col-xs-6 col-xs-offset-2">Hello {{ user.email.slice(0, (user.email.indexOf('@'))) }}</h3>
+	    <h3 class="col-xs-6 col-xs-offset-2">Greetings {{ user.email.slice(0, (user.email.indexOf('@'))) }}!</h3>
     	</div>
-    <div class="conatiner">
+    	<!-- ng=repeat item in items (event items) -->
 		<div>
 			<ion-item class="main-items">
 				<h4>Event</h4>
