@@ -1,3 +1,3 @@
 bandmates.controller('DashCtrl', function($scope) {
-	console.log('DashCtrl')
+	$scope.user = firebase.auth().currentUser
 })
