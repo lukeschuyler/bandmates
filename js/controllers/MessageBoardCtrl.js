@@ -1,6 +1,12 @@
 bandmates.controller('MessageBoardCtrl', function($scope, $stateParams, MessageFactory) {
+	$scope.messageRef = firebase.database().ref('messages')
+	$scope.messageRef.on('child_added',function() {
+		MessageFactory.getThings().then((val) => {
+	  	$scope.messages = val
+	  })
+	})
   MessageFactory.getThings().then((val) => {
-  	$scope.things = val
-  	console.log($scope.things)
+  	$scope.messages = val
   })
+  $scope.addMessage = MessageFactory.addMessage
 })
