@@ -2,7 +2,7 @@ bandmates.controller('CalenderCtrl', function($scope) {
   // $scope.settings = {
   //   enableFriends: true
   // };
-  console.log('calctrl')
+  console.log('CalenderCtrl')
   // $scope.eventSources= ['test1', 'test2'];
   //   $scope.uiConfig = {
   //     calendar:{
