@@ -1,5 +1,6 @@
 
-<ion-view view-title="{{chat}}">
+<ion-view view-title="{{band}}">
+
   <ion-content class="padding">
 	<ion-list>
 		<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in messages">
@@ -11,13 +12,6 @@
 	
   </ion-content>
    <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
-<!-- 		<label class="item item-input">
-		    <i class="icon ion-search placeholder-icon"></i>
-		    <input ng-model="message" type="text" placeholder="Send Message...">
-	  </label> -->
-<!-- 	  <button ng-click="" class="button button-dark">
-			  Send
-		</button>   --> 
 		<label class="item-input-wrapper">
         <input type="text" placeholder="Send Message..." on-return="sendMessage(); closeKeyboard()" ng-model="message" on-focus="inputUp()" on-blur="inputDown()" />
       </label>

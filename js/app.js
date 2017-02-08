@@ -96,7 +96,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     }
   })
   .state('tab.login', {
-    url: '/login',
+    url: '/settings/login',
     views: {
       'tab-settings': {
         templateUrl: 'templates/login.html',
@@ -105,10 +105,10 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     }
   })
   .state('tab.register', {
-    url: '/login',
+    url: '/settings/register',
     views: {
       'tab-settings': {
-        templateUrl: 'templates/login.html',
+        templateUrl: 'templates/register.html',
         controller: 'LoginCtrl'
       }
     }
