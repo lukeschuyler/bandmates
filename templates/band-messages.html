@@ -2,7 +2,7 @@
 <ion-view view-title="{{ band }}">
 
   <ion-content class="padding">
-	<ion-list>
+	<ion-list ng-if="visible">
 		<ion-item ng-class="{ myMessage: message.name == name}" class="item-remove-animate item-avatar item-text-wrap item-icon-right" ng-repeat="message in messages">
 			<img class="message-img" src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/c45.13.445.445/s160x160/11200874_10204545045495407_8566812377740472419_n.jpg?oh=2b4295a2a08a725e0f3bc5c882ff3d60&oe=5907A82B">
 			<!-- <i ng-click="liked = !liked" class="icon ion-android-favorite-outline"></i> -->

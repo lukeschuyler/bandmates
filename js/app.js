@@ -7,7 +7,7 @@
   };
   firebase.initializeApp(config);
 
-const bandmates = angular.module('bandmates', ['ionic'])
+const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar'])
 
 bandmates.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -118,7 +118,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         resolve: {
           user (AuthFactory, $location) {
             return AuthFactory.getUser().catch(function() {
-              
+              // $location.url('tab/settings')
             })
           }
         }
@@ -134,10 +134,9 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         controller: 'LoginCtrl',
         resolve: {
           user (AuthFactory, $location) {
-            return AuthFactory.getUser().then(function() {
-              $location.url('tab/settings')
-            }).catch(function() {
-
+            return AuthFactory.getUser().catch(function() {
+              // some kind of toast saying to try again
+              // $location.url('tab/settings')
             })
           }
         }
@@ -153,10 +152,8 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         controller: 'LoginCtrl',
         resolve: {
           user (AuthFactory, $location) {
-            return AuthFactory.getUser().then(function() {
-              $location.url('tab/settings')
-            }).catch(function() {
-
+            return AuthFactory.getUser().catch(function() {
+              // some kind of toast saying to try again
             })
           }
         }

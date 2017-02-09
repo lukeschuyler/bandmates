@@ -1,5 +1,6 @@
 bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, $stateParams, MessageFactory, messages, user) {
 	$scope.band = $stateParams.bandId
+	$scope.visible = false
 
 	$scope.messageRef = firebase.database().ref('messages')
 
@@ -11,6 +12,7 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 	})
 	setTimeout(function() {
 		$ionicScrollDelegate.scrollBottom(true);
+		$scope.visible = true
 	}, 300)
 
 
