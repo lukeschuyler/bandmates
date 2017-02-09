@@ -15,6 +15,10 @@ bandmates.factory('MessageFactory', function($http) {
 					data : { message : message, name : name }
 				})
 			}
+		},
+		getBoards(user) {
+			// query firebase for boards only pertaining to user
+			console.log('getBoards')
 		}
 	}
 })

@@ -43,7 +43,12 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'DashCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
+          }
+        }
       }
     }
   })
@@ -54,7 +59,14 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         'tab-messageboards': {
           templateUrl: 'templates/bands.html',
           controller: 'BandsCtrl',
-          
+          resolve: {
+            user (AuthFactory, $location) {
+              return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
+            },
+            boards (MessageFactory) {
+              return MessageFactory.getBoards()
+            }
+          }
         }
       }
     })
@@ -67,7 +79,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
           controller: 'MessageBoardCtrl',
           resolve: {
             user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/tab/settings/login'))
+              return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
             },
             messages (MessageFactory) {
              return MessageFactory.getMessages()
@@ -96,30 +108,58 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+
   .state('tab.settings', {
     url: '/settings',
     views: {
       'tab-settings': {
         templateUrl: 'templates/settings.html',
-        controller: 'SettingsCtrl'
+        controller: 'SettingsCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(function() {
+              
+            })
+          }
+        }
       }
     }
   })
+
   .state('tab.login', {
     url: '/settings/login',
     views: {
       'tab-settings': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().then(function() {
+              $location.url('tab/settings')
+            }).catch(function() {
+
+            })
+          }
+        }
       }
     }
   })
+
   .state('tab.register', {
     url: '/settings/register',
     views: {
       'tab-settings': {
         templateUrl: 'templates/register.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().then(function() {
+              $location.url('tab/settings')
+            }).catch(function() {
+
+            })
+          }
+        }
       }
     }
   });
