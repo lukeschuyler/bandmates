@@ -1,6 +1,7 @@
 bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, user, $state) {
-	$scope.user = user
-	console.log(user)
+	$scope.$on('$ionicView.enter', function(e) {
+    	$scope.user = user
+  	});
 	$scope.login = function(email, password) {
 		AuthFactory.login(email, password)
 	}

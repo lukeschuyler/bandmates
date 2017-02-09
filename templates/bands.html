@@ -1,7 +1,10 @@
 <ion-view view-title="Bands">
   <ion-content>
-  <a ng-click="viewBoard()" href=""><h1 class="padding">{{ bands }}</h1></a>
     <ion-list>
+
+      <ion-item ng-repeat="band in bandz">
+        <a href="#/tab/bands/{{band.bandName}}"><h1>{{ band.bandName }}</h1></a>
+      </ion-item>
       <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/band/{{band.id}}">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
@@ -17,5 +20,3 @@
     </ion-list>
   </ion-content>
 </ion-view>
-
- <!-- {{ bands }} -->

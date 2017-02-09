@@ -5,7 +5,7 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 	$scope.messageRef = firebase.database().ref('messages')
 
 	$scope.messageRef.on('child_added',function() {
-		MessageFactory.getMessages().then((val) => {
+		MessageFactory.getMessages($scope.band).then((val) => {
 	  	$scope.messages = val
 	  	$ionicScrollDelegate.scrollBottom(true);
 	  })
@@ -18,8 +18,8 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 
 	$scope.name = user.email
 
-  	$scope.addMessage = function(message, name) { 
-	  	MessageFactory.addMessage(message, name);
+  	$scope.addMessage = function(message, name, band) { 
+	  	MessageFactory.addMessage(message, name, band);
 	  	$scope.message = ''
 	  }
 })

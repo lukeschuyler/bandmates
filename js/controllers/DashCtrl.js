@@ -1,3 +1,5 @@
 bandmates.controller('DashCtrl', function($scope, user) {
-	$scope.user = user;
+	$scope.$on('$ionicView.enter', function(e) {
+    	$scope.user = user
+  	});
 })

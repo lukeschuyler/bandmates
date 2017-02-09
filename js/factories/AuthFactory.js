@@ -4,6 +4,9 @@ bandmates.factory('AuthFactory', function($http, $q, $location) {
 			return $q((resolve, reject) => {
 				firebase.auth().signInWithEmailAndPassword(email, password)
 			})
+			.catch(function() {
+			  	// toast to try again
+			 })
 		},
 		register(email, password, firstName, lastName) {
 			return $q(firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -16,6 +19,9 @@ bandmates.factory('AuthFactory', function($http, $q, $location) {
 				  })
 				  $location.url('/tab/dash')
 			  }))
+			  .catch(function() {
+			  	// toast to try again
+			  })
 		},
 		logout() {
 			firebase.auth().signOut()

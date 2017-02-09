@@ -1,5 +1,7 @@
 bandmates.controller('SettingsCtrl', function($scope, AuthFactory, user, $state) {
-	$scope.user = user
+	$scope.$on('$ionicView.enter', function(e) {
+    	$scope.user = user
+  	});
 	console.log(user)
 	
 	$scope.logout = function(){

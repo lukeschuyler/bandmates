@@ -1,5 +1,12 @@
-bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory) {
+bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams) {
 	$scope.band = 'The Common Tiger'
+
+    CalFactory.getEvents()
+        .then(function(val) {
+            console.log(val)
+            $scope.events = val
+        })
+
 	 $scope.calendar = {};
         $scope.changeMode = function (mode) {
             $scope.calendar.mode = mode;

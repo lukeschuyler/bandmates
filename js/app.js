@@ -25,6 +25,8 @@ bandmates.run(function($ionicPlatform) {
   });
 })
 
+
+
 bandmates.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -54,6 +56,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.bands', {
+      cache: false,
       url: '/bands',
       views: {
         'tab-messageboards': {
@@ -63,8 +66,9 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
             user (AuthFactory, $location) {
               return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
             },
-            boards (MessageFactory) {
-              return MessageFactory.getBoards()
+            bands (BandFactory) {
+              const userId = firebase.auth().currentUser.uid
+              return BandFactory.getBands(userId)
             }
           }
         }
@@ -81,8 +85,8 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
             user (AuthFactory, $location) {
               return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
             },
-            messages (MessageFactory) {
-             return MessageFactory.getMessages()
+            messages (MessageFactory, $stateParams) {
+             return MessageFactory.getMessages($stateParams.bandId)
             }
           }
         }
@@ -90,6 +94,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('tab.calenders', {
+    cache: false,
     url: '/calenders',
     views: {
       'tab-calenders': {
@@ -150,6 +155,23 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       'tab-settings': {
         templateUrl: 'templates/register.html',
         controller: 'LoginCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(function() {
+              // some kind of toast saying to try again
+            })
+          }
+        }
+      }
+    }
+  })
+
+  .state('tab.new-band', {
+    url: '/settings/new-band',
+    views: {
+      'tab-settings': {
+        templateUrl: 'templates/new-band.html',
+        controller: 'NewBandCtrl',
         resolve: {
           user (AuthFactory, $location) {
             return AuthFactory.getUser().catch(function() {
