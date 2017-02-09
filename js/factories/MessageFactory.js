@@ -2,9 +2,9 @@ bandmates.factory('MessageFactory', function($http) {
 	return {
 		getMessages(band) {
 			console.log(band)
-			return $http.get(`https://mush-e7c8f.firebaseio.com/.json?orderBy="band"&equalTo="${band}"`)
+			return $http.get(`https://mush-e7c8f.firebaseio.com/messages.json?orderBy="band"&equalTo="${band}"`)
 				.then((val) => {
-					return val.data.messages
+					return val.data
 				})
 		},
 		addMessage(message, name, band) {
