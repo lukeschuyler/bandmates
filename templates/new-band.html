@@ -1,0 +1,24 @@
+<ion-view view-title="Register-Band" name="new-band-view">
+	<ion-content class="padding">
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Band/Artist Name" ng-model="bandName">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="password">
+          </label>
+          <!-- img and add users 2 or 3.0 -->
+      </div>
+      <button class="button button-block button-calm" ng-click="registerBand(bandName, password, user.uid)">Register Band</button>
+       <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Band/Artist Name" ng-model="bandNameSearch">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="passwordSearch">
+          </label>
+          <!-- img and add users 2 or 3.0 -->
+      </div>
+      <button class="button button-block button-danger" ng-click="joinBand(bandName, password, user.uid)">Join Band</button>
+  </ion-content>
+</ion-view>

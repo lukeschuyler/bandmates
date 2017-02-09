@@ -7,7 +7,7 @@
   };
   firebase.initializeApp(config);
 
-const bandmates = angular.module('bandmates', ['ionic'])
+const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar'])
 
 bandmates.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,6 +24,8 @@ bandmates.run(function($ionicPlatform) {
     }
   });
 })
+
+
 
 bandmates.config(function($stateProvider, $urlRouterProvider) {
 
@@ -43,31 +45,56 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'DashCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
+          }
+        }
       }
     }
   })
 
   .state('tab.bands', {
+      cache: false,
       url: '/bands',
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/bands.html',
-          controller: 'BandsCtrl'
+          controller: 'BandsCtrl',
+          resolve: {
+            user (AuthFactory, $location) {
+              return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
+            },
+            bands (BandFactory) {
+              const userId = firebase.auth().currentUser.uid
+              return BandFactory.getBands(userId)
+            }
+          }
         }
       }
     })
+
     .state('tab.band-messages', {
       url: '/bands/:bandId',
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/band-messages.html',
-          controller: 'MessageBoardCtrl'
+          controller: 'MessageBoardCtrl',
+          resolve: {
+            user (AuthFactory, $location) {
+              return AuthFactory.getUser().catch(() => $location.url('/tab/settings'))
+            },
+            messages (MessageFactory, $stateParams) {
+             return MessageFactory.getMessages($stateParams.bandId)
+            }
+          }
         }
       }
     })
 
   .state('tab.calenders', {
+    cache: false,
     url: '/calenders',
     views: {
       'tab-calenders': {
@@ -86,30 +113,72 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+
   .state('tab.settings', {
     url: '/settings',
     views: {
       'tab-settings': {
         templateUrl: 'templates/settings.html',
-        controller: 'SettingsCtrl'
+        controller: 'SettingsCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(function() {
+              // $location.url('tab/settings')
+            })
+          }
+        }
       }
     }
   })
+
   .state('tab.login', {
     url: '/settings/login',
     views: {
       'tab-settings': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(function() {
+              // some kind of toast saying to try again
+              // $location.url('tab/settings')
+            })
+          }
+        }
       }
     }
   })
+
   .state('tab.register', {
     url: '/settings/register',
     views: {
       'tab-settings': {
         templateUrl: 'templates/register.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(function() {
+              // some kind of toast saying to try again
+            })
+          }
+        }
+      }
+    }
+  })
+
+  .state('tab.new-band', {
+    url: '/settings/new-band',
+    views: {
+      'tab-settings': {
+        templateUrl: 'templates/new-band.html',
+        controller: 'NewBandCtrl',
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser().catch(function() {
+              // some kind of toast saying to try again
+            })
+          }
+        }
       }
     }
   });

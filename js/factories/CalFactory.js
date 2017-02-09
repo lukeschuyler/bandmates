@@ -1,3 +1,10 @@
 bandmates.factory('CalFactory', function($http) {
-	console.log('calFact')
+	return {
+		getEvents(band) {
+			return $http.get('https://mush-e7c8f.firebaseio.com/mushrooms.json')
+				.then(function(val) {
+					return val.data.mushrooms
+				})
+		}
+	}
 })

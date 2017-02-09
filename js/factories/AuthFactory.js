@@ -1,10 +1,27 @@
-bandmates.factory('AuthFactory', function($http) {
+bandmates.factory('AuthFactory', function($http, $q, $location) {
 	return {
 		login(email, password) {
-			firebase.auth().signInWithEmailAndPassword(email, password)
+			return $q((resolve, reject) => {
+				firebase.auth().signInWithEmailAndPassword(email, password)
+			})
+			.catch(function() {
+			  	// toast to try again
+			 })
 		},
-		register(email, password) {
-			firebase.auth().createUserWithEmailAndPassword(email, password)
+		register(email, password, firstName, lastName) {
+			return $q(firebase.auth().createUserWithEmailAndPassword(email, password)
+			  .then(function() {
+				  const id = firebase.auth().currentUser.uid
+				  $http({
+					  method : 'POST',
+					  url : 'https://mush-e7c8f.firebaseio.com/users.json',
+					  data : { id : id, firstName : firstName, lastName : lastName }
+				  })
+				  $location.url('/tab/dash')
+			  }))
+			  .catch(function() {
+			  	// toast to try again
+			  })
 		},
 		logout() {
 			firebase.auth().signOut()
