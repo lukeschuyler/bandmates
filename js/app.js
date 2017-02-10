@@ -93,7 +93,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    // cache : false,
+    cache : false,
     url: '/dash',
     views: {
       'tab-dash': {
@@ -109,7 +109,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.bands', {
-      // cache: false,
+      cache: false,
       url: '/bands',
       views: {
         'tab-messageboards': {
@@ -206,6 +206,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/auth/login');
 
 });
