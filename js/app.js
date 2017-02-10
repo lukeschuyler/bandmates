@@ -25,8 +25,6 @@ bandmates.run(function($ionicPlatform) {
   });
 })
 
-
-
 bandmates.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -34,14 +32,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     .state('auth', {
       url: '/auth',
       templateUrl: 'templates/auth.html',
-      abstract: true,
-      resolve: {
-          user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(function() {
-              
-            })
-          }
-        }
+      abstract: true
   })
 
     .state('auth.login', {
