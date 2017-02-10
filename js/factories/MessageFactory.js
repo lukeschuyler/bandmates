@@ -6,12 +6,12 @@ bandmates.factory('MessageFactory', function($http) {
 					return val.data
 				})
 		},
-		addMessage(message, name, band) {
+		addMessage(message, name, band, userImage) {
 				if(message) {
 					$http({
 					method : 'POST',
 					url : 'https://mush-e7c8f.firebaseio.com/messages.json',
-					data : { message : message, name : name, band : band }
+					data : { message : message, name : name, band : band, userImage : userImage }
 				})
 			}
 		}

@@ -3,9 +3,9 @@
     <div class="container">
     	<h2>Bandmates</h2>
     	<div class="row">
-    		<!-- <img class="main-pic" src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/c45.13.445.445/s160x160/11200874_10204545045495407_8566812377740472419_n.jpg?oh=2b4295a2a08a725e0f3bc5c882ff3d60&oe=5907A82B"> -->
-    		<a ng-click="getImage()" href="#" class="icon ion-android-camera"></a>
-	    <h3 class="col-xs-6 col-xs-offset-2">Greetings {{ user.email.slice(0, (user.email.indexOf('@'))) }}!</h3>
+    		<img ng-if="user" class="main-pic" src="{{ userArray[0].image }}">
+    		<a ng-if="!user" ng-click="getImage()" href="#" class="icon ion-android-camera"></a>
+	    <h3 class="col-xs-6 col-xs-offset-2">Greetings {{ userArray[0].firstName }}!</h3>
     	</div>
     	<!-- ng=repeat item in items (event items) -->
 		<div>

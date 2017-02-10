@@ -127,7 +127,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         resolve: {
           user (AuthFactory, $location) {
             return AuthFactory.getUser().catch(function() {
-              // $location.url('tab/settings')
+
             })
           }
         }
@@ -145,8 +145,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         resolve: {
           user (AuthFactory, $location) {
             return AuthFactory.getUser().catch(function() {
-              // some kind of toast saying to try again
-              // $location.url('tab/settings')
+              
             })
           }
         }
@@ -164,7 +163,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         resolve: {
           user (AuthFactory, $location) {
             return AuthFactory.getUser().catch(function() {
-              // some kind of toast saying to try again
+
             })
           }
         }
