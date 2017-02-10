@@ -1,4 +1,12 @@
-bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, $stateParams, MessageFactory, messages, user) {
+bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, $stateParams, MessageFactory, messages, user, AuthFactory) {
+	AuthFactory.getUserPic(user.uid)
+		.then(function(val) {
+			$scope.userArray = Object.keys(val).map(function(key) {
+				return val[key]
+			})
+			console.log($scope.userArray[0].image)
+		})
+
 	$scope.band = $stateParams.bandId
 	$scope.visible = false
 
@@ -18,8 +26,8 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 
 	$scope.name = user.email
 
-  	$scope.addMessage = function(message, name, band) { 
-	  	MessageFactory.addMessage(message, name, band);
+  	$scope.addMessage = function(message, name, band, userImage) { 
+	  	MessageFactory.addMessage(message, name, band, userImage);
 	  	$scope.message = ''
 	  }
 })

@@ -13,7 +13,11 @@
           <label class="item item-input">
               <input type="text" placeholder="Last Name" ng-model="lastName">
           </label>
+          <label class="item item-input">
+              <!-- <img> -->
+              <button ng-click="getImage()" class="button button-danger">Find Image</button>
+          </label>
       </div>
-      <button class="button button-block button-calm" ng-click="register(email, password, firstName, lastName)">Register</button>
+      <button class="button button-block button-calm" ng-click="register(email, password, image, firstName, lastName)">Register</button>
   </ion-content>
 </ion-view>

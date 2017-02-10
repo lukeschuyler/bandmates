@@ -17,3 +17,7 @@
 .myMessage {
 	background-color: lightblue;
 }
+
+[nav-view-transition][nav-view-direction] {
+   background-color: transparent;
+ }
