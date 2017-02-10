@@ -7,7 +7,7 @@
   };
   firebase.initializeApp(config);
 
-const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar'])
+const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar', 'ngCordova'])
 
 bandmates.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -41,6 +41,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
+    cache : false,
     url: '/dash',
     views: {
       'tab-dash': {
@@ -76,6 +77,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
     .state('tab.band-messages', {
+      cache : false,
       url: '/bands/:bandId',
       views: {
         'tab-messageboards': {
@@ -105,6 +107,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.calender-detail', {
+    cache : false,
     url: '/calenders/:calenderId',
     views: {
       'tab-calenders': {
@@ -115,6 +118,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.settings', {
+    cache : false,
     url: '/settings',
     views: {
       'tab-settings': {
@@ -132,6 +136,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.login', {
+    cache : false,
     url: '/settings/login',
     views: {
       'tab-settings': {
@@ -150,6 +155,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.register', {
+    cache : false,
     url: '/settings/register',
     views: {
       'tab-settings': {
@@ -167,6 +173,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.new-band', {
+    cache : false,
     url: '/settings/new-band',
     views: {
       'tab-settings': {

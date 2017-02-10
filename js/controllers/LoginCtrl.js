@@ -8,6 +8,5 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, user,
 	$scope.register = function(email, password, firstName, lastName) {
 		AuthFactory.register(email, password, firstName, lastName).then(console.log)
 			// $location.url('/tab/dash')
-
 	}
 })
