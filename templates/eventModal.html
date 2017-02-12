@@ -5,13 +5,22 @@
 	</ion-header-bar>
 	<ion-content class="padding">
 	  <div class="list">
-	    <label class="item item-input">
-	      <span class="input-label">Event Type</span>
-	      <input ng-model="type" type="text">
-	    </label>
+		</ion-item>
+		 <label class = "item item-input item-select item-royal">
+		      <div class = "input-label">
+		         Event Type
+		      </div>
+		      <select>
+		        <option>Show</option>
+			    <option>Tracking Session</option>
+			    <option>Mixing Session</option>
+			    <option>Practice</option>
+			    <option>Meeting</option>
+		      </select>
+   		</label>
 	    <label class="item item-input">
 	      <span class="input-label">Start Time</span>
-	      <input ng-model="" type="text">
+	      <input ng-model="startTime" type="text">
 	    </label>
 	    <label class="item item-input">
 	      <span class="input-label">Email</span>
