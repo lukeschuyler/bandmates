@@ -2,8 +2,8 @@
 <ion-view view-title="{{ band }} Chat">
 
   <ion-content class="padding">
-	<ion-list ng-if="visible">
-		<ion-item ng-class="{ myMessage: message.name == name}" class="item-remove-animate item-avatar item-text-wrap item-icon-right" ng-repeat="message in messages">
+	<ion-list class="list-borderless" ng-if="visible">
+		<ion-item ng-class="{ myMessage: message.name == name}" class="animated fadeInLeft item-remove-animate item-avatar item-text-wrap item-icon-right" ng-repeat="message in messages">
 			<img class="message-img" src="{{ message.userImage }}">
 			<!-- <i ng-click="liked = !liked" class="icon ion-android-favorite-outline"></i> -->
 			<h5 class="message-name">{{ message.name }}</h5>

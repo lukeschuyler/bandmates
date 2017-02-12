@@ -7,6 +7,19 @@ h1 {
       text-shadow: 10px 100px 3px rgba(0,0,0, .5);
 }
 
+.main-logo {
+  font-family: 'Sarpanch', cursive;
+
+}
+
+.eventDash {
+  margin-top: 100px;
+}
+
+nav {
+  margin-bottom: 60px;
+}
+
 .message-name {
   color: grey;
 }
@@ -21,10 +34,12 @@ h1 {
   width: 100px;
   height: 100px;
   border-radius: 100%;
+  box-shadow: 10px 10px 10px rgba(15,30,30,.4)
 }
 
 .myMessage {
 	background-color: rgba(0,0,230,.1);
+  border-radius: 5px;
 }
 
 [nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
@@ -36,12 +51,15 @@ h1 {
 }
 
 .tabs {
-	/*background-color: #4a87ee;*/
+	background-color: #ef473a;
 }
 
- h1 {
-  /*font-family: 'Codystar', cursive;*/
+.tabcolor i {
+  color: white;
+}
 
+.tabcolor span {
+ color: white;
 }
 
 .padding, .had-header {

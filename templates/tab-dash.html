@@ -1,14 +1,16 @@
 <ion-view view-title="Home">
+    <div class="bar bar-subheader bar-header">
+            <h2 class="assertive main-logo">Bandmates</h2>
+            <div class="row">
+                <img ng-if="user" class="main-pic" src="{{ userArray[0].image }}">
+                <a ng-if="!user" ng-click="getImage()" href="#" class="icon ion-android-camera"></a>
+            <h3 class="energized col-xs-6 col-xs-offset-2">Greetings {{ userArray[0].firstName }}!</h3>
+            </div>
+    </div>
   <ion-content class="padding">
-    <div class="container">
-    	<h2 class="assertive main-logo">Bandmates</h2>
-    	<div class="row">
-    		<img ng-if="user" class="main-pic" src="{{ userArray[0].image }}">
-    		<a ng-if="!user" ng-click="getImage()" href="#" class="icon ion-android-camera"></a>
-	    <h3 class="energized col-xs-6 col-xs-offset-2">Greetings {{ userArray[0].firstName }}!</h3>
-    	</div>
+       
     	<!-- ng=repeat item in items (event items) -->
-		<ion-list>
+		<ion-list class="eventDash">
 			<ion-item ng-repeat="event in events" class="animated fadeInLeft main-items">
 				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
 	    		<p>{{event.bandName}}</p>
@@ -18,6 +20,5 @@
     		</ion-reorder-button>
 			</ion-item>
 		</ion-list>	
-    </div>
   </ion-content>
 </ion-view>
