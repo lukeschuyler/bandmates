@@ -1,0 +1,37 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-positive">
+	  <h1 class="title">New Event: {{id}} </h1>
+	  <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+	</ion-header-bar>
+	<ion-content class="padding">
+	  <div class="list">
+		 <label class = "item item-input item-select">
+		      <div class = "input-label">
+		      Event Type
+		        <input type="text"> 
+		      </div>
+		      <select ng-model="type">
+		        <option>Show</option>
+			    <option>Tracking Session</option>
+			    <option>Mixing Session</option>
+			    <option>Practice</option>
+			    <option>Meeting</option>
+		      </select>
+   		</label>
+	   <div class="item item-icon-left" ion-datetime-picker ng-model="startTimeValue">
+                <i class="icon ion-icon-clock"></i>
+                Start Time: 
+                <strong>{{startTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+        </div>
+ 	   <div class="item item-icon-left" ion-datetime-picker ng-model="endTimeValue">
+                <i class="icon ion-icon-clock"></i>
+                End Time: 
+                <strong>{{endTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+        </div>       
+        <label class="item item-input">
+              <input type="text" placeholder="Event Name" ng-model="eventName">
+          </label>
+	    <button class="button button-full button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false)">Create Event</button>
+	  </div>
+	</ion-content>
+</ion-modal-view>
