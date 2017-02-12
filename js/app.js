@@ -41,14 +41,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'auth': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser().catch(function() {
-              
-        //     })
-        //   }
-        // }
+        controller: 'LoginCtrl'
       }
     }
   })
@@ -59,12 +52,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'auth': {
         templateUrl: 'templates/register.html',
-        controller: 'LoginCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser()
-        //   }
-        // }
+        controller: 'LoginCtrl'
       }
     }
   })
