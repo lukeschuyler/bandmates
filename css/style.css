@@ -38,9 +38,14 @@ h1 {
 	background-color: #4a87ee;
 }
 
+ h1 {
+  /*font-family: 'Codystar', cursive;*/
+  text-shadow: 250px 0px 3px rgba(0,0,0, .5);
+}
+
 .padding, .had-header {
     font-family: 'Pangolin', cursive;
-    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0, .9)),
+/*    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0, .9)),
     url('https://upload.wikimedia.org/wikipedia/commons/8/89/The_Band_(1969).png')
-    no-repeat center / cover fixed
+    no-repeat center / cover fixed*/
 }

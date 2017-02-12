@@ -65,7 +65,9 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/tabs.html',
       resolve: {
             user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/login'))
+              return AuthFactory.getUser()
+                .catch(() => $location.url('/login'))
+
             }
           }
   })
@@ -73,24 +75,24 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    cache : false,
+    // cache : false,
     url: '/dash',
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl',
-        resolve: {
-          user (AuthFactory, $location) {
-            return AuthFactory.getUser()
-              .catch(() => $location.url('/login'))
-          }
-        }
+        // resolve: {
+        //   user (AuthFactory, $location) {
+        //     return AuthFactory.getUser()
+        //       .catch(() => $location.url('/login'))
+        //   }
+        // }
       }
     }
   })
 
   .state('tab.bands', {
-      cache: false,
+      // cache: false,
       url: '/bands',
       views: {
         'tab-messageboards': {
@@ -123,7 +125,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('tab.calenders', {
-    cache: false,
+    // cache: false,
     url: '/calenders',
     views: {
       'tab-calenders': {
