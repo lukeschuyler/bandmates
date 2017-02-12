@@ -4,7 +4,7 @@
 
       <ion-item ng-repeat="band in bandz">
 		
-        <button ng-click="openModal()" class="button icon right ion-add">Add Event</button>
+        <button ng-click="openModal(band.bandName)" class="button icon right ion-add">Add Event</button>
         <h1>{{ band.bandName }}</h1>
       </ion-item>
 	

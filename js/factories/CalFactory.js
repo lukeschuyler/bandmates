@@ -1,4 +1,4 @@
-bandmates.factory('CalFactory', function($http) {
+bandmates.factory('CalFactory', function($http, $q) {
 	var date = new Date()
 	var startDay = Math.floor(Math.random() * 90) - 45;
     var endDay = Math.floor(Math.random() * 2) + startDay;
@@ -26,20 +26,19 @@ bandmates.factory('CalFactory', function($http) {
 			// 	})
 			return events
 		},
-		addEvent(bandName, type, startTime, endTime, allDay, description) {
-			$http({
+		addEvent(bandName, name, type, startTime, endTime, allDay) {
+			return $q.resolve($http({
 				method : 'POST',
-				url : `https://mush-e7c8f.firebaseio.com/events`,
+				url : `https://mush-e7c8f.firebaseio.com/events.json`,
 				data : {
 					bandName : bandName,
 					type : type,
 					startTime : startTime,
 					endTime : endTime,
-					title : title,
-					allDay : allDay,
-					description : description
+					name : name,
+					allDay : allDay
 					}
-			})
+			}))
 		}
 	}
 })

@@ -7,7 +7,7 @@
   };
   firebase.initializeApp(config);
 
-const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar', 'ngCordova'])
+const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar', 'ngCordova', "ion-datetime-picker"])
 
 bandmates.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,7 +32,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     .state('auth', {
       url: '/auth',
       templateUrl: 'templates/auth.html',
-      abstract: true,
+      abstract: true
 
   })
 
@@ -42,14 +42,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'auth': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser().catch(function() {
-              
-        //     })
-        //   }
-        // }
+        controller: 'LoginCtrl'
       }
     }
   })
@@ -60,12 +53,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'auth': {
         templateUrl: 'templates/register.html',
-        controller: 'LoginCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser()
-        //   }
-        // }
+        controller: 'LoginCtrl'
       }
     }
   })
@@ -85,7 +73,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    // cache : false,
+    cache : false,
     url: '/dash',
     views: {
       'tab-dash': {
@@ -93,7 +81,8 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         controller: 'DashCtrl',
         resolve: {
           user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(() => $location.url('/login'))
+            return AuthFactory.getUser()
+              .catch(() => $location.url('/login'))
           }
         }
       }
@@ -108,9 +97,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
           templateUrl: 'templates/bands.html',
           controller: 'BandsCtrl',
           resolve: {
-            user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/login'))
-            },
             bands (BandFactory) {
               const userId = firebase.auth().currentUser.uid
               return BandFactory.getBands(userId)
@@ -128,9 +114,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
           templateUrl: 'templates/band-messages.html',
           controller: 'MessageBoardCtrl',
           resolve: {
-            user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/login'))
-            },
             messages (MessageFactory, $stateParams) {
              return MessageFactory.getMessages($stateParams.bandId)
             }
@@ -140,7 +123,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('tab.calenders', {
-    // cache: false,
+    cache: false,
     url: '/calenders',
     views: {
       'tab-calenders': {
@@ -168,19 +151,12 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.settings', {
-    cache : false,
+    // cache : false,
     url: '/settings',
     views: {
       'tab-settings': {
         templateUrl: 'templates/settings.html',
-        controller: 'SettingsCtrl',
-        resolve: {
-          user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(function() {
-
-            })
-          }
-        }
+        controller: 'SettingsCtrl'
       }
     }
   })
@@ -191,14 +167,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'tab-settings': {
         templateUrl: 'templates/new-band.html',
-        controller: 'NewBandCtrl',
-        resolve: {
-          user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(function() {
-              // some kind of toast saying to try again
-            })
-          }
-        }
+        controller: 'NewBandCtrl'
       }
     }
   });

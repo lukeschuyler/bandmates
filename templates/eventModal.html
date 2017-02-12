@@ -1,16 +1,16 @@
 <ion-modal-view>
 	<ion-header-bar class="bar bar-header bar-positive">
-	  <h1 class="title">New Contact</h1>
+	  <h1 class="title">New Event: {{id}} </h1>
 	  <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
 	</ion-header-bar>
 	<ion-content class="padding">
 	  <div class="list">
-		</ion-item>
-		 <label class = "item item-input item-select item-royal">
+		 <label class = "item item-input item-select item-assertive">
 		      <div class = "input-label">
-		         Event Type
+		      Event Type
+		        <input type="text"> 
 		      </div>
-		      <select>
+		      <select ng-model="type">
 		        <option>Show</option>
 			    <option>Tracking Session</option>
 			    <option>Mixing Session</option>
@@ -18,15 +18,20 @@
 			    <option>Meeting</option>
 		      </select>
    		</label>
-	    <label class="item item-input">
-	      <span class="input-label">Start Time</span>
-	      <input ng-model="startTime" type="text">
-	    </label>
-	    <label class="item item-input">
-	      <span class="input-label">Email</span>
-	      <input ng-model="newUser.email" type="text">
-	    </label>
-	    <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
+	   <div class="item item-icon-left" ion-datetime-picker ng-model="startTimeValue">
+                <i class="icon ion-ios-grid-view-outline positive"></i>
+                Start Time: 
+                <strong>{{startTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+        </div>
+ 	   <div class="item item-icon-left" ion-datetime-picker ng-model="endTimeValue">
+                <i class="icon ion-ios-grid-view-outline positive"></i>
+                End Time: 
+                <strong>{{endTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+        </div>       
+        <label class="item item-input">
+              <input type="text" placeholder="Event Name" ng-model="eventName">
+          </label>
+	    <button class="button button-full button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false)">Create Event</button>
 	  </div>
 	</ion-content>
 </ion-modal-view>

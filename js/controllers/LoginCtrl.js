@@ -7,6 +7,7 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 				$location.url('/tab/dash')
 			})
 	}
+	
 	$scope.register = function(email, password, firstName, image, lastName) {
 		AuthFactory.register(email, password, image, firstName, lastName)
 			.then(function(){

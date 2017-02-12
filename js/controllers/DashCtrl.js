@@ -1,6 +1,8 @@
 bandmates.controller('DashCtrl', function($scope, user, AuthFactory) {
 
-  	$scope.user = user
+ $scope.$on('$ionicView.enter', function(e) {
+    $scope.user = user
+  });
 
 	AuthFactory.getUserPic(user.uid)
 		.then(function(val) {

@@ -1,4 +1,4 @@
-bandmates.controller('CalenderCtrl', function($scope, $ionicModal, bands) {
+bandmates.controller('CalenderCtrl', function($scope, $ionicModal, bands, CalFactory, $cordovaToast) {
   
 	$scope.bandz = bands
 	// $scope.goToAddEvent = function() {
@@ -11,9 +11,17 @@ bandmates.controller('CalenderCtrl', function($scope, $ionicModal, bands) {
 	    $scope.modal = modal;
 	  })
 
-	  $scope.openModal = function() {
+	  $scope.openModal = function(bandName) {
+	  		var boo= false
+	  		$scope.id = bandName;
 		    $scope.modal.show();
-
+		    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
+		    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
+		    		.then(function() {
+		    			 $scope.modal.remove();
+		    			 $cordovaToast.show('Event Created!', 'short', 'bottom')
+		    		})
+		    }
 		  };
 		  $scope.closeModal = function() {
 		    $scope.modal.hide();
@@ -28,6 +36,6 @@ bandmates.controller('CalenderCtrl', function($scope, $ionicModal, bands) {
 		  });
 		  // Execute action on remove modal
 		  $scope.$on('modal.removed', function() {
-		    // Execute action
+		    	
 		  });
 });
