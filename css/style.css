@@ -13,7 +13,7 @@ h1 {
 }
 
 .eventDash {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
 nav {
@@ -34,7 +34,7 @@ nav {
   width: 100px;
   height: 100px;
   border-radius: 100%;
-  box-shadow: 10px 10px 10px rgba(15,30,30,.4)
+  box-shadow: 10px 10px 10px rgba(0,0,0, .4);
 }
 
 .myMessage {
@@ -63,7 +63,7 @@ nav {
 }
 
 .padding, .had-header {
-    font-family: 'Pangolin', cursive;
+  font-family: 'Sarpanch', cursive;
 /*    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0, .9)),
     url('https://upload.wikimedia.org/wikipedia/commons/8/89/The_Band_(1969).png')
     no-repeat center / cover fixed*/
