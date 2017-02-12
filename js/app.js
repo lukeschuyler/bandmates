@@ -32,7 +32,8 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     .state('auth', {
       url: '/auth',
       templateUrl: 'templates/auth.html',
-      abstract: true
+      abstract: true,
+
   })
 
     .state('auth.login', {
@@ -84,7 +85,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    cache : false,
+    // cache : false,
     url: '/dash',
     views: {
       'tab-dash': {
@@ -144,7 +145,13 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'tab-calenders': {
         templateUrl: 'templates/calenders.html',
-        controller: 'CalenderCtrl'
+        controller: 'CalenderCtrl',
+        resolve: {
+            bands (BandFactory) {
+              const userId = firebase.auth().currentUser.uid
+              return BandFactory.getBands(userId)
+            }
+        }
       }
     }
   })
@@ -197,6 +204,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/auth/login');
+  $urlRouterProvider.otherwise('/tab/dash');
 
 });

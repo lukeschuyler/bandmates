@@ -7,7 +7,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory) {
 			$scope.userArray = Object.keys(val).map(function(key) {
 				return val[key]
 			})
-			console.log($scope.userArray[0].image)
 		})
 
 })

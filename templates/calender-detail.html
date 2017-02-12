@@ -10,10 +10,10 @@
          </ion-nav-buttons>
 
         <ion-content scroll="false" class="main-content">
-            <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="calendar.eventSource"
+        <input type="text" name="">
+            <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="events"
                       range-changed="reloadSource(startTime, endTime)"
                       event-selected="onEventSelected(event)" title-changed="onViewTitleChanged(title)"
                       time-selected="onTimeSelected(selectedTime, events, disabled)" step="30"></calendar>
         </ion-content>
-
 </ion-view>

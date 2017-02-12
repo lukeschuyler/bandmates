@@ -1,11 +1,8 @@
 bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams) {
 	$scope.band = 'The Common Tiger'
 
-    CalFactory.getEvents()
-        .then(function(val) {
-            console.log(val)
-            $scope.events = val
-        })
+    $scope.events = CalFactory.getEvents()
+
 
 	 $scope.calendar = {};
         $scope.changeMode = function (mode) {
@@ -38,7 +35,7 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
         };
 
         $scope.onTimeSelected = function (selectedTime, events, disabled) {
-            console.log('Selected time: ' + selectedTime + ', hasEvents: ' + (events !== undefined && events.length !== 0) + ', disabled: ' + disabled);
+
         };
 
 })

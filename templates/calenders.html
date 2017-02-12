@@ -1,11 +1,13 @@
-<ion-view view-title="Calendars">
-  <ion-content class="padding">
-    <!-- <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list> -->
-    <!-- <div ui-calendar="uiConfig.calendar" ng-model="eventSources"> -->
-     <h3>The Common Tiger</h3><a href="#/tab/calenders/whatevs">View Calendar</a>
+<ion-view view-title="Band Calendars">
+  <ion-content>
+    <ion-list>
+
+      <ion-item ng-repeat="band in bandz">
+		
+        <button ng-click="goToAddEvent()" class="button icon right ion-add">Add Event</button>
+        <h1>{{ band.bandName }}</h1>
+      </ion-item>
+
+    </ion-list>
   </ion-content>
 </ion-view>

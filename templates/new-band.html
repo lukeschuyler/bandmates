@@ -19,6 +19,6 @@
           </label>
           <!-- img and add users 2 or 3.0 -->
       </div>
-      <button class="button button-block button-danger" ng-click="registerBand(bandNameSearch, passwordSearch, user.uid)">Join Band</button>
+      <button ng-disabled="bandNameSearch && passwordSearch" class="button button-block button-danger" ng-click="registerBand(bandNameSearch, passwordSearch, user.uid)">Join Band</button>
   </ion-content>
 </ion-view>
