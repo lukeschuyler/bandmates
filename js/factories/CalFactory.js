@@ -12,6 +12,12 @@ bandmates.factory('CalFactory', function($http, $q) {
 					return val.data
 				})
 		},
+		getUserBandsEvents(band) {
+			return $http.get(`https://mush-e7c8f.firebaseio.com/events.json?orderBy="bandName"&equalTo="${band}"`)
+				.then(function(val) {
+					return val.data
+				})
+		},
 		addEvent(bandName, name, type, startTime, endTime, allDay) {
 			return $q.resolve($http({
 				method : 'POST',

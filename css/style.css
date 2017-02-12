@@ -1,9 +1,10 @@
 [nav-view]  {
-  font-family: 'Pangolin', cursive;
+  font-family: 'Sarpanch', cursive;
 }
 
 h1 {
-    font-family: 'Pangolin', cursive;
+    font-family: 'Sarpanch', cursive;
+      text-shadow: 10px 100px 3px rgba(0,0,0, .5);
 }
 
 .message-name {
@@ -23,7 +24,7 @@ h1 {
 }
 
 .myMessage {
-	background-color: lightblue;
+	background-color: rgba(0,0,230,.1);
 }
 
 [nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
@@ -31,16 +32,16 @@ h1 {
  }
 
 .modal-backdrop {
-	background-color: white;
+	background-color: transparent;
 }
 
 .tabs {
-	background-color: #4a87ee;
+	/*background-color: #4a87ee;*/
 }
 
  h1 {
   /*font-family: 'Codystar', cursive;*/
-  text-shadow: 250px 0px 3px rgba(0,0,0, .5);
+
 }
 
 .padding, .had-header {

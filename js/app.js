@@ -90,6 +90,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.bands', {
+    // cache:false,
       url: '/bands',
       views: {
         'tab-messageboards': {
@@ -121,6 +122,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('tab.calenders', {
+    // cache:false,
     url: '/calenders',
     views: {
       'tab-calenders': {

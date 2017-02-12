@@ -1,10 +1,13 @@
-bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory) {
+bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory) {
+
+ $scope.userBandNames =  []
 
  $scope.$on('$ionicView.enter', function(e) {
     $scope.user = user
-    console.log(user)
   });
 
+
+ 	$scope.events = []
 	AuthFactory.getUserPic(user.uid)
 		.then(function(val) {
 			$scope.userArray = Object.keys(val).map(function(key) {
@@ -12,17 +15,23 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory)
 			})
 		})
 
-	CalFactory.getAllEvents()
+	BandFactory.getBands(user.uid)
 		.then(function(val) {
-			$scope.events = Object.keys(val).map(function(key) {
+			$scope.userBands = Object.keys(val).map(function(key) {
 				return val[key]
 			})
-			console.log($scope.events)
+			$scope.userBands.forEach(function(band) {
+			$scope.userBandNames.push(band.bandName)
+			})
 		})
-
-		$scope.moveItem = function(item, fromIndex, toIndex) {
-		    //Move the item in the array
-		    $scope.events.splice(fromIndex, 1);
-		    $scope.events.splice(toIndex, 0, item);
-		  };
+		.then(function() {
+			$scope.userBandNames.forEach(function(band) {
+				CalFactory.getUserBandsEvents(band)
+				.then(function(val) {
+					 Object.keys(val).map(function(key) {
+						$scope.events.push(val[key])
+					})
+				})
+			})
+		})
 })
