@@ -73,18 +73,18 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    // cache : false,
+    cache : false,
     url: '/dash',
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser()
-        //       .catch(() => $location.url('/login'))
-        //   }
-        // }
+        resolve: {
+          user (AuthFactory, $location) {
+            return AuthFactory.getUser()
+              .catch(() => $location.url('/login'))
+          }
+        }
       }
     }
   })

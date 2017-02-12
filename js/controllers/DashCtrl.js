@@ -12,7 +12,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory)
 			})
 		})
 
-	CalFactory.getEvents()
+	CalFactory.getAllEvents()
 		.then(function(val) {
 			$scope.events = Object.keys(val).map(function(key) {
 				return val[key]
@@ -20,4 +20,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory)
 			console.log($scope.events)
 		})
 
+		$scope.moveItem = function(item, fromIndex, toIndex) {
+		    //Move the item in the array
+		    $scope.events.splice(fromIndex, 1);
+		    $scope.events.splice(toIndex, 0, item);
+		  };
 })

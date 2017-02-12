@@ -1,7 +1,7 @@
 bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams) {
-	$scope.band = 'The Common Tiger'
+	$scope.band = $stateParams.calenderId
 
-    CalFactory.getEvents()
+    CalFactory.getEvents($scope.band)
         .then(function(val) {
             $scope.events = Object.keys(val).map(function(key) {
                 return val[key]
