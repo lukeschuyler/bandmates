@@ -3,7 +3,7 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 
 	$scope.login = function(email, password) {
 		AuthFactory.login(email, password)
-			.then(function(res) {
+			.then(function() {
 				$location.url('/tab/dash')
 			})
 	}

@@ -37,7 +37,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
     .state('auth.login', {
-    // cache : false,
     url: '/login',
     views: {
       'auth': {
@@ -48,7 +47,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
     .state('auth.register', {
-    // cache : false,
     url: '/register',
     views: {
       'auth': {
@@ -60,6 +58,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
 
   // setup an abstract state for the tabs directive
     .state('tab', {
+      cache: false,
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html',
@@ -67,7 +66,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
             user (AuthFactory, $location) {
               return AuthFactory.getUser()
                 .catch(() => $location.url('/login'))
-
             }
           }
   })
@@ -92,7 +90,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.bands', {
-      // cache: false,
       url: '/bands',
       views: {
         'tab-messageboards': {
@@ -109,7 +106,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
     .state('tab.band-messages', {
-      // cache : false,
       url: '/bands/:bandId',
       views: {
         'tab-messageboards': {
@@ -125,7 +121,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('tab.calenders', {
-    // cache: false,
     url: '/calenders',
     views: {
       'tab-calenders': {
@@ -142,7 +137,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.calender-detail', {
-    // cache : false,
     url: '/calenders/:calenderId',
     views: {
       'tab-calenders': {
@@ -153,7 +147,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.settings', {
-    // cache : false,
     url: '/settings',
     views: {
       'tab-settings': {
@@ -164,7 +157,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.new-band', {
-    // cache : false,
     url: '/settings/new-band',
     views: {
       'tab-settings': {
