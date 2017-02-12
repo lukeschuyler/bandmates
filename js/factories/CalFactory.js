@@ -20,11 +20,10 @@ bandmates.factory('CalFactory', function($http, $q) {
 
 	return {
 		getEvents(band) {
-			// return $http.get('https://mush-e7c8f.firebaseio.com/events.json')
-			// 	.then(function(val) {
-			// 		return val.data
-			// 	})
-			return events
+			return $http.get('https://mush-e7c8f.firebaseio.com/events.json')
+				.then(function(val) {
+					return val.data
+				})
 		},
 		addEvent(bandName, name, type, startTime, endTime, allDay) {
 			return $q.resolve($http({
@@ -35,7 +34,7 @@ bandmates.factory('CalFactory', function($http, $q) {
 					type : type,
 					startTime : startTime,
 					endTime : endTime,
-					name : name,
+					title : name + ': ' + bandName,
 					allDay : allDay
 					}
 			}))
