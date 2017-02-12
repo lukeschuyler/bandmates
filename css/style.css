@@ -18,6 +18,10 @@
 	background-color: lightblue;
 }
 
-[nav-view-transition][nav-view-direction] {
+[nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
    background-color: transparent;
  }
+
+.modal-backdrop {
+	background-color: white;
+}
