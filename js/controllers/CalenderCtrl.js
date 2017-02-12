@@ -1,6 +1,11 @@
-bandmates.controller('CalenderCtrl', function($scope, $ionicModal, bands, CalFactory, $cordovaToast) {
-  
-	$scope.bandz = bands
+bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicModal, CalFactory, $cordovaToast) {
+	$scope.user = user
+
+	 BandFactory.getBands(user.uid)
+	 	.then(function(val){
+	 		$scope.bandz = val
+	 		 // $scope.$apply()
+	 	})
 
 	CalFactory.getEvents()
 		.then(function(val) {

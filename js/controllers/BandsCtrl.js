@@ -1,4 +1,10 @@
-bandmates.controller('BandsCtrl', function($scope, $location, BandFactory, bands, user) {
-    $scope.user = user
-    $scope.bandz = bands
+bandmates.controller('BandsCtrl', function($scope, $location, BandFactory, user) {
+
+  $scope.user = user
+
+   BandFactory.getBands(user.uid)
+    .then(function(val){
+      $scope.bandz = val
+      // $scope.$apply()
+    })
 })

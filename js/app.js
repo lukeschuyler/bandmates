@@ -95,13 +95,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/bands.html',
-          controller: 'BandsCtrl',
-          resolve: {
-            bands (BandFactory) {
-              const userId = firebase.auth().currentUser.uid
-              return BandFactory.getBands(userId)
-            }
-          }
+          controller: 'BandsCtrl'
         }
       }
     })
@@ -128,12 +122,12 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       'tab-calenders': {
         templateUrl: 'templates/calenders.html',
         controller: 'CalenderCtrl',
-        resolve: {
-            bands (BandFactory) {
-              const userId = firebase.auth().currentUser.uid
-              return BandFactory.getBands(userId)
-            }
-        }
+        // resolve: {
+        //     bands (BandFactory) {
+        //       const userId = firebase.auth().currentUser.uid
+        //       return BandFactory.getBands(userId)
+        //     }
+        // }
       }
     }
   })

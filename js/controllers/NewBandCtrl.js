@@ -4,4 +4,5 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user) {
     });
 	$scope.registerBand = NewBandFactory.registerBand
 	$scope.joinBand = NewBandFactory.joinBand
+
 })
