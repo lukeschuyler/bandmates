@@ -1,4 +1,4 @@
-bandmates.controller('DashCtrl', function($scope, user, AuthFactory) {
+bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory) {
 
  $scope.$on('$ionicView.enter', function(e) {
     $scope.user = user
@@ -9,6 +9,14 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory) {
 			$scope.userArray = Object.keys(val).map(function(key) {
 				return val[key]
 			})
+		})
+
+	CalFactory.getEvents()
+		.then(function(val) {
+			$scope.events = Object.keys(val).map(function(key) {
+				return val[key]
+			})
+			console.log($scope.events)
 		})
 
 })

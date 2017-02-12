@@ -1,5 +1,9 @@
-[nav-view] {
+[nav-view]  {
   font-family: 'Pangolin', cursive;
+}
+
+h1 {
+    font-family: 'Pangolin', cursive;
 }
 
 .message-name {
@@ -32,4 +36,11 @@
 
 .tabs {
 	background-color: #4a87ee;
+}
+
+.padding, .had-header {
+    font-family: 'Pangolin', cursive;
+    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0, .9)),
+    url('https://upload.wikimedia.org/wikipedia/commons/8/89/The_Band_(1969).png')
+    no-repeat center / cover fixed
 }
