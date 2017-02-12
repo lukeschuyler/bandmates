@@ -1,3 +1,25 @@
+[nav-view]  {
+  font-family: 'Sarpanch', cursive;
+}
+
+h1 {
+    font-family: 'Sarpanch', cursive;
+      text-shadow: 10px 100px 3px rgba(0,0,0, .5);
+}
+
+.main-logo {
+  font-family: 'Sarpanch', cursive;
+
+}
+
+.eventDash {
+  padding-top: 100px;
+}
+
+nav {
+  margin-bottom: 60px;
+}
+
 .message-name {
   color: grey;
 }
@@ -12,12 +34,37 @@
   width: 100px;
   height: 100px;
   border-radius: 100%;
+  box-shadow: 10px 10px 10px rgba(0,0,0, .4);
 }
 
 .myMessage {
-	background-color: lightblue;
+	background-color: rgba(0,0,230,.1);
+  border-radius: 5px;
 }
 
-[nav-view-transition][nav-view-direction] {
+[nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
    background-color: transparent;
  }
+
+.modal-backdrop {
+	background-color: transparent;
+}
+
+.tabs {
+	background-color: #ef473a;
+}
+
+.tabcolor i {
+  color: white;
+}
+
+.tabcolor span {
+ color: white;
+}
+
+.padding, .had-header {
+  font-family: 'Sarpanch', cursive;
+/*    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0, .9)),
+    url('https://upload.wikimedia.org/wikipedia/commons/8/89/The_Band_(1969).png')
+    no-repeat center / cover fixed*/
+}

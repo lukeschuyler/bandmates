@@ -4,7 +4,6 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			$scope.userArray = Object.keys(val).map(function(key) {
 				return val[key]
 			})
-			console.log($scope.userArray[0].image)
 		})
 
 	$scope.band = $stateParams.bandId

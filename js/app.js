@@ -7,7 +7,7 @@
   };
   firebase.initializeApp(config);
 
-const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar', 'ngCordova'])
+const bandmates = angular.module('bandmates', ['ionic', 'ui.rCalendar', 'ngCordova', "ion-datetime-picker"])
 
 bandmates.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,50 +33,39 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       url: '/auth',
       templateUrl: 'templates/auth.html',
       abstract: true
+
   })
 
     .state('auth.login', {
-    // cache : false,
     url: '/login',
     views: {
       'auth': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser().catch(function() {
-              
-        //     })
-        //   }
-        // }
+        controller: 'LoginCtrl'
       }
     }
   })
 
     .state('auth.register', {
-    // cache : false,
     url: '/register',
     views: {
       'auth': {
         templateUrl: 'templates/register.html',
-        controller: 'LoginCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser()
-        //   }
-        // }
+        controller: 'LoginCtrl'
       }
     }
   })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
+      cache: false,
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html',
       resolve: {
             user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/login'))
+              return AuthFactory.getUser()
+                .catch(() => $location.url('/login'))
             }
           }
   })
@@ -92,7 +81,8 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
         controller: 'DashCtrl',
         resolve: {
           user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(() => $location.url('/login'))
+            return AuthFactory.getUser()
+              .catch(() => $location.url('/login'))
           }
         }
       }
@@ -100,36 +90,23 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.bands', {
-      cache: false,
+    // cache:false,
       url: '/bands',
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/bands.html',
-          controller: 'BandsCtrl',
-          resolve: {
-            user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/login'))
-            },
-            bands (BandFactory) {
-              const userId = firebase.auth().currentUser.uid
-              return BandFactory.getBands(userId)
-            }
-          }
+          controller: 'BandsCtrl'
         }
       }
     })
 
     .state('tab.band-messages', {
-      // cache : false,
       url: '/bands/:bandId',
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/band-messages.html',
           controller: 'MessageBoardCtrl',
           resolve: {
-            user (AuthFactory, $location) {
-              return AuthFactory.getUser().catch(() => $location.url('/login'))
-            },
             messages (MessageFactory, $stateParams) {
              return MessageFactory.getMessages($stateParams.bandId)
             }
@@ -139,18 +116,23 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('tab.calenders', {
-    // cache: false,
+    // cache:false,
     url: '/calenders',
     views: {
       'tab-calenders': {
         templateUrl: 'templates/calenders.html',
-        controller: 'CalenderCtrl'
+        controller: 'CalenderCtrl',
+        // resolve: {
+        //     bands (BandFactory) {
+        //       const userId = firebase.auth().currentUser.uid
+        //       return BandFactory.getBands(userId)
+        //     }
+        // }
       }
     }
   })
 
   .state('tab.calender-detail', {
-    // cache : false,
     url: '/calenders/:calenderId',
     views: {
       'tab-calenders': {
@@ -161,42 +143,26 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.settings', {
-    cache : false,
     url: '/settings',
     views: {
       'tab-settings': {
         templateUrl: 'templates/settings.html',
-        controller: 'SettingsCtrl',
-        resolve: {
-          user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(function() {
-
-            })
-          }
-        }
+        controller: 'SettingsCtrl'
       }
     }
   })
 
   .state('tab.new-band', {
-    // cache : false,
     url: '/settings/new-band',
     views: {
       'tab-settings': {
         templateUrl: 'templates/new-band.html',
-        controller: 'NewBandCtrl',
-        resolve: {
-          user (AuthFactory, $location) {
-            return AuthFactory.getUser().catch(function() {
-              // some kind of toast saying to try again
-            })
-          }
-        }
+        controller: 'NewBandCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/auth/login');
+  $urlRouterProvider.otherwise('/tab/dash');
 
 });
