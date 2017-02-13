@@ -28,7 +28,8 @@ bandmates.factory('CalFactory', function($http, $q) {
 					startTime : startTime,
 					endTime : endTime,
 					title : name + ': ' + bandName,
-					allDay : allDay
+					allDay : allDay,
+					milliTime: startTime.getTime()
 					}
 			}))
 		}

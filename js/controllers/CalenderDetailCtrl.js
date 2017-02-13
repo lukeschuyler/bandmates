@@ -1,6 +1,10 @@
 bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams) {
 	$scope.band = $stateParams.calenderId
 
+    $scope.$on("$ionicView.enter", function () {
+
+    });
+
     CalFactory.getEvents($scope.band)
         .then(function(val) {
             $scope.events = Object.keys(val).map(function(key) {

@@ -1,5 +1,6 @@
 <ion-view view-title="Register" name="register-view">
 	<ion-content class="padding">
+   <div class="log-header">Bandmates</div>
       <div class="list list-inset">
           <label class="item item-input">
               <input type="email" placeholder="Email" ng-model="email">
@@ -13,11 +14,11 @@
           <label class="item item-input">
               <input type="text" placeholder="Last Name" ng-model="lastName">
           </label>
-          <label class="item item-input">
-              <!-- <img> -->
-              <button ng-click="getImage()" class="button button-danger">Find Image</button>
+          <label class="item item-input item-icon-right">
+            <div>Profile Image</div>
+              <i ng-click="getImage()" class="icon right ion-ios-plus"></i>
           </label>
       </div>
-      <button ng-disabled="emal && password && firstName && lastName" class="button button-block button-calm" ng-click="register(email, password, image, firstName, lastName)">Register</button>
+      <button ng-disabled="emal && password && firstName && lastName" class="button button-block button-outline button-balanced" ng-click="register(email, password, image, firstName, lastName)">Register</button>
   </ion-content>
 </ion-view>

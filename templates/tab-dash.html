@@ -10,11 +10,10 @@
     </div>
   <ion-content class="has-subheader">
 		<ion-list class="eventDash">
-			<ion-item ng-repeat="event in events | orderBy : event.startTime" class="animated fadeInLeft main-items">
-        <ion-spinner ng-if="!event.bandName" icon="spiral"></ion-spinner>
+			<ion-item ng-repeat="event in events | orderBy : event.milliTime" class="animated fadeInLeft main-items">
 				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
 	    		<p>{{event.bandName}}</p>
-          <p>{{(event.startTime(}}</p>
+          <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
     	    	<ion-reorder-button class="ion-navicon"
                             on-reorder="moveItem(event, $fromIndex, $toIndex)">
         		</ion-reorder-button>
