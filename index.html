@@ -22,7 +22,7 @@
     <link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="lib/animate.css/animate.min.css">
     <link href="css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Codystar%7CPangolin%7CSarpanch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Codystar%7CPangolin%7CSarpanch%7CMonofett" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -32,8 +32,8 @@
     <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
     <script src="lib/ionic-calendar/dist/js/calendar-tpls.min.js" type="text/javascript"></script>
     <script src="lib/firebase/firebase.js" type="text/javascript"></script>
-    <script src="cordova.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.min.js" type="text/javascript"></script>
+    <script src="cordova.js"></script>
 
     <script src="js/app.js"></script>
 
@@ -55,10 +55,10 @@
   function tap() {
 
   window.plugins.toast.showWithOptions(
-                {
-                    message: "hey there",
-                    duration: "long",
-                    position: "bottom",
+      {
+          message: "hey there",
+          duration: "long",
+          position: "bottom",
           styling: {
             backgroundColor: '#66B2FF',
             textColor: '#000000',
@@ -70,10 +70,10 @@
           if (args && args.event == "touch") {
             alert("touched");
           }
-                },
-                function(error) {
-                    log('cordovaToast error: ', error);
-                }
+          },
+          function(error) {
+              log('cordovaToast error: ', error);
+          }
     );
   }
 </script>
@@ -81,12 +81,12 @@
   </head>
   <body ng-app="bandmates">
 
-    <ion-nav-bar align-title="right" class="bar-stable bar-assertive">
+    <ion-nav-bar class="bar-stable bar-assertive">
       <ion-nav-back-button>
       </ion-nav-back-button>
               <ion-nav-buttons side="right">      
-<!--                 <button class="button button-icon button-clear ion-ios-list" ng-click="sairAplicativo()"></button>
-                <button class="button button-icon ion-a\" ng-click="sairAplicativo()"></button>      -->
+                <button class="button button-icon button-clear ion-ios-person" ng-click=""></button>
+                <button class="button button-icon ion-ios-plus" ng-click=""></button>     
             </ion-nav-buttons>
     </ion-nav-bar>
     <!--

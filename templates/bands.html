@@ -2,8 +2,10 @@
   <ion-content>
     <ion-list>
 
-      <ion-item ng-repeat="band in bandz">
-        <a href="#/tab/bands/{{band.bandName}}"><h1>{{ band.bandName }}</h1></a>
+      <ion-item class="item item-icon-right" ng-repeat="band in bandz">
+         <ion-spinner ng-if="!band.bandName" icon="spiral"></ion-spinner>
+        <a href="#/tab/bands/{{band.bandName}}">Go To Chat</a>
+        <h2>{{ band.bandName }}</h2>
       </ion-item>
 
     </ion-list>

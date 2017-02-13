@@ -2,14 +2,15 @@
   font-family: 'Sarpanch', cursive;
 }
 
-h1 {
-    font-family: 'Sarpanch', cursive;
-      text-shadow: 10px 100px 3px rgba(0,0,0, .5);
-}
+.log-header {
+  font-family: 'Monofett', cursive;
+    text-shadow: 10px 100px 3px rgba(0,0,0, .5);
+    font-size: 50px;
+  }
 
 .main-logo {
-  font-family: 'Sarpanch', cursive;
-
+  font-family: 'Monofett', cursive;
+  /*text-shadow: 10px 10px 10px #000, 20px 20px 2px rgba(0,0,0, .1), -10px -20px rgba(255,0,0,.4);*/
 }
 
 .eventDash {
@@ -20,8 +21,12 @@ nav {
   margin-bottom: 60px;
 }
 
+.item {
+  background: ;
+}
+
 .message-name {
-  color: grey;
+  font-style: bold;
 }
 
 .message-img {
@@ -31,8 +36,8 @@ nav {
 }
 
 .main-pic {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
   box-shadow: 10px 10px 10px rgba(0,0,0, .4);
 }

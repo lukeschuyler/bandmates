@@ -33,15 +33,25 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       url: '/auth',
       templateUrl: 'templates/auth.html',
       abstract: true
-
   })
 
-    .state('auth.login', {
+   .state('auth.login', {
     url: '/login',
     views: {
       'auth': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        resolve: {
+            user (AuthFactory, $location) {
+              return AuthFactory.getUser()
+                .then(function(user){
+                  if(user){
+                    $location.url('/tab/dash')
+                  }
+                })
+                .catch(() => $location.url('/login'))
+            }
+          }
       }
     }
   })
@@ -133,6 +143,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.calender-detail', {
+    cache : false,
     url: '/calenders/:calenderId',
     views: {
       'tab-calenders': {
@@ -163,6 +174,6 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/auth/login');
 
 });
