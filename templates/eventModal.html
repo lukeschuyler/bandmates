@@ -5,21 +5,20 @@
 	</ion-header-bar>
 	<ion-content class="padding">
 	  <div class="list">
-		 <label class = "item item-input item-select">
-		      <div class = "input-label">
+		 <label class ="item item-input item-select">
+		      <div class= "input-label">
 		      Event Type
-		        <input type="text"> 
 		      </div>
 		      <select ng-model="type">
-		        <option>Show</option>
+		        <option selected>Show</option>
 			    <option>Tracking Session</option>
 			    <option>Mixing Session</option>
 			    <option>Practice</option>
 			    <option>Meeting</option>
 		      </select>
    		</label>
-	   <div class="item item-icon-left" ion-datetime-picker ng-model="startTimeValue">
-                <i class="icon ion-icon-clock"></i>
+	   <div class="item" ion-datetime-picker ng-model="startTimeValue">
+                <i class="icon"></i>
                 Start Time: 
                 <strong>{{startTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
         </div>
@@ -27,7 +26,10 @@
                 <i class="icon ion-icon-clock"></i>
                 End Time: 
                 <strong>{{endTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
-        </div>       
+        </div>
+        <label class="item item-input">
+              <input type="text" placeholder="Location" ng-model="location">
+        </label>
         <label class="item item-input">
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>

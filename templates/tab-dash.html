@@ -1,11 +1,11 @@
 <ion-view view-title="Home">
     <div class="bar bar-subheader bar-header">
          <div class="row">  
-           <h2 class="col-xs-offset-1 assertive main-logo">Bandmates</h2>
-            <div class="col-xs-offset-1 col-xs-2">
+           <h3 class="col-xs-offset-1 assertive main-logo">{{user.email.slice(0, user.email.indexOf('@'))}}'s Upcoming Events</h3>
+<!--             <div class="col-xs-offset-2 col-xs-2">
                 <img ng-if="user" class="main-pic" src="{{ userArray[0].image }}">
         
-            </div>
+            </div> -->
         </div>
     </div>
   <ion-content class="has-subheader">
