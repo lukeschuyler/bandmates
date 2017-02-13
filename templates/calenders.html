@@ -2,11 +2,10 @@
   <ion-content>
     <ion-list>
 
-      <ion-item class="item" ng-repeat="band in bandz">
-		
-        <button ng-click="openModal(band.bandName)" class="button icon right ion-add">Add Event</button>
-        <h2>{{ band.bandName }}</h2>
+      <ion-item class="item item-icon-right" ng-repeat="band in bandz">
         <a href="#/tab/calenders/{{band.bandName}}">Go To Calendar</a>
+          <button ng-click="openModal(band.bandName)" class="icon right ion-ios-plus"></button>
+        <h2>{{ band.bandName }}</h2>
       </ion-item>
 	     
     </ion-list>

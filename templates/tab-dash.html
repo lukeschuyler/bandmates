@@ -1,17 +1,20 @@
 <ion-view view-title="Home">
     <div class="bar bar-subheader bar-header">
-            <h2 class="assertive main-logo">Bandmates</h2>
-            <div class="col col-33 col-offset-33">
+         <div class="row">  
+           <h2 class="col-xs-offset-1 assertive main-logo">Bandmates</h2>
+            <div class="col-xs-offset-1 col-xs-2">
                 <img ng-if="user" class="main-pic" src="{{ userArray[0].image }}">
+        
             </div>
+        </div>
     </div>
   <ion-content class="has-subheader">
-    	<!-- ng=repeat item in items (event items) -->
 		<ion-list class="eventDash">
-			<ion-item ng-repeat="event in events" class="animated fadeInLeft main-items">
+			<ion-item ng-repeat="event in events | orderBy : event.regTime" class="animated fadeInLeft main-items">
 				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
 	    		<p>{{event.bandName}}</p>
-	    		<p>{{event.startTime}}</p>
+	    		<!-- <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p> -->
+                <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
     	    	<ion-reorder-button class="ion-navicon"
                             on-reorder="moveItem(event, $fromIndex, $toIndex)">
         		</ion-reorder-button>

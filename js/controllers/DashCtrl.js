@@ -6,6 +6,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
     $scope.user = user
   });
 
+ 	$scope.dateFilter = function(date){
+ 		return new Date(date)
+ 	}
+
 
  	$scope.events = []
 	AuthFactory.getUserPic(user.uid)
@@ -31,6 +35,12 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 					 Object.keys(val).map(function(key) {
 						$scope.events.push(val[key])
 					})
+				})
+				.then(function(){
+					for (let i = 0; i < $scope.events.length; i ++) {
+						$scope.events[i].regTime = $scope.dateFilter($scope.events[i].startTime)
+					}
+
 				})
 			})
 		})

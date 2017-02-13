@@ -4,7 +4,6 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	 BandFactory.getBands(user.uid)
 	 	.then(function(val){
 	 		$scope.bandz = val
-	 		 // $scope.$apply()
 	 	})
 
 	CalFactory.getEvents()
