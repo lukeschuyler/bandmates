@@ -1,19 +1,24 @@
 bandmates.factory('MessageFactory', function($http) {
+	const messageRef = firebase.database().ref('messages')
 	return {
 		getMessages(band) {
 			return $http.get(`https://mush-e7c8f.firebaseio.com/messages.json?orderBy="band"&equalTo="${band}"`)
 				.then((val) => {
-					return val.data
+					return Object.keys(val.data).map(function(key) {
+						return val.data[key]
+					})
 				})
 		},
 		addMessage(message, name, band, userImage) {
 			let date = new Date()
+			var data;
+			if(userImage) {
+				data = { message : message, name : name, band : band, userImage : userImage, time : date.getTime() }
+			} else {
+				data = { message : message, name : name, band : band, time : date.getTime() }				
+			}
 				if(message) {
-					$http({
-					method : 'POST',
-					url : 'https://mush-e7c8f.firebaseio.com/messages.json',
-					data : { message : message, name : name, band : band, userImage : userImage, time : date.getTime() }
-				})
+					messageRef.push(data)
 			}
 		}
 	}
