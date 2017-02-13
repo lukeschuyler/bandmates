@@ -10,6 +10,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  		return new Date(date)
  	}
 
+ 	$scope.showDets = function(event) {
+ 			consol.elog('showdets')
+ 	} 
 
  	$scope.events = []
 	AuthFactory.getUserPic(user.uid)

@@ -4,8 +4,9 @@ bandmates.factory('BandFactory', function($http) {
 		getBands(userId) {
 			return $http.get(`https://mush-e7c8f.firebaseio.com/bands.json?orderBy="userId"&equalTo="${userId}"`)
 			  .then((val) => {
-			  	bands = Object.values(val.data)
-			  	return bands
+			  	// bands = Object.values(val.data)
+			  	// return bands
+			  	return val.data
 			  })
 		},
 		getBandsLocal() {

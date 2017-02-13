@@ -143,6 +143,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.calender-detail', {
+    cache : false,
     url: '/calenders/:calenderId',
     views: {
       'tab-calenders': {

@@ -15,8 +15,8 @@
               <input type="text" placeholder="Last Name" ng-model="lastName">
           </label>
           <label class="item item-input item-icon-right">
-            <div>Profile Image</div>
-              <i ng-click="getImage()" class="icon right ion-ios-plus"></i>
+              <input type="text" placeholder="Image Address" ng-model="image">
+                <i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i><br><br>
           </label>
       </div>
       <button ng-disabled="emal && password && firstName && lastName" class="button button-block button-outline button-balanced" ng-click="register(email, password, image, firstName, lastName)">Register</button>
