@@ -2,11 +2,11 @@
   font-family: 'Sarpanch', cursive;
 }
 
-h1 {
+.log-header {
   font-family: 'Monofett', cursive;
     text-shadow: 10px 100px 3px rgba(0,0,0, .5);
-    font-size: 30px;
-}
+    font-size: 50px;
+  }
 
 .main-logo {
   font-family: 'Monofett', cursive;
@@ -26,7 +26,7 @@ nav {
 }
 
 .message-name {
-  color: grey;
+  font-style: bold;
 }
 
 .message-img {

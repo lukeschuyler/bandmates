@@ -1,6 +1,6 @@
 <ion-view view-title="Login" name="login-view">
   <ion-content class="login-footer padding">
-    <h1 class="log-header">Bandmates</h1>
+    <div class="log-header">Bandmates</div>
       <div class="list list-inset">
           <label class="item item-input">
               <input type="email" placeholder="Email" ng-model="email">
@@ -8,9 +8,9 @@
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="password">
           </label>
+          <button class="button button-block button-positive" ng-click="login(email, password)">Login</button>
       </div>
-      <button class="button button-calm" ng-click="login(email, password)">Login</button>
-      <button class="button button-red" ng-click="goToRegister()">Register</button>
+      <button class="col col-33 col-offset-33 button button-outline button-balanced" ng-click="goToRegister()">Register</button>
   </ion-content>
  <ion-footer-bar class="bar-stable">
 

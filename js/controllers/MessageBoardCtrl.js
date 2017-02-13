@@ -11,9 +11,9 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 
 	$scope.messageRef = firebase.database().ref('messages')
 
-	$scope.messageRef.on('child_added',function() {
+	$scope.messageRef.on('value',function() {
 		MessageFactory.getMessages($scope.band).then((val) => {
-	  	$scope.messages = val
+	  	$scope.messagez = Object.values(val)
 	  	$ionicScrollDelegate.scrollBottom(true);
 	  })
 	})

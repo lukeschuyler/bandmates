@@ -1,7 +1,7 @@
 <ion-modal-view>
-	<ion-header-bar class="bar bar-header bar-positive">
+	<ion-header-bar class="bar bar-header bar-assertive">
 	  <h1 class="title">New Event: {{id}} </h1>
-	  <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+	  <button class="button button-clear" ng-click="modal.hide()">Cancel</button>
 	</ion-header-bar>
 	<ion-content class="padding">
 	  <div class="list">
@@ -22,7 +22,7 @@
                 Start Time: 
                 <strong>{{startTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
         </div>
- 	   <div class="item item-icon-left" ion-datetime-picker ng-model="endTimeValue">
+ 	   <div class="item item" ion-datetime-picker ng-model="endTimeValue">
                 <i class="icon ion-icon-clock"></i>
                 End Time: 
                 <strong>{{endTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>

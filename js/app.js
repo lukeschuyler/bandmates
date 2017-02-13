@@ -33,10 +33,9 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       url: '/auth',
       templateUrl: 'templates/auth.html',
       abstract: true
-
   })
 
-    .state('auth.login', {
+   .state('auth.login', {
     url: '/login',
     views: {
       'auth': {
