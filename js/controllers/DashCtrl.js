@@ -36,12 +36,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 						$scope.events.push(val[key])
 					})
 				})
-				.then(function(){
-					for (let i = 0; i < $scope.events.length; i ++) {
-						$scope.events[i].regTime = $scope.dateFilter($scope.events[i].startTime)
-					}
-
-				})
 			})
 		})
 })

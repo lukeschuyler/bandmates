@@ -19,7 +19,6 @@ bandmates.factory('CalFactory', function($http, $q) {
 				})
 		},
 		addEvent(bandName, name, type, startTime, endTime, allDay) {
-			console.log(startTime)
 			return $q.resolve($http({
 				method : 'POST',
 				url : `https://mush-e7c8f.firebaseio.com/events.json`,
