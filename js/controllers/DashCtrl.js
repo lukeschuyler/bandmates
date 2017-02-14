@@ -2,10 +2,18 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
  $scope.userBandNames =  []
  $scope.events = []
+ $scope.giveUp = false;
+
+ setTimeout(function() {
+ 	$scope.giveUp = true
+ 	$scope.$apply()
+ }, 3000)
 
  $scope.$on('$ionicView.enter', function(e) {
     $scope.user = user
   });
+
+
 
  	$scope.dateFilter = function(date){
  		return new Date(date)

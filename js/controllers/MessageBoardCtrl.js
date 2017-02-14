@@ -20,7 +20,9 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 		$scope.visible = true
 	}, 300)
 		$scope.messagez.push(snap.val())
-		$scope.$apply()
+		if(!$scope.$$phase) {
+			$scope.$apply()
+		}
 	})
 	$scope.scroll = function() {
 		setTimeout(function() {
