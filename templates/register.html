@@ -16,9 +16,9 @@
           </label>
           <label class="item item-input item-icon-right">
               <input type="text" placeholder="Image Address" ng-model="image">
-                <i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i><br><br>
+                <span on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
           </label>
       </div>
-      <button ng-disabled="emal && password && firstName && lastName" class="button button-block button-outline button-balanced" ng-click="register(email, password, image, firstName, lastName)">Register</button>
+      <button ng-disabled="!email || !password || !firstName || !lastName || !image" class="button button-block button-outline button-assertive" ng-click="register(email, password, image, firstName, lastName)">Register</button>
   </ion-content>
 </ion-view>

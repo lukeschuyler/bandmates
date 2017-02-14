@@ -6,28 +6,30 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			})
 		})
 
-				$ionicScrollDelegate.scrollBottom(true);
-
 	$scope.band = $stateParams.bandId
 	$scope.visible = false
 
 	$scope.messagez=[]
+
 	$scope.messageRef = firebase.database().ref('messages')
 
 	$scope.messageRef.on('child_added',function(snap) {
-		$scope.messagez.push(snap.val())
-		console.log($scope.messagez)
-		console.log(snap.val())
-		$scope.$apply()
-		$ionicScrollDelegate.scrollBottom(true);
-	})
-
 
 	setTimeout(function() {
 		$ionicScrollDelegate.scrollBottom(true);
 		$scope.visible = true
 	}, 300)
+		$scope.messagez.push(snap.val())
+		$scope.$apply()
+	})
+	$scope.scroll = function() {
+		setTimeout(function() {
+			$ionicScrollDelegate.scrollBottom(true);
+			$scope.visible = true
+		}, 700)
+	}
 
+	$scope.scroll()
 
 	$scope.name = user.email
 
@@ -36,42 +38,3 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 	  	$scope.message = ''
 	  }
 })
-
-// bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, $stateParams, MessageFactory, messages, user, AuthFactory) {
-// 	AuthFactory.getUserPic(user.uid)
-// 		.then(function(val) {
-// 			$scope.userArray = Object.keys(val).map(function(key) {
-// 				return val[key]
-// 			})
-// 		})
-
-// 	$scope.band = $stateParams.bandId
-// 	$scope.visible = false
-
-// 	$scope.messageRef = firebase.database().ref('messages')
-
-// 	$scope.messageRef.on('child_added',function(snap) {
-
-// 		$scope.messagez = messages
-// 		if (!$scope.messagez === messages){
-// 			MessageFactory.getMessages($scope.band).then((val) => {
-// 		  	$scope.messagez = val
-// 		  	$ionicScrollDelegate.scrollBottom(true);
-// 		  })
-// 		} else {
-// 			$scope.messagez.push(snap.val())
-// 		}
-// 	})
-// 	setTimeout(function() {
-// 		$ionicScrollDelegate.scrollBottom(true);
-// 		$scope.visible = true
-// 	}, 300)
-
-
-// 	$scope.name = user.email
-
-//   	$scope.addMessage = function(message, name, band, userImage) { 
-// 	  	MessageFactory.addMessage(message, name, band, userImage);
-// 	  	$scope.message = ''
-// 	  }
-// })

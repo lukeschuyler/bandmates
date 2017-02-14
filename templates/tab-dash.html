@@ -10,7 +10,7 @@
     </div>
   <ion-content class="has-subheader">
 		<ion-list class="eventDash">
-			<ion-item ng-repeat="event in events | orderBy : event.milliTime" class="animated fadeIn main-items item-icon-right">
+			<ion-item ng-repeat="event in events | orderBy : -event.milliTime" class="animated fadeIn main-items item-icon-right">
 				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
 	    		<p>{{event.bandName}}</p>
           <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>

@@ -11,13 +11,22 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
     //         })
     // });
 
-    CalFactory.getEvents($scope.band)
+    if ($scope.band === 'all') {
+        CalFactory.getAllEvents()
             .then(function(val) {
                 $scope.events = Object.keys(val).map(function(key) {
                     return val[key]
                 })
             })
+    } else {
+        CalFactory.getEvents($scope.band)
+        .then(function(val) {
+            $scope.events = Object.keys(val).map(function(key) {
+                return val[key]
+            })
+        })
 
+    }
 
 	 $scope.calendar = {};
         $scope.changeMode = function (mode) {
