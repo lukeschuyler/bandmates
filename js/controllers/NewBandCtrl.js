@@ -9,7 +9,7 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       id: '1', // We need to use and ID to identify the modal that is firing the event!
       scope: $scope,
       backdropClickToClose: false,
-      animation: 'slide-in-up'
+      animation: 'slide-in-right'
     }).then(function(modal) {
       $scope.oModal1 = modal;
     });
@@ -19,7 +19,7 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       id: '2', // We need to use and ID to identify the modal that is firing the event!
       scope: $scope,
       backdropClickToClose: false,
-      animation: 'slide-in-up'
+      animation: 'slide-in-right'
     }).then(function(modal) {
       $scope.oModal2 = modal;
     });
