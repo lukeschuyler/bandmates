@@ -1,5 +1,5 @@
 <ion-view view-title="Register" name="register-view">
-	<ion-content class="padding">
+	<ion-content class="has-header padding">
    <div class="log-header">Bandmates</div>
       <div class="list list-inset">
           <label class="item item-input">
@@ -20,5 +20,6 @@
           </label>
       </div>
       <button ng-disabled="!email || !password || !firstName || !lastName || !image" class="button button-block button-outline button-assertive" ng-click="register(email, password, image, firstName, lastName)">Register</button>
+        <button class="col col-33 col-offset-33 button button-outline button-positive" ng-click="goToLogin()"><i class="button button-icon icon left ion-ios-arrow-back"></i>  Back To Login</button>
   </ion-content>
 </ion-view>

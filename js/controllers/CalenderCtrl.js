@@ -31,13 +31,13 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	  		$scope.id = bandName;
 		    $scope.modal.show();
 
-		    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
-		    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
-		    		.then(function() {
-		    			 $scope.modal.hide();
-		    			 $cordovaToast.show('Event Created!', 'short', 'bottom')
-		    		})
-		    }
+	    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
+	    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
+	    		.then(function() {
+	    			 $scope.modal.hide();
+	    			 $cordovaToast.show('Event Created!', 'short', 'bottom')
+	    		})
+	    }
 		  };
 		  $scope.closeModal = function() {
 		    $scope.modal.hide();

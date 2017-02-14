@@ -1,4 +1,9 @@
-<ion-view view-title="Register-Band" name="new-band-view">
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-assertive">
+    <h1 class="title">Register New Band!</h1>
+    <button class="button button-clear button-cancel" ng-click="closeModal(1)">Cancel</button>
+  </ion-header-bar>
+
 	<ion-content class="padding">
       <div class="list list-inset">
           <label class="item item-input">
@@ -21,4 +26,4 @@
       </div>
       <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-danger" ng-click="registerBand(bandNameSearch, passwordSearch, user.uid)">Join Band</button>
   </ion-content>
-</ion-view>
+</ion-modal-view>

@@ -1,4 +1,4 @@
-bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $state, $cordovaImagePicker, $cordovaFile) {
+bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $state, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
 
 
 	$scope.login = function(email, password) {
@@ -13,6 +13,10 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 			.then(function(){
 				$location.url('/tab/dash')
 			})
+	}
+
+	$scope.goToLogin = function() {
+		$location.url('/auth/login')
 	}
 
 	$scope.goToRegister = function() {

@@ -1,3 +1,5 @@
+
+
 <ion-view view-title="Home">
     <div class="bar bar-subheader bar-header">
          <div class="row">  
@@ -14,7 +16,7 @@
 				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
 	    		<p>{{event.bandName}}</p>
           <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
-          <button ng-click="openModal(band.bandName)" class="button button-icon icon right ion-ios-arrow-forward" ng-click="showDets()"></button>
+          <button class="button button-icon icon right ion-ios-arrow-forward" ng-click="showDets()"></button>
 			</ion-item>
 		</ion-list>	
   </ion-content>

@@ -11,7 +11,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  	}
 
  	$scope.showDets = function(event) {
- 			consol.elog('showdets')
+ 		
  	} 
 
  	$scope.events = []
