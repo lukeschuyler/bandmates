@@ -1,5 +1,6 @@
 bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicModal, CalFactory, $cordovaToast) {
 	$scope.user = user
+	$scope.tourLocations = []
 
 	$scope.$on("$ionicView.enter", function () {
       	 BandFactory.getBands(user.uid)
@@ -8,7 +9,9 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		 	})
     });
 
-
+	$scope.addLoaction = function(location) {
+		$scope.tourLocations.push(location)
+	}
 
 	$scope.bandsRef = firebase.database().ref('bands')
 
@@ -26,18 +29,19 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	    $scope.modal = modal;
 	  })
 
-	  $scope.openModal = function(bandName) {
-	  		var boo= false
-	  		$scope.id = bandName;
-		    $scope.modal.show();
+	$scope.openModal = function(bandName) {
+	  var boo= false
+	  $scope.id = bandName;
+		  $scope.modal.show();
 
-	    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
-	    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
-	    		.then(function() {
-	    			 $scope.modal.hide();
-	    			 $cordovaToast.show('Event Created!', 'short', 'bottom')
-	    		})
-	    }
+    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
+    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
+    		.then(function() {
+    			console.log('created')
+    			 $scope.modal.hide();
+    			 $cordovaToast.show('Event Created!', 'short', 'bottom')
+    		})
+    }
 		  };
 		  $scope.closeModal = function() {
 		    $scope.modal.hide();

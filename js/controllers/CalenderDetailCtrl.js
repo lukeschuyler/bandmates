@@ -1,15 +1,26 @@
-bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams) {
+bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams, BandFactory, user) {
 	$scope.band = $stateParams.calenderId
-
-    // $scope.$on("$ionicView.enter", function () {
-    //     CalFactory.getEvents($scope.band)
-    //         .then(function(val) {
-    //             $scope.events = Object.keys(val).map(function(key) {
+    // if ($scope.band === 'all') {
+    //     BandFactory.getBands(user.uid)
+    //         .then(function(val){
+    //             $scope.bandz = Object.keys(val).map(function(key) {
     //                 return val[key]
     //             })
-    //             console.log($scope.events[1].startTime)
     //         })
-    // });
+    //         .then(function() {
+    //             for (let i = 0; i < $scope.bandz.length; i++) {
+    //                 CalFactory.getEvents($scope.bandz[i].bandName)
+    //                     .then(function(val) {
+    //                         let currentBandArray = Object.keys(val).map(function(key) {
+    //                             return val[key]
+    //                     })
+    //                     $scope.events = []
+    //                     for (let j = 0; j < currentBandArray.length; j++) {
+    //                         $scope.events.push(currentBandArray[j])
+    //                     }
+    //                 })
+    //             }
+    //         })
 
     if ($scope.band === 'all') {
         CalFactory.getAllEvents()
@@ -17,7 +28,7 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
                 $scope.events = Object.keys(val).map(function(key) {
                     return val[key]
                 })
-            })
+            })        
     } else {
         CalFactory.getEvents($scope.band)
         .then(function(val) {
@@ -25,7 +36,6 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
                 return val[key]
             })
         })
-
     }
 
 	 $scope.calendar = {};

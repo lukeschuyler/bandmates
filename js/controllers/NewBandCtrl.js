@@ -1,6 +1,4 @@
-bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location) {
-
-
+bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory) {
 
   $scope.registerView = false;
 
@@ -12,10 +10,17 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
     $scope.registerView = !$scope.registerView
   }
 
-	$scope.registerBand = function() {
-    NewBandFactory.registerBand()
-    // $location.url('/tab/dash')
-    $state.reload()
+	$scope.registerBand = function(bandName, password, uid, image) {
+    NewBandFactory.registerBand(bandName, password, uid, image)
+      .then(function() {
+             $scope.oModal1.hide();
+             $cordovaToast.show('New Band Created! Go to the Events tab to create a new event!', 'long', 'bottom')
+             $scope.bandName = null
+             $scope.password = null
+             $scope.password2 = null
+             $scope.image = null
+             $ionicHistory.clearCache().then(function(){ $state.go('tab.calenders');});
+      })
   } 
 
 	$scope.joinBand = function() {
