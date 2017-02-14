@@ -1,21 +1,35 @@
+
+
 <ion-view view-title="Home">
     <div class="bar bar-subheader bar-header">
          <div class="row">  
            <h3 class="col-xs-offset-1 assertive main-logo">{{user.email.slice(0, user.email.indexOf('@'))}}'s Upcoming Events</h3>
-<!--             <div class="col-xs-offset-2 col-xs-2">
-                <img ng-if="user" class="main-pic" src="{{ userArray[0].image }}">
-        
-            </div> -->
+          <!--  -->
         </div>
     </div>
-  <ion-content class="has-subheader">
-		<ion-list class="eventDash">
-			<ion-item ng-repeat="event in events | orderBy : -event.milliTime" class="animated fadeIn main-items item-icon-right">
-				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
-	    		<p>{{event.bandName}}</p>
-          <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
-          <button ng-click="openModal(band.bandName)" class="button button-icon icon right ion-ios-arrow-forward" ng-click="showDets()"></button>
-			</ion-item>
-		</ion-list>	
-  </ion-content>
-</ion-view>
+
+  <div ng-if="!userBandNames.length">
+    <ion-content class="has-subheader">
+      <ion-item>
+       <div ng-if="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner></div> 
+         <h4 ng-if="!userBandNames.length && giveUp">Nothing Here Yet, Go Find Your Band(s)!!</h4>
+         <div ng-show="!events.length && userBandNames.length">
+           <h4>No Events in Calendar</h4>
+         </div>
+      </ion-item>
+    </ion-content>
+  </div>
+
+  <div ng-if="userBandNames.length">
+    <ion-content class="has-subheader">
+  		<ion-list class="eventDash">
+  			<ion-item ng-repeat="event in events | orderBy : -event.milliTime" class="animated fadeIn main-items item-icon-right">
+  				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
+  	    		<p>{{event.bandName}}</p>
+            <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
+            <button class="button button-icon icon right ion-ios-arrow-forward" ng-click="showDets()"></button>
+  			</ion-item>
+  		</ion-list>	
+    </ion-content>
+  </ion-view>
+</div>

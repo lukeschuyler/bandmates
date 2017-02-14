@@ -1,11 +1,14 @@
-<!--
-Create tabs with an icon and label, using the tabs-positive style.
-Each tab's child <ion-nav-view> directive will have its own
-navigation history that also transitions its views in and out.
--->
+<ion-nav-bar class="bar-stable bar-assertive">
+  <ion-nav-back-button></ion-nav-back-button>
+    <ion-nav-buttons side="right">      
+      <button class="button button-icon ion-ios-plus" ng-click="openModal(1)"></button>
+      <button class="button button-icon button-clear ion-ios-person" ng-click="openModal(2)"></button>
+    </ion-nav-buttons>
+</ion-nav-bar>
+
 <ion-tabs class="tabs-icon-top">
 
-  <ion-tab class="tabcolor" title="Home" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/">
+  <ion-tab class="tabcolor" title="Home" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/dash">
     <ion-nav-view name="tab-dash"></ion-nav-view>
   </ion-tab>
 
@@ -15,12 +18,12 @@ navigation history that also transitions its views in and out.
   </ion-tab>
 
 
-  <ion-tab  class="tabcolor"title="Calenders" icon-off="ion-ios-calendar-outline" icon-on="ion-ios-calendar" href="#/tab/calenders">
+  <ion-tab  class="tabcolor" title="Calenders" icon-off="ion-ios-calendar-outline" icon-on="ion-ios-calendar" href="#/tab/calenders">
     <ion-nav-view name="tab-calenders"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab class="tabcolor" title="Settings" icon-off="ion-ios-cog-outline" icon-on="ion-ios-cog" href="#/tab/settings">
-    <ion-nav-view name="tab-settings"></ion-nav-view>
-  </ion-tab>
+<!--   <ion-tab class="tabcolor" title="Musical Notes" icon-off="ion-ios-musical-note" icon-on="ion-ios-musical-notes" href="#/tab/musical-notes">
+    <ion-nav-view name="tab-music"></ion-nav-view>
+  </ion-tab> -->
 
 </ion-tabs>
