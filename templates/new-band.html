@@ -12,6 +12,10 @@
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="password">
           </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Confirm Password" ng-model="password2">
+          </label>
+                   
           <!-- img and add users 2 or 3.0 -->
       </div>
       <button ng-disabled="!bandName || !password" class="button button-block button-calm" ng-click="registerBand(bandName, password, user.uid)">Register Band</button>

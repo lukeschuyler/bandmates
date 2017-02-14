@@ -2,8 +2,15 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 	$scope.$on("$ionicView.enter", function () {
 		$scope.user = user
     });
-	$scope.registerBand = NewBandFactory.registerBand
-	$scope.joinBand = NewBandFactory.joinBand
+
+	$scope.registerBand = function() {
+    NewBandFactory.registerBand()
+    $location.url('/tab/dash')
+  } 
+
+	$scope.joinBand = function() {
+    NewBandFactory.joinBand
+  }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
       id: '1', // We need to use and ID to identify the modal that is firing the event!
@@ -53,11 +60,6 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       $scope.oModal2.remove();
     });
  
- 	$scope.$on('$ionicView.enter', function(e) {
-    	$scope.user = user
-    	console.log($scope.user)
-  	});
-
 	$scope.logout = function(){
 		AuthFactory.logout()
 			.then(function() {

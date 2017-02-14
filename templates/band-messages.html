@@ -4,7 +4,8 @@
   <ion-content class="padding">
 	<!-- <ion-list class="list-borderless" ng-if="visible"> -->
 		<ion-item ng-if="message.band == band" ng-class="{ myMessage: message.name == name}" class="animated fadeIn item-remove-animate item-avatar item-text-wrap item-icon-right" ng-repeat="message in messagez">
-			<img class="message-img" src="{{ message.userImage }}">
+			<img ng-if="message.userImage" class="message-img" src="{{ message.userImage }}">
+			<img ng-if="!message.userImage" class="message-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png">
 			<!-- <i ng-click="liked = !liked" class="icon ion-android-favorite-outline"></i> -->
 			<h5 class="message-name">{{ message.name }}</h5>
 			<p>{{ message.message }}</p>

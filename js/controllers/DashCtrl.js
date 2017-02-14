@@ -1,6 +1,7 @@
 bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory) {
 
  $scope.userBandNames =  []
+ $scope.events = []
 
  $scope.$on('$ionicView.enter', function(e) {
     $scope.user = user
@@ -11,10 +12,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  	}
 
  	$scope.showDets = function(event) {
- 		
+ 		console.log('dets')
  	} 
 
- 	$scope.events = []
 	AuthFactory.getUserPic(user.uid)
 		.then(function(val) {
 			$scope.userArray = Object.keys(val).map(function(key) {
@@ -28,7 +28,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 				return val[key]
 			})
 			$scope.userBands.forEach(function(band) {
-			$scope.userBandNames.push(band.bandName)
+				$scope.userBandNames.push(band.bandName)
 			})
 		})
 		.then(function() {

@@ -1,13 +1,23 @@
 bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
 	return {
 		login(email, password) {
-			return $q((resolve, reject) => {
-				firebase.auth().signInWithEmailAndPassword(email, password)
-					.catch(function() {
-					  $cordovaToast
-		    			.show('Incorrect Email/Password', 'long', 'bottom')
-					  })
-			})
+			// return $q((resolve, reject) => {
+			// 	firebase.auth().signInWithEmailAndPassword(email, password)
+			// 		.then(function() {
+			// 			$location.url('/tab/dash')
+			// 		})
+			// 		.catch(function() {
+			// 		  $cordovaToast
+		 //    			.show('Incorrect Email/Password', 'long', 'bottom')
+			// 		  })
+			// })
+
+			return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
+			  .catch(function() {
+			  $cordovaToast
+				.show('Incorrect Email/Password', 'long', 'center')
+				$location.url('/auth/login')
+			  })
 		},
 		register(email, password, firstName, image, lastName) {
 			return $q.resolve(firebase.auth().createUserWithEmailAndPassword(email, password)
