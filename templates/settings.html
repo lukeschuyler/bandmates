@@ -1,15 +1,14 @@
 
 
-<ion-view view-title="Settings">
-<!-- <ion-nav-bar>
-	  <ion-nav-back-button class="button-clear">
-	    <i class="ion-arrow-left-c"></i> Back
-	  </ion-nav-back-button>
-</ion-nav-bar> -->
+<ion-modal-view view-title="Settings">
+<<ion-header-bar class="bar bar-header bar-assertive">
+	  <h1 class="title">Manage Account</h1>
+	  <button class="button button-clear button-cancel" ng-click="closeModal(2)">Cancel</button>
+	</ion-header-bar>
   <ion-content class="has-header">
   	<ion-list>
 		<ion-item><a href="#/tab/settings/new-band"><h3>Manage Bands</h3></a></ion-item>
 		<ion-item><button ng-click="logout()" class="button button-assertive button-block">Logout</button></ion-item>
 	</ion-list>
   </ion-content>
-</ion-view>
+</ion-modal-view>

@@ -72,6 +72,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html',
+      controller: 'NewBandCtrl',
       resolve: {
             user (AuthFactory, $location) {
               return AuthFactory.getUser()
