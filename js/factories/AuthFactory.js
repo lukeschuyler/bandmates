@@ -1,11 +1,13 @@
 bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
 	return {
 		login(email, password) {
-			return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
-			  .catch(function() {
-			  $cordovaToast
-    			.show('Incorrect Email/Password', 'long', 'center')
-			  })
+			return $q((resolve, reject) => {
+				firebase.auth().signInWithEmailAndPassword(email, password)
+					.catch(function() {
+					  $cordovaToast
+		    			.show('Incorrect Email/Password', 'long', 'bottom')
+					  })
+			})
 		},
 		register(email, password, firstName, image, lastName) {
 			return $q.resolve(firebase.auth().createUserWithEmailAndPassword(email, password)
