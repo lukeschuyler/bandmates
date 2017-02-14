@@ -1,4 +1,7 @@
 bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location) {
+
+
+
   $scope.registerView = false;
 
 	$scope.$on("$ionicView.enter", function () {
@@ -12,10 +15,12 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 	$scope.registerBand = function() {
     NewBandFactory.registerBand()
     // $location.url('/tab/dash')
+    $state.reload()
   } 
 
 	$scope.joinBand = function() {
     NewBandFactory.joinBand
+    $state.reload()
   }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
