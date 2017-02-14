@@ -1,9 +1,40 @@
-bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location) {
+bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory) {
+  
+  AuthFactory.getUserPic(user.uid)
+    .then(function(val) {
+      $scope.userArray = Object.keys(val).map(function(key) {
+        return val[key]
+      })
+      $scope.name = $scope.userArray[0].firstName
+    })
+
+  $scope.registerView = false;
+
 	$scope.$on("$ionicView.enter", function () {
 		$scope.user = user
     });
-	$scope.registerBand = NewBandFactory.registerBand
-	$scope.joinBand = NewBandFactory.joinBand
+
+  $scope.toggleRegister = function() {
+    $scope.registerView = !$scope.registerView
+  }
+
+	$scope.registerBand = function(bandName, password, uid, image, userFirstName, userLastName) {
+    NewBandFactory.registerBand(bandName, password, uid, image, userFirstName, userLastName)
+      .then(function() {
+             $scope.oModal1.hide();
+             $cordovaToast.show('New Band Created! Go to the Events tab to create a new event!', 'long', 'bottom')
+             $scope.bandName = null
+             $scope.password = null
+             $scope.password2 = null
+             $scope.image = null
+             $ionicHistory.clearCache().then(function(){ $state.go('tab.calenders');});
+      })
+  } 
+
+	$scope.joinBand = function() {
+    NewBandFactory.joinBand
+    $state.reload()
+  }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
       id: '1', // We need to use and ID to identify the modal that is firing the event!
@@ -53,11 +84,6 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       $scope.oModal2.remove();
     });
  
- 	$scope.$on('$ionicView.enter', function(e) {
-    	$scope.user = user
-    	console.log($scope.user)
-  	});
-
 	$scope.logout = function(){
 		AuthFactory.logout()
 			.then(function() {

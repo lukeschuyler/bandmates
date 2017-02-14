@@ -1,20 +1,26 @@
 bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory) {
 
- $scope.userBandNames =  []
+	 $scope.userBandNames =  []
+	 $scope.events = []
+	 $scope.giveUp = false;
 
- $scope.$on('$ionicView.enter', function(e) {
-    $scope.user = user
-  });
+	 setTimeout(function() {
+	 	$scope.giveUp = true
+	 	$scope.$apply()
+	 }, 3000)
+
+	 $scope.$on('$ionicView.enter', function(e) {
+	    $scope.user = user
+	  });
 
  	$scope.dateFilter = function(date){
  		return new Date(date)
  	}
 
  	$scope.showDets = function(event) {
- 		
+ 		console.log('dets')
  	} 
 
- 	$scope.events = []
 	AuthFactory.getUserPic(user.uid)
 		.then(function(val) {
 			$scope.userArray = Object.keys(val).map(function(key) {
@@ -28,7 +34,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 				return val[key]
 			})
 			$scope.userBands.forEach(function(band) {
-			$scope.userBandNames.push(band.bandName)
+				$scope.userBandNames.push(band.bandName)
 			})
 		})
 		.then(function() {
