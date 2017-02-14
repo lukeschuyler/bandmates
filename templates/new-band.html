@@ -1,12 +1,12 @@
 <ion-modal-view>
   <ion-header-bar class="bar bar-header bar-assertive">
-    <h1 class="title">Register New Band!</h1>
+    <h1 class="title">Register/Join Band</h1>
     <button class="button button-clear button-cancel" ng-click="closeModal(1)">Cancel</button>
   </ion-header-bar>
 
       <!-- REG VIEW -->
     
-  <div ng-if="registerView">
+  <div ng-show="registerView">
 
   	<ion-content class="padding">
         <div class="list list-inset">
@@ -33,7 +33,7 @@
 
     <!-- JOIN VIEW -->
 
-    <div ng-if="!registerView">
+    <div ng-show="!registerView">
 
      <ion-content>
 

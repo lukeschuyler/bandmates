@@ -4,7 +4,6 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 		AuthFactory.login(email, password)
 			.then(function() {
 				$location.url('/tab/dash')
-				$scope.$apply()
 			})
 	}
 	
