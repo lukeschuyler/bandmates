@@ -27,7 +27,7 @@
             </label>
         </div>
 
-        <button ng-disabled="!bandName || !password || !password2" class="button button-block button-positive" ng-click="registerBand(bandName, password, user.uid, image)">Register</button>
+        <button ng-disabled="!bandName || !password || !password2" class="button button-block button-positive" ng-click="registerBand(bandName, password, user.uid, image, userArray[0].firstName, userArray[0].lastName)">Register</button>
 
        <button class="button button-outline col col-50 button-assertive" ng-click="toggleRegister()"><i class="button button-icon icon left ion-ios-arrow-back"></i>  Join Band</button>
      </ion-content>

@@ -28,7 +28,7 @@ bandmates.run(function($ionicPlatform) {
 bandmates.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-
+  
     .state('auth', {
       url: '/auth',
       templateUrl: 'templates/auth.html',

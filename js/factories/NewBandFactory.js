@@ -1,10 +1,11 @@
 bandmates.factory('NewBandFactory', function($http) {
 	return {
-		registerBand(bandName, password, userId, image) {
+		registerBand(bandName, password, userId, image, firstName, lastName) {
+			const userName = firstName + lastName
 			return $http({
 				method : 'POST',
 				url : 'https://mush-e7c8f.firebaseio.com/bands.json',
-				data : { bandName : bandName, password : password, userId : userId, image: image }
+				data : { bandName : bandName, password : password, userId : userId, image: image,[userName]: userId }
 			})
 			.then(function(val) {
 				return val.data.name

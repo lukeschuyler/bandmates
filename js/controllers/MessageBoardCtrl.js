@@ -4,6 +4,7 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			$scope.userArray = Object.keys(val).map(function(key) {
 				return val[key]
 			})
+			$scope.name = $scope.userArray[0].firstName
 		})
 
 	$scope.band = $stateParams.bandId
@@ -32,8 +33,6 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 	}
 
 	$scope.scroll()
-
-	$scope.name = user.email
 
   	$scope.addMessage = function(message, name, band, userImage) { 
 	  	MessageFactory.addMessage(message, name, band, userImage);

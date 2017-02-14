@@ -1,4 +1,12 @@
 bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory) {
+  
+  AuthFactory.getUserPic(user.uid)
+    .then(function(val) {
+      $scope.userArray = Object.keys(val).map(function(key) {
+        return val[key]
+      })
+      $scope.name = $scope.userArray[0].firstName
+    })
 
   $scope.registerView = false;
 
@@ -10,8 +18,8 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
     $scope.registerView = !$scope.registerView
   }
 
-	$scope.registerBand = function(bandName, password, uid, image) {
-    NewBandFactory.registerBand(bandName, password, uid, image)
+	$scope.registerBand = function(bandName, password, uid, image, userFirstName, userLastName) {
+    NewBandFactory.registerBand(bandName, password, uid, image, userFirstName, userLastName)
       .then(function() {
              $scope.oModal1.hide();
              $cordovaToast.show('New Band Created! Go to the Events tab to create a new event!', 'long', 'bottom')
