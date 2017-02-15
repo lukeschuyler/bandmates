@@ -3,10 +3,12 @@ bandmates.controller('BandsCtrl', function($scope, $location, AuthFactory, BandF
 $scope.user = user
 
 $scope.$on("$ionicView.enter", function () {
-      	 BandFactory.getBands(user.uid)
+	firebase.database().ref('bands').on('child_added', function() {
+		 BandFactory.getBands(user.uid)
 		 	.then(function(val){
 		 		$scope.bandz = val
 		 	})
+		})
     });
 
 
