@@ -5,6 +5,10 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 			.then(function() {
 				$location.url('/tab/dash')
 			})
+			.catch(function() {
+				$cordovaToast
+	    			.show('Incorrect Email/Password', 'long', 'bottom')
+				  })
 	}
 	
 	$scope.register = function(email, password, firstName, image, lastName) {
