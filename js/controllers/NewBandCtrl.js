@@ -28,7 +28,7 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 
 	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
     NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
-    $scope.oModal1.hide();
+  $scope.oModal1.hide();
   }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
