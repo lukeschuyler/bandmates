@@ -27,7 +27,6 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
              $scope.password = null
              $scope.password2 = null
              $scope.image = null
-             $ionicHistory.clearCache().then(function(){ $state.go('tab.calenders');});
       })
   } 
 

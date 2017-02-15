@@ -1,4 +1,5 @@
 bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
+	let userArray;
 	return {
 		login(email, password) {
 			// return $q((resolve, reject) => {
@@ -11,7 +12,6 @@ bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
 		 //    			.show('Incorrect Email/Password', 'long', 'bottom')
 			// 		  })
 			// })
-
 			return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
 			  .catch(function() {
 			  $cordovaToast
