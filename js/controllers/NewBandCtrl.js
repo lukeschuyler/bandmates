@@ -23,15 +23,12 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       .then(function() {
              $scope.oModal1.hide();
              $cordovaToast.show('New Band Created! Go to the Events tab to create a new event!', 'long', 'bottom')
-             $scope.bandName = null
-             $scope.password = null
-             $scope.password2 = null
-             $scope.image = null
       })
   } 
 
 	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
     NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
+    $scope.oModal1.hide();
   }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
