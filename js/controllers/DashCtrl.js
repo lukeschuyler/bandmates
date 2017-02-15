@@ -3,6 +3,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 $scope.userBandNames =  []
 	 $scope.events = []
 	 $scope.giveUp = false;
+	 $scope.name
 
 	 setTimeout(function() {
 	 	$scope.giveUp = true
@@ -26,9 +27,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 			$scope.userArray = Object.keys(val).map(function(key) {
 				return val[key]
 			})
-		})
-
-	BandFactory.getBands(user.uid)
+			$scope.name = $scope.userArray[0].firstName + $scope.userArray[0].lastName
+			console.log($scope.name)
+		}).then(function() {
+			BandFactory.getBands(user.uid, $scope.name)
 		.then(function(val) {
 			$scope.userBands = Object.keys(val).map(function(key) {
 				return val[key]
@@ -46,5 +48,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 					})
 				})
 			})
+		})
 		})
 })
