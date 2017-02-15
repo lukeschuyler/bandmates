@@ -30,7 +30,7 @@ bandmates.factory('CalFactory', function($http, $q) {
 					title : name,
 					allDay : allDay,
 					milliTime: startTime.getTime(),
-					image : image
+					image : image,
 					tourLocations: tourLocations
 					}
 			}))
