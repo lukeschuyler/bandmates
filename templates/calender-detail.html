@@ -1,14 +1,14 @@
 
 
-<ion-view view-title="{{ band }}">
-    
-         <ion-nav-buttons side="right">
+<ion-view view-title="{{ viewTitle }} {{ band }}">
+      <ion-header-bar align-title="left">
+         <ion-nav-buttons>
             <button class="button" ng-disabled="isToday()" ng-click="today()">Today</button>
             <button class="button" ng-click="changeMode('month')">M</button>
             <button class="button" ng-click="changeMode('week')">W</button>
             <button class="button" ng-click="changeMode('day')">D</button>
          </ion-nav-buttons>
-
+      </ion-header-bar>
         <ion-content scroll="false" class="main-content">
         <input type="text" name="">
             <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="events"
