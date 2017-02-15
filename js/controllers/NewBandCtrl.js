@@ -14,6 +14,13 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 		$scope.user = user
     });
 
+  setTimeout(function() {
+    if ($scope.userBandNames.length == 0) {
+
+    }
+      console.log($child)
+   }, 3000)
+
   $scope.toggleRegister = function() {
     $scope.registerView = !$scope.registerView
   }
@@ -28,7 +35,7 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 
 	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
     NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
-    $scope.oModal1.hide();
+  $scope.oModal1.hide();
   }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {

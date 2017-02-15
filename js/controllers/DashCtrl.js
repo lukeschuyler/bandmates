@@ -8,6 +8,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 setTimeout(function() {
 	 	$scope.giveUp = true
 	 	$scope.$apply()
+	 	if ($scope.userBandNames.length == 0) {
+	 		$scope.openModal(1)
+	 	}
 	 }, 3000)
 
  	$scope.dateFilter = function(date){
