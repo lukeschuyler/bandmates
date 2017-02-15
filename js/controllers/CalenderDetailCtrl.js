@@ -1,4 +1,5 @@
 bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams, BandFactory, user) {
+    $scope.calendar = {};
 	$scope.band = $stateParams.calenderId
     // if ($scope.band === 'all') {
     //     BandFactory.getBands(user.uid)
@@ -38,9 +39,9 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
         })
     }
 
-	 $scope.calendar = {};
         $scope.changeMode = function (mode) {
             $scope.calendar.mode = mode;
+                console.log($scope.calendar)
         };
 
         $scope.loadEvents = function () {
@@ -53,6 +54,7 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
 
         $scope.onViewTitleChanged = function (title) {
             $scope.viewTitle = title;
+            console.log($scope.viewTitle)
         };
 
         $scope.today = function () {

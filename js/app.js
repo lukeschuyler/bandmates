@@ -42,26 +42,26 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
           templateUrl: 'templates/login.html',
           controller: 'LoginCtrl',
           resolve: {
-              user (AuthFactory, $location) {
-                return AuthFactory.getUser()
-                  .then(function(){
-                      $location.url('/tab/dash')
-                  })
-                  .catch(() => $location.url('/auth/login'))
-              }
-            }
+            user (AuthFactory, $location) {
+              return AuthFactory.getUser()
+                .then(function(user){
+                    $location.url('/tab/dash')
+                })
+                .catch(() => $location.url('/auth/login'))
+             }
+          }
         }
       }
     })
 
     .state('auth.register', {
-    url: '/register',
-    views: {
-      'auth': {
-        templateUrl: 'templates/register.html',
-        controller: 'LoginCtrl'
+      url: '/register',
+      views: {
+        'auth': {
+          templateUrl: 'templates/register.html',
+          controller: 'LoginCtrl'
+        }
       }
-    }
   })
 
     .state('tab', {
