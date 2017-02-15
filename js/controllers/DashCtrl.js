@@ -1,4 +1,4 @@
-bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory) {
+bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory, $cordovaToast) {
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
@@ -10,6 +10,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 	$scope.$apply()
 	 	if ($scope.userBandNames.length == 0) {
 	 		$scope.openModal(1)
+	 		$cordovaToast.show('Welcome to Bandmates! Find Your Band Here or you can go the Register Band Page. Enjoy!', 'long', 'center')
 	 	}
 	 }, 3000)
 
