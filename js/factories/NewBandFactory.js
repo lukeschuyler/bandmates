@@ -39,7 +39,7 @@ bandmates.factory('NewBandFactory', function($http, $cordovaToast) {
 					} else {
 		    			$cordovaToast.show("Sorry, we cannot find an artist/band with that name...Go Register It!", 'long', 'center')
 					}
-				})
+			})
 		}
 	}
 })

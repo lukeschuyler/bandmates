@@ -14,6 +14,13 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 		$scope.user = user
     });
 
+  setTimeout(function() {
+    if ($scope.userBandNames.length == 0) {
+
+    }
+      console.log($child)
+   }, 3000)
+
   $scope.toggleRegister = function() {
     $scope.registerView = !$scope.registerView
   }
