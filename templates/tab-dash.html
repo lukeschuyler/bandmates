@@ -11,7 +11,7 @@
   <div ng-if="!userBandNames.length">
     <ion-content class="has-subheader">
       <ion-item>
-       <div ng-if="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner></div> 
+       <div ng-if="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner><span>Loading Events...</span></div> 
          <h4 ng-if="!userBandNames.length && giveUp">Nothing Here Yet, Go Find Your Band(s)!!</h4>
          <div ng-show="!events.length && userBandNames.length">
            <h4>No Events in Calendar</h4>

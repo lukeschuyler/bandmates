@@ -1,4 +1,4 @@
-bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory) {
+bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast) {
   
   AuthFactory.getUserPic(user.uid)
     .then(function(val) {
@@ -14,13 +14,6 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 		$scope.user = user
     });
 
-  setTimeout(function() {
-    if ($scope.userBandNames.length == 0) {
-
-    }
-      console.log($child)
-   }, 3000)
-
   $scope.toggleRegister = function() {
     $scope.registerView = !$scope.registerView
   }
@@ -35,7 +28,18 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 
 	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
     NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
-  $scope.oModal1.hide();
+      .then(function(val) {
+        if (val) {
+          $scope.oModal1.hide();
+          $cordovaToast.show(`Welcome to ${band} on Bandmates!`, 'long', 'center')
+          $location.url('/tab/bands')
+        } else {
+            $cordovaToast.show('Password Invalid', 'long', 'center')  
+        }
+      })
+      .catch(function(val) {
+          $cordovaToast.show("Sorry, we cannot find an artist/band with that name...Go Register It!", 'long', 'center')
+      })
   }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
