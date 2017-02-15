@@ -4,7 +4,7 @@
   <ion-content>
     <ion-list>
 
-      <ion-item class="item item-avatar-left" ng-repeat="band in bandz">
+      <ion-item class="animated fadeIn item item-avatar-left" ng-repeat="band in bandz">
          <ion-spinner ng-if="!bandz" icon="spiral"></ion-spinner>
 		    <img ng-if="band.image" src="{{ band.image }}">
         <a href="#/tab/bands/{{band.bandName}}">Go To Chat</a>
