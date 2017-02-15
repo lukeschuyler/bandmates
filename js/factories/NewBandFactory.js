@@ -23,8 +23,11 @@ bandmates.factory('NewBandFactory', function($http, $cordovaToast) {
 							url : `https://mush-e7c8f.firebaseio.com/bands/${bandName}.json`,
 							data : { [userName] : userId } 
 						})
+						.then(function() {
+							$cordovaToast.show(`Welcome to ${bandName} on Bandmates!`, 'long', 'center')
+						})
 					} else {
-	    			 	$cordovaToast.show('Password Invalid', 'long', 'middle')				
+	    			 	$cordovaToast.show('Password Invalid', 'long', 'center')				
 					}
 				})
 		}
