@@ -57,7 +57,7 @@
             </label>
         </div>
 
-        <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-assertive" ng-click="registerBand(bandNameSearch, passwordSearch, user.uid)">Join Band</button>
+        <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-assertive" ng-click="joinBand(bandNameSearch, passwordSearch, user.uid, userArray[0].firstName, userArray[0].lastName)">Join Band</button>
 
         <button class="button col-offset-50 col col-50 button-outline button-positive" ng-click="toggleRegister()">Register Band <i class="button button-icon icon left ion-ios-arrow-forward"></i></button>
 

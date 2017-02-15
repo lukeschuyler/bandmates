@@ -31,9 +31,8 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       })
   } 
 
-	$scope.joinBand = function() {
-    NewBandFactory.joinBand
-    $state.reload()
+	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
+    NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
   }
 
     $ionicModal.fromTemplateUrl('templates/new-band.html', {
