@@ -36,15 +36,16 @@
         </ion-item>
       </ion-list> 
       <ion-list ng-repeat="event in events | orderBy : -event.milliTime" >
-  			<ion-item class="animated fadeIn main-items item-icon-right">
+  			<ion-item class="animated fadeIn main-items">
           <ion-slide-box show-pager>
-            <ion-slide on-slide-changed="showDets($index)">
+            <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
                 <p>{{event.bandName}}</p>
                 <h4>{{event.type}}</h4>
                 <h2>{{event.startTime}}</h2>
                <i class="icon right ion-ios-arrow-forward"></i>
             </ion-slide>
-            <ion-slide>
+            <ion-slide class="item-icon-left">
+               <i class="icon right ion-ios-arrow-back"></i>
                 <h2>{{event.title}}</h2>
                 <h2>{{event.location}}</h2>
                 <h2 ng-if="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>

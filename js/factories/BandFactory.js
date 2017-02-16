@@ -13,6 +13,12 @@ bandmates.factory('BandFactory', function($http) {
 		setBandsLocal() {
 			bands.push(newBand)
 			consolel.log(bands)
+		},
+		leaveBand(key) {
+			return $http({
+				method: 'DELETE',
+				url: `https://mush-e7c8f.firebaseio.com/bands/${key}.json`
+			})			
 		}
 	}
 })

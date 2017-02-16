@@ -1,22 +1,40 @@
-bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
+bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
 
   $scope.loadingPic;
   $scope.picLoaded = false;
 
-  AuthFactory.getUserPic(user.uid)
+  $scope.registerView = false;
+
+	$scope.$on("$ionicView.enter", function () {
+		$scope.user = user
+    AuthFactory.getUserPic(user.uid)
     .then(function(val) {
       $scope.userArray = Object.keys(val).map(function(key) {
         return val[key]
       })
       $scope.name = $scope.userArray[0].firstName
     })
+    BandFactory.getBands(user.uid)
+      .then(function(val) {
+        $scope.keys = Object.keys(val)
+        $scope.bands = Object.keys(val).map(function(key) {
+        return val[key]
+      })
+        for (let i = 0; i < $scope.bandz.length; i++) {
+          $scope.bands[i].key = $scope.keys[i];
+        }
+    })
+ });
 
-  $scope.registerView = false;
-
-	$scope.$on("$ionicView.enter", function () {
-		$scope.user = user
-    });
-
+  $scope.leaveBand = function(key, band) {
+    BandFactory.leaveBand(key)
+      .then(function() {
+        $cordovaToast.show("Successfully left ' + band + '. Maybe one day you'll 'get the band back together'.", 'long', 'bottom')
+      })
+      .catch(function(){
+        $cordovaToast.show("Sorry, there was an issue in remove you from the group. Please try again", 'long', 'bottom')
+      })
+}
   $scope.toggleRegister = function() {
     $scope.registerView = !$scope.registerView
   }
