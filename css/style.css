@@ -17,6 +17,10 @@ ion-content {
     font-family: 'Sarpanch', cursive;
 } 
 
+.dash-logo {
+  text-align: center;
+}
+
 p {
     font-family: 'Sarpanch', cursive;
 }
@@ -33,9 +37,11 @@ h1 {
 
 .dash-header {
     font-family: 'Monofett', cursive;
-  text-shadow: 1px 40px rgba(0,0,0, .5);
+  text-shadow: 1px 40px rgba(50,0,200, .9), 1px 20px rgba(200,0,0, .7);
   font-size: 30px;
-  color: rgba(0,0,0, .6)
+  color: rgba(0,0,0, .9);
+    text-align: center;
+    margin-left: 85px;
 }
 
 .main-logo {
@@ -44,9 +50,9 @@ h1 {
   margin-top: 50px;
 }
 
-.eventDash {
+/*.eventDash {
   padding-top: 100px;
-}
+}*/
 
 nav {
   margin-bottom: 60px;
@@ -128,8 +134,8 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 }
 
 .profile {
-  height: 50px;
-  background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover fixed
+  /*height: 50px;*/
+  /*background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover fixed*/
 }
 
 .event-list {
@@ -164,3 +170,5 @@ input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
 input[type="text"]:-ms-input-placeholder {  
      font-family: 'Sarpanch', cursive;
 }
+
+.bar { background-image: none !important; }
