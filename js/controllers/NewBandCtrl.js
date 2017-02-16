@@ -20,7 +20,7 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
         $scope.bands = Object.keys(val).map(function(key) {
         return val[key]
       })
-        for (let i = 0; i < $scope.bandz.length; i++) {
+        for (let i = 0; i < $scope.bands.length; i++) {
           $scope.bands[i].key = $scope.keys[i];
         }
     })

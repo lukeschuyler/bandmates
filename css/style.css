@@ -3,8 +3,8 @@ ion-content {
 }
 
 .smallPic {
-  height: 40px;
-  width: 40px;
+  height: 32px;
+  width: 32px;
   border-radius: 100%;
   margin-bottom: 10px;
 }
@@ -31,12 +31,17 @@ h1 {
   font-size: 50px;
   }
 
+.dash-header {
+    font-family: 'Monofett', cursive;
+  text-shadow: 1px 40px rgba(0,0,0, .5);
+  font-size: 30px;
+  color: rgba(0,0,0, .6)
+}
 
 .main-logo {
   font-family: 'Monofett', cursive;
   font-size: 22px;
   margin-top: 50px;
-/*  color: white;*/
 }
 
 .eventDash {
@@ -123,7 +128,7 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 }
 
 .profile {
-  height: 110px;
+  height: 50px;
   background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover fixed
 }
 
@@ -131,50 +136,31 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
   margin-top: 28%
 }
 
-.profimg {
-  margin-right: 10%;
-  height: 140px;
-  width: 140px;
-  border-radius: 100%;
-  box-shadow: 10px 10px 20px rgba(0, 20, 20, .8);
-}
-
 .greetbox {
   margin-left: 10%;
-  /*background-color: rgba(100, 20, 20, .5);*/
-  /*width: 80%;*/
-/*  border-radius: 100%;
-  width: 120px;
-  height: 120px;*/
-  /*text-align: center;*/
-  /*padding-top: 30px;*/
-  /*padding-right: 7px;*/
-  /*text-shadow: 1px 10px 10px black;*/
-  /*box-shadow: 10px 10px 20px rgba(50, 20, 20, .8);*/
+  
 }
-
-/*.greetboxNoPic {
-  margin-left: 25%;
-  background-color: rgba(100, 20, 20, .5);
-  width: 32%;
-  border-radius: 100%;
-  width: 120px;
-  height: 120px;
-  text-align: center;
-  padding-top: 30px;
-  padding-right: 7px;
-  text-shadow: 1px 10px 10px black;
-  box-shadow: 10px 10px 20px rgba(50, 20, 20, .8);
-}*/
 
 .cal-header {
   font-family: 'Sarpanch', cursive;
 }
 
-.calback {
-
-}
-
 ion-item.slider-pager-page:only-of-type{
 display:none;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+    font-family: 'Sarpanch', cursive;
+}
+
+input[type="text"]:-moz-placeholder { /* Firefox 18- */
+      font-family: 'Sarpanch', cursive;
+}
+
+input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
+    font-family: 'Sarpanch', cursive;
+}
+
+input[type="text"]:-ms-input-placeholder {  
+     font-family: 'Sarpanch', cursive;
 }

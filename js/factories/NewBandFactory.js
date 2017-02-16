@@ -40,25 +40,6 @@ bandmates.factory('NewBandFactory', function($http, $cordovaToast, $q) {
 					}
 				})
 			})			
-			// 	.then(function(val) {
-			// 		if(val.data) {
-			// 			console.log(val.data)
-			// 			if (val.data.password == password) {
-			// 				return $http({
-			// 					method : 'POST',
-			// 					url : `https://mush-e7c8f.firebaseio.com/bands.json`,
-			// 					data : { bandName : bandName, userId : userId, image: val.data.image }
-			// 				})
-			// 				.then(function() {
-			// 					$cordovaToast.show(`Welcome to ${bandName} on Bandmates!`, 'long', 'center')
-			// 				})
-			// 			} else {
-		 //    			 	$cordovaToast.show('Password Invalid', 'long', 'center')				
-			// 			}
-			// 		} else {
-		 //    			$cordovaToast.show("Sorry, we cannot find an artist/band with that name...Go Register It!", 'long', 'center')
-			// 		}
-			// })
 		}
 	}
 })
