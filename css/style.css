@@ -1,3 +1,14 @@
+ion-content {
+  /*background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSRajQgfYJhxhtV4J9X5XwkZTHmeApmLiRbu8BbXY6X_d3nODLrB9hbAo4) no-repeat center / cover fixed*/
+}
+
+.smallPic {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
 [nav-view]  {
   font-family: 'Sarpanch', cursive;
 }
@@ -12,15 +23,16 @@ p {
 
 .log-header {
   font-family: 'Monofett', cursive;
-    text-shadow: 10px 100px 3px rgba(0,0,0, .5);
+  text-shadow: 10px 100px 3px rgba(0,0,0, .5);
   font-size: 50px;
   }
 
 
 .main-logo {
   font-family: 'Monofett', cursive;
-  font-size: 15px;
-  color: white;
+  font-size: 22px;
+  margin-top: 50px;
+/*  color: white;*/
 }
 
 .eventDash {
@@ -103,12 +115,12 @@ nav {
   transition: all ease-in-out 250ms; }
 
 ion-content.event-detail-container.scroll-content.ionic-scroll {
-  margin-top: 81%;
+  margin-top: 94%;
 }
 
 .profile {
-  height: 90px;
-  background: linear-gradient(rgba(150, 20, 20, .4), rgba(150, 20, 20, .4)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat center / cover fixed
+  height: 110px;
+  background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat center / cover fixed
 }
 
 .event-list {
@@ -116,25 +128,40 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 }
 
 .profimg {
+  margin-right: 10%;
   height: 140px;
   width: 140px;
   border-radius: 100%;
-  box-shadow: 10px 10px 20px rgba(150, 20, 20, .8);
+  box-shadow: 10px 10px 20px rgba(0, 20, 20, .8);
 }
 
 .greetbox {
   margin-left: 10%;
-  background-color: rgba(150, 20, 20, .8);
+  /*background-color: rgba(100, 20, 20, .5);*/
+  /*width: 80%;*/
+/*  border-radius: 100%;
+  width: 120px;
+  height: 120px;*/
+  /*text-align: center;*/
+  /*padding-top: 30px;*/
+  /*padding-right: 7px;*/
+  /*text-shadow: 1px 10px 10px black;*/
+  /*box-shadow: 10px 10px 20px rgba(50, 20, 20, .8);*/
+}
+
+/*.greetboxNoPic {
+  margin-left: 25%;
+  background-color: rgba(100, 20, 20, .5);
   width: 32%;
   border-radius: 100%;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   text-align: center;
   padding-top: 30px;
   padding-right: 7px;
   text-shadow: 1px 10px 10px black;
   box-shadow: 10px 10px 20px rgba(50, 20, 20, .8);
-}
+}*/
 
 .cal-header {
   font-family: 'Sarpanch', cursive;
