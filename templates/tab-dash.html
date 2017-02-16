@@ -9,7 +9,7 @@
 <!--             <div ng-class="greet!userArray[0].image" class="greetboxNoPic">
                 <h3 class="animated fadeIn col-xs-offset-1 assertive main-logo">Hello {{userArray[0].firstName}}! </h3>
             </div> -->
-            <img ng-if="userArray[0].image" class="col-xs-offset-4 animated fadeIn profimg" src="{{userArray[0].image}}"><br>
+            <img ng-show="vm.isImageVisible" ng-if="userArray[0].image" class="col-xs-offset-4 animated fadeIn profimg" src="{{userArray[0].image}}" imageonload><br>
           </div>
     </div>
   
