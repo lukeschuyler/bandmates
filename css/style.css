@@ -21,6 +21,10 @@ p {
     font-family: 'Sarpanch', cursive;
 }
 
+h1 {
+      font-family: 'Sarpanch', cursive;
+}
+
 .log-header {
   font-family: 'Monofett', cursive;
   text-shadow: 10px 100px 3px rgba(0,0,0, .5);

@@ -34,8 +34,8 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 						return val[key]
 					})
 					$scope.name = $scope.userArray[0].firstName + $scope.userArray[0].lastName
-					console.log($scope.name)
-				}).then(function() {
+				})
+				.then(function() {
 					BandFactory.getBands(user.uid, $scope.name)
 				.then(function(val) {
 					$scope.userBands = Object.keys(val).map(function(key) {
@@ -53,7 +53,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 								let date = new Date(val[key].startTime)
 								val[key].time = date.getHours() + ': ' + date.getMinutes()
 								val[key].startTime = date.toDateString();
-								console.log(val[key])
 								$scope.events.push(val[key]);
 							})
 						})
