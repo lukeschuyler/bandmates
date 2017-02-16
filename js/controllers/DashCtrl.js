@@ -53,6 +53,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 								let date = new Date(val[key].startTime)
 								val[key].time = date.getHours() + ': ' + date.getMinutes()
 								val[key].startTime = date.toDateString();
+								console.log(val[key])
 								$scope.events.push(val[key]);
 							})
 						})
