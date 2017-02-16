@@ -6,8 +6,8 @@
             <div class="greetbox">
                 <h3 class="animated fadeIn col-xs-offset-1 assertive main-logo">Hello {{userArray[0].firstName}}! </h3>
             </div>
+            <img ng-if="userArray[0].image" class="col-xs-offset-3 animated fadeIn profimg" src="{{userArray[0].image}}"><br>
           </div>
-          <img ng-if="userArray[0].image" class="animated fadeIn profimg" src="{{userArray[0].image}}"><br>
     </div>
   
 
