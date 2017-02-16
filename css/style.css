@@ -170,3 +170,7 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 .calback {
 
 }
+
+ion-item.slider-pager-page:only-of-type{
+display:none;
+}
