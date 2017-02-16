@@ -103,7 +103,7 @@ nav {
   transition: all ease-in-out 250ms; }
 
 ion-content.event-detail-container.scroll-content.ionic-scroll {
-  margin-top: 94%;
+  margin-top: 81%;
 }
 
 .profile {
@@ -134,4 +134,12 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
   padding-right: 7px;
   text-shadow: 1px 10px 10px black;
   box-shadow: 10px 10px 20px rgba(50, 20, 20, .8);
+}
+
+.cal-header {
+  font-family: 'Sarpanch', cursive;
+}
+
+.calback {
+
 }

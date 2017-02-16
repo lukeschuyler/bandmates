@@ -11,8 +11,13 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		 })
     });
 
-	$scope.addLoaction = function(location) {
+	$scope.addLocation = function(location) {
 		$scope.tourLocations.push(location)
+		$scope.tourLocation = null
+	}
+
+	$scope.deletePlace = function($index) {
+		$scope.tourLocations.splice($index, 1)
 	}
 
 	$scope.bandsRef = firebase.database().ref('bands')
@@ -36,8 +41,8 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	  $scope.id = bandName;
 		  $scope.modal.show();
 
-    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
-    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
+    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo, image, tourLocations) {
+    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, image, tourLocations)
     		.then(function() {
     			console.log('created')
     			 $scope.modal.hide();
