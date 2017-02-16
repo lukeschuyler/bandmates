@@ -120,7 +120,7 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 
 .profile {
   height: 110px;
-  background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat center / cover fixed
+  background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover fixed
 }
 
 .event-list {

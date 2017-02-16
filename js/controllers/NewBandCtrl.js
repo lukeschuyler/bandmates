@@ -1,5 +1,8 @@
-bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast) {
-  
+bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
+
+  $scope.loadingPic;
+  $scope.picLoaded = false;
+
   AuthFactory.getUserPic(user.uid)
     .then(function(val) {
       $scope.userArray = Object.keys(val).map(function(key) {
@@ -99,5 +102,71 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 				console.log('toast')
 			})
 	}
+
+
+   function saveToFirebase(_imageBlob, _filename, _callback) {
+
+    var storageRef = firebase.storage().ref();
+
+    var uploadTask = storageRef.child('images/' + _filename).put(_imageBlob);
+
+    uploadTask.on('state_changed', function(snapshot){
+
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          console.log('Upload is running');
+          break;
+      }
+    }, function(error) {
+      // Handle unsuccessful uploads
+      alert(error.message)
+      _callback(null)
+    }, function() {
+      var downloadURL = uploadTask.snapshot.downloadURL;
+      _callback(uploadTask.snapshot)
+    });
+  }
+
+  $scope.getImage = function() {
+    var options = {
+       maximumImagesCount: 1,
+       width: 800,
+       height: 800,
+       quality: 80
+      };
+
+      $cordovaImagePicker.getPictures(options)
+        .then(function (results) {
+            $scope.loadingPic = true
+            var fileName = results[0].replace(/^.*[\\\/]/, '')
+             $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
+            .then(function (success) {
+              // success 
+              console.log('success')
+              var imageBlob = new Blob([success], {type : 'image/jpeg'})
+
+              saveToFirebase(imageBlob, fileName, function(_response) {
+                if(_response) {
+                  $scope.image = _response.downloadURL
+                  $scope.loadingPic = false;
+                  $scope.picLoaded = true;
+                  $scope.$apply()
+                }
+              })
+            }, function (error) {
+              // error
+              alert('error getting')
+            });
+
+        }, function(error) {
+          // error getting photos
+          alert('error getting')
+        });
+  }
 
 })

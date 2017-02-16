@@ -163,3 +163,24 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/auth/login');
 
 });
+
+
+bandmates.directive('imageonload', function() {
+    return {
+        restrict: 'A',
+        scope: {
+          ngShow : '='
+        },
+        link: function(scope, element, attrs) {
+            element.bind('load', function() {
+
+                scope.$apply(function(){
+                    scope.ngShow = true;  
+                });
+
+            });
+            element.bind('error', function(){
+            });
+        }
+    };
+});
