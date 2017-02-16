@@ -22,7 +22,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  	}
 
  	$scope.showDets = function(event) {
- 		console.log('dets')
+    	$ionicSlideBoxDelegate.next();
  	} 
 
  	$scope.enter = function() {
@@ -50,7 +50,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 						CalFactory.getUserBandsEvents(band)
 						.then(function(val) {
 							 Object.keys(val).map(function(key) {
-								$scope.events.push(val[key])
+								let date = new Date(val[key].startTime)
+								val[key].time = date.getHours() + ': ' + date.getMinutes()
+								val[key].startTime = date.toDateString();
+								$scope.events.push(val[key]);
 							})
 						})
 					})

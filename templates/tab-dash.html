@@ -31,16 +31,28 @@
       <ion-item class="profile">
     </ion-item>
   		<ion-list class="eventDash">
-      <ion-item>
-          <h6>Upcoming Events</h6>
-      </ion-item>
-  			<ion-item ng-repeat="event in events | orderBy : -event.milliTime" class="animated fadeIn main-items item-icon-right">
-  				<h4>{{event.title}}</h4>
-  	    		<p>{{event.bandName}}</p>
-            <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
-            <button class="button button-icon icon right ion-ios-arrow-forward" ng-click="showDets()"></button>
-  			</ion-item>
-  		</ion-list>	
+        <ion-item>
+            <h6>Upcoming Events</h6>
+        </ion-item>
+      </ion-list> 
+      <ion-list ng-repeat="event in events | orderBy : -event.milliTime" >
+  			<ion-item class="animated fadeIn main-items item-icon-right">
+          <ion-slide-box show-pager>
+            <ion-slide on-slide-changed="showDets($index)">
+                <p>{{event.bandName}}</p>
+                <h4>{{event.type}}</h4>
+                <h2>{{event.startTime}}</h2>
+               <i class="icon right ion-ios-arrow-forward"></i>
+            </ion-slide>
+            <ion-slide>
+                <h2>{{event.title}}</h2>
+                <h2>{{event.location}}</h2>
+                <h2 ng-if="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>
+                <h2 ng-if="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</h2>
+            </ion-slide>
+          </ion-slide-box>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-view>
 </div>

@@ -41,10 +41,9 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	  $scope.id = bandName;
 		  $scope.modal.show();
 
-    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo, image, tourLocations) {
-    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, image, tourLocations)
+    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo, image, location, tourLocations) {
+    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, image, location, tourLocations)
     		.then(function() {
-    			console.log('created')
     			 $scope.modal.hide();
     			 $cordovaToast.show('Event Created!', 'short', 'bottom')
     		})

@@ -38,8 +38,8 @@
         <label class="item item-input">
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>
-	    <button class="button button-full button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false)">Create Event</button>
-	            <div  ng-repeat="place in tourLocations">
+	    <button class="button button-full button-outline button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false, location, tourLocations)"><i class="ion-ios-plus icon"></i>Create Event</button>
+	            <div ng-repeat="place in tourLocations">
          			 <button ng-click="deletePlace($index)" class="button button-small button-assertive">{{ place }}  x</button>
               	</div>
 	  </div>
