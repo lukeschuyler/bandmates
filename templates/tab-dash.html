@@ -1,13 +1,7 @@
 
-
 <ion-view view-title="Home">
     <div ng-if="user" class="animated fadeIn bar bar-subheader profile bar-header">
            <div class="row">  
-            <div class="greetbox">
-              <div ng-class="greet!userArray[0].image" class="greetboxNoPic">
-                  <h3 class="animated fadeIn col-xs-offset-1 assertive main-logo">Hello {{userArray[0].firstName}}! </h3>
-              </div>
-            </div>
             <div class="dash-logo">
                 <div class="animated dash-header">Bandmates</div>
             </div>
@@ -31,13 +25,13 @@
     <ion-content class="has-subheader">
       <ion-item class="profile">
     </ion-item>
-  		<ion-list class="eventDash">
+      <ion-list class="eventDash">
         <ion-item>
             <h6>Upcoming Events</h6>
         </ion-item>
       </ion-list> 
       <ion-list ng-repeat="event in events | orderBy : -event.milliTime" >
-  			<ion-item class="animated fadeIn main-items">
+        <ion-item class="animated fadeIn main-items">
           <ion-slide-box show-pager>
             <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
                 <p>{{event.bandName}}</p>
