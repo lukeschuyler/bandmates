@@ -1,19 +1,22 @@
 
 
 <ion-view view-title="Home">
-    <div class="bar bar-subheader bar-header">
-         <div class="row">  
-           <h3 class="col-xs-offset-1 assertive main-logo">{{user.email.slice(0, user.email.indexOf('@'))}}'s Upcoming Events</h3>
-          <!--  -->
-        </div>
+    <div ng-if="user" class="animated fadeIn bar bar-subheader profile bar-header">
+           <div class="row">  
+            <div class="greetbox">
+                <h3 class="animated fadeIn col-xs-offset-1 assertive main-logo">Hello {{userArray[0].firstName}}! </h3>
+            </div>
+          </div>
+          <img ng-if="userArray[0].image" class="animated fadeIn profimg" src="{{userArray[0].image}}"><br>
     </div>
+  
+
 
   <div ng-if="!userBandNames.length">
     <ion-content class="has-subheader">
-      <ion-item>
+      <ion-item class="eventDash">
        <div ng-if="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner><span>Loading Events...</span></div> 
-         <h4 ng-if="!userBandNames.length && giveUp">Nothing Here Yet, Go Find Your Band(s)!!</h4>
-         <div ng-show="!events.length && userBandNames.length">
+         <div ng-show="giveUp && !userBandNames.length">
            <h4>No Events in Calendar</h4>
          </div>
       </ion-item>
@@ -22,9 +25,14 @@
 
   <div ng-if="userBandNames.length">
     <ion-content class="has-subheader">
+      <ion-item class="profile">
+    </ion-item>
   		<ion-list class="eventDash">
+      <ion-item>
+          <h6>Upcoming Events</h6>
+      </ion-item>
   			<ion-item ng-repeat="event in events | orderBy : -event.milliTime" class="animated fadeIn main-items item-icon-right">
-  				<h4>{{event.title.slice(0, event.title.indexOf(':'))}}</h4>
+  				<h4>{{event.title}}</h4>
   	    		<p>{{event.bandName}}</p>
             <p>{{event.startTime.slice(0, event.startTime.indexOf('T'))}}</p>
             <button class="button button-icon icon right ion-ios-arrow-forward" ng-click="showDets()"></button>

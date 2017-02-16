@@ -1,5 +1,4 @@
 
-
 <ion-view view-title="Band Calendars">
   <ion-content>
     <ion-list>
@@ -8,7 +7,7 @@
           <a href="#/tab/calenders/all">View All</a>
       </ion-item>
 
-      <ion-item class="item item-avatar-left item-icon-right" ng-repeat="band in bandz">
+      <ion-item class="animated fadeIn item item-avatar-left item-icon-right" ng-repeat="band in bandz">
           <img ng-if="band.image" src="{{ band.image }}">
         <a href="#/tab/calenders/{{band.bandName}}">Go To Calendar</a>
         <h2>{{ band.bandName }}</h2>

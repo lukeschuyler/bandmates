@@ -18,7 +18,7 @@ bandmates.factory('CalFactory', function($http, $q) {
 					return val.data
 				})
 		},
-		addEvent(bandName, name, type, startTime, endTime, allDay) {
+		addEvent(bandName, name, type, startTime, endTime, allDay, image, tourLocations) {
 			return $q.resolve($http({
 				method : 'POST',
 				url : `https://mush-e7c8f.firebaseio.com/events.json`,
@@ -27,9 +27,11 @@ bandmates.factory('CalFactory', function($http, $q) {
 					type : type,
 					startTime : startTime,
 					endTime : endTime,
-					title : name + ': ' + bandName,
+					title : name,
 					allDay : allDay,
-					milliTime: startTime.getTime()
+					milliTime: startTime.getTime(),
+					image : image,
+					tourLocations: tourLocations
 					}
 			}))
 		}

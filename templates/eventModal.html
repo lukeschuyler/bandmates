@@ -39,6 +39,9 @@
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>
 	    <button class="button button-full button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false)">Create Event</button>
+	            <div  ng-repeat="place in tourLocations">
+         			 <button ng-click="deletePlace($index)" class="button button-small button-assertive">{{ place }}  x</button>
+              	</div>
 	  </div>
 	</ion-content>
 </ion-modal-view>

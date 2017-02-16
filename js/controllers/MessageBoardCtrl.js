@@ -25,6 +25,7 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			$scope.$apply()
 		}
 	})
+	
 	$scope.scroll = function() {
 		setTimeout(function() {
 			$ionicScrollDelegate.scrollBottom(true);

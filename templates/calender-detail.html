@@ -1,19 +1,17 @@
 
 
-<ion-view view-title="{{ viewTitle }} ">
-      <ion-header-bar align-title="left">
-         <ion-nav-buttons>
-            <button class="button" ng-disabled="isToday()" ng-click="today()">Today</button>
-            <button class="button" ng-click="changeMode('month')">M</button>
-            <button class="button" ng-click="changeMode('week')">W</button>
-            <button class="button" ng-click="changeMode('day')">D</button>
-         </ion-nav-buttons>
-      </ion-header-bar>
-        <ion-content scroll="false" class="main-content">
-        <input type="text" name="">
-            <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="events"
-                      range-changed="reloadSource(startTime, endTime)"
-                      event-selected="onEventSelected(event)" title-changed="onViewTitleChanged(title)"
-                      time-selected="onTimeSelected(selectedTime, events, disabled)" step="30"></calendar>
-        </ion-content>
+<ion-view>
+   <ion-nav-buttons>
+      <button class="button" ng-disabled="isToday()" ng-click="today()">Today</button>
+      <button class="button" ng-click="changeMode('month')">M</button>
+      <button class="button" ng-click="changeMode('week')">W</button>
+      <button class="button" ng-click="changeMode('day')">D</button>
+   </ion-nav-buttons>
+  <ion-content scroll="false" class="calback main-content">
+  <h4 class="cal-header">{{ band }}: {{ viewTitle }} </h4>
+      <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="events"
+                range-changed="reloadSource(startTime, endTime)"
+                event-selected="onEventSelected(event)" title-changed="onViewTitleChanged(title)"
+                time-selected="onTimeSelected(selectedTime, events, disabled)" step="30"></calendar>
+  </ion-content>
 </ion-view>
