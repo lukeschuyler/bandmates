@@ -3,11 +3,13 @@ bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
 	let firstTime = false 
 	return {
 		login(email, password) {
+				firstTime = false
 				return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
 		},
 		register(email, password, firstName, image, lastName) {
 			return $q.resolve(firebase.auth().createUserWithEmailAndPassword(email, password)
 			  .then(function() {
+			  	firstTime = true;
 				  const id = firebase.auth().currentUser.uid
 				  $http({
 					  method : 'POST',
@@ -41,6 +43,9 @@ bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
             }
           })
         })
-      }
+      },
+  		getFirstTime() {
+			return firstTime
+		}
 	}
 })

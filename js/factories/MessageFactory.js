@@ -1,4 +1,5 @@
 bandmates.factory('MessageFactory', function($http) {
+	const messageRef = firebase.database().ref('messages')
 	return {
 		getMessages(band) {
 			return $http.get(`https://mush-e7c8f.firebaseio.com/messages.json?orderBy="band"&equalTo="${band}"`)
