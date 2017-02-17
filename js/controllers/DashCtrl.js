@@ -51,7 +51,13 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 						.then(function(val) {
 							 Object.keys(val).map(function(key) {
 								let date = new Date(val[key].startTime)
-								val[key].time = date.getHours() + ': ' + date.getMinutes()
+								if (date.getMinutes() < 10) {
+									val[key].time = date.getHours() + ': 0' + date.getMinutes() 
+									console.log(val[key].time)
+								} else {
+									val[key].time = date.getHours() + ': ' + date.getMinutes() 	
+									console.log(val[key].time)
+								}
 								val[key].startTime = date.toDateString();
 								$scope.events.push(val[key]);
 							})
