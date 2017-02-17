@@ -18,19 +18,26 @@ bandmates.factory('NewBandFactory', function($http, $cordovaToast, $q) {
 				})				
 			})
 		},
-		joinBand(bandName, password, userId, firstName, lastName) {
+		joinBand(bandName, password, userId, firstName, lastName, image) {
 			const userName = firstName + lastName
 			return $http.get(`https://mush-e7c8f.firebaseio.com/bandpass/${bandName}.json`)
 				.then(function(val) {
 					return $q ((resolve, reject) => {
 						if (val.data) {
 							if (val.data.password == password) {
-									console.log('post')
 									$http({
 										method : 'POST',
 										url : `https://mush-e7c8f.firebaseio.com/bands.json`,
 										data : { bandName : bandName, userId : userId, image: val.data.image }
 									})
+								// 	.then(function(){
+									
+								// 	$http({
+								// 		method : 'POST',
+								// 		url : `https://mush-e7c8f.firebaseio.com/bandpass/${bandName}/userimages.json`,
+								// 		data : image
+								// 	})
+								// })
 								resolve(true)
 							} else {
 								resolve(false)

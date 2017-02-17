@@ -7,12 +7,19 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			$scope.name = $scope.userArray[0].firstName
 		})
 
+	// MessageFactory.getAvatars($stateParams.bandId)
+	// 	.then((val) => {
+	// 		$scope.members = val
+	// 		console.log($scope.members)
+	// 	})
+
 	$scope.band = $stateParams.bandId
 	$scope.visible = false
 
 	$scope.messagez=[]
 
 	$scope.messageRef = firebase.database().ref('messages')
+
 
 	$scope.messageRef.on('child_added',function(snap) {
 

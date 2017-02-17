@@ -30,8 +30,8 @@
             <h6>Upcoming Events</h6>
         </ion-item>
       </ion-list> 
-      <ion-list ng-repeat="event in events | orderBy : -event.milliTime" >
-        <ion-item class="animated fadeIn main-items">
+      <ion-list ng-repeat="event in events | orderBy : event.milliTime" >
+        <ion-item class="animated fadeIn main-items dashitems">
           <ion-slide-box show-pager>
             <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
                 <p>{{event.bandName}}</p>
@@ -39,8 +39,8 @@
                 <h2>{{event.startTime}}</h2>
                <i class="icon right ion-ios-arrow-forward"></i>
             </ion-slide>
-            <ion-slide class="item-icon-left">
-               <i class="icon right ion-ios-arrow-back"></i>
+            <ion-slide class="item">
+               <!-- <i class="icon right ion-ios-arrow-back"></i> -->
                <div class="row">
                  <div class="col">
                   <p>{{event.bandName}}</p>

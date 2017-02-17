@@ -45,7 +45,7 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
     	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, image, location, tourLocations)
     		.then(function() {
     			 $scope.modal.hide();
-    			 $cordovaToast.show('Event Created!', 'short', 'bottom')
+    			 $cordovaToast.show(eventName +'Event Created!', 'short', 'bottom')
     		})
     }
 		  };

@@ -29,7 +29,7 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
   $scope.leaveBand = function(key, band) {
     BandFactory.leaveBand(key)
       .then(function() {
-        $cordovaToast.show("Successfully left ' + band + '. Maybe one day you'll 'get the band back together'.", 'long', 'bottom')
+        $cordovaToast.show("Successfully left " + band + ". Maybe one day you'll 'get the band back together.", 'long', 'bottom')
       })
       .catch(function(){
         $cordovaToast.show("Sorry, there was an issue in remove you from the group. Please try again", 'long', 'bottom')
@@ -47,8 +47,8 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
       })
   } 
 
-	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
-    NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
+	$scope.joinBand = function(band, password, uid, userFirstName, userLastName, image) {
+    NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName, image)
       .then(function(val) {
         if (val) {
           $scope.oModal1.hide();

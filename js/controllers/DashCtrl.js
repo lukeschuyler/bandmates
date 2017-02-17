@@ -12,7 +12,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 		setTimeout(function() {
 		 		$scope.openModal(1)
 		 		$scope.giveUp = true
-		 		$cordovaToast.show('Welcome to Bandmates! Find Your Band Here or you can go the Register Band Page. Enjoy!', 'long', 'center')
+		 		$cordovaToast.show('Welcome to Bandmates! Find Your Band Here or you can go the Register Band Page. Enjoy!', 'long', 'bottom')
 	 		}, 2000)
 	 	}
 	 }, 3000)

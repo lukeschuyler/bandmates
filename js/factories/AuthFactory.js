@@ -1,5 +1,6 @@
 bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
 	let userArray;
+	let firstTime = false 
 	return {
 		login(email, password) {
 				return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
