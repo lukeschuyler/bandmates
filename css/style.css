@@ -2,6 +2,15 @@ ion-content {
   /*background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSRajQgfYJhxhtV4J9X5XwkZTHmeApmLiRbu8BbXY6X_d3nODLrB9hbAo4) no-repeat center / cover fixed*/
 }
 
+.bar-subheader{
+  height: 162px !important;
+  background: linear-gradient(#bdc3c7, rgba(0,0,0, .01)) !important;
+}
+
+ion-item {
+  background-color: #ecf0f1;
+}
+
 .smallPic {
   height: 32px;
   width: 32px;
@@ -136,7 +145,12 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 
 .profile {
   /*height: 50px;*/
-  /*background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover fixed*/
+  /*background: linear-gradient(#bdc3c7, rgba(0,0,0, .01)) !important;*/
+  background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .01)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover !important;
+}
+
+.item {
+  background: rgba(0,0, 0, .01) !important;
 }
 
 .event-list {
@@ -172,7 +186,7 @@ input[type="text"]:-ms-input-placeholder {
      font-family: 'Sarpanch', cursive;
 }
 
-.bar { background-image: none !important; }
+/*.bar { background-image: none !important; }*/
 
 .dashitems {
   /*background-color: #1e90ff;*/

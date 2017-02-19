@@ -7,18 +7,15 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
 	 $scope.firstTime = AuthFactory.getFirstTime() 
 
-	 if ($scope.firstTime === true) {
-	 	$scope.openModal(1)
-	 	$cordovaToast.show('Welcome to Bandmates! Find Your Band Here or you can go the Register Band Page. Enjoy!', 'long', 'bottom')
-	 }
-
 
 	 setTimeout(function() {
 	 	$scope.$apply()
 	 	if ($scope.userBandNames.length == 0) {
 	 		$scope.enter()
 	 		setTimeout(function() {
+		 		$scope.openModal(1)
 		 		$scope.giveUp = true
+		 		$cordovaToast.show('Welcome to Bandmates! Find Your Band Here or you can go the Register Band Page. Enjoy!', 'long', 'bottom')
 	 		}, 2000)
 	 	}
 	 }, 3000)
