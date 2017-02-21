@@ -3,7 +3,9 @@
     <div ng-if="user" class="animated fadeIn bar bar-subheader profile">
            <div class="row">  
             <div class="dash-logo">
-                <div class="animated dash-header">Bandmates</div>
+                <div class="animated dash-header">Bandmates <br> <div class="upcoming">Upcoming Events...</div></div>
+<!--                <ion-radio ng-model="upcoming" type="radio" name="shows">Upcoming</ion-radio>
+               <ion-radio ng-model="recent" type="radio" name="shows">Recent</ion-radio> -->
             </div>
           </div>
     </div>
@@ -22,16 +24,10 @@
   </div>
 
   <div ng-if="userBandNames.length">
-    <ion-content class="has-subheader">
-      <ion-item class="profile">
-    </ion-item>
-      <ion-list class="eventDash">
-        <ion-item>
-            <h6>Upcoming Events</h6>
-        </ion-item>
-      </ion-list> 
-      <ion-list ng-repeat="event in events | orderBy : -event.milliTime" >
-        <ion-item class="animated fadeIn main-items dashitems">
+
+    <ion-content ng-hide="scrolled"  class="has-subheader">
+      <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true">
+        <ion-item class="animated fadeIn main-items item-borderless dashitems">
           <ion-slide-box show-pager>
             <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
                 <p>{{event.bandName}}</p>
@@ -51,6 +47,38 @@
                     <h2 ng-if="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>
                     <h2 ng-if="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</h2>
                 </div>
+               </div>
+            </ion-slide>
+          </ion-slide-box>
+        </ion-item>
+      </ion-list>
+        <ion-infinite-scroll
+          on-infinite="loadMore()"
+          distance="30%">
+        </ion-infinite-scroll>
+    </ion-content>
+
+    <ion-content ng-show="scrolled" class="has-subheader">
+      <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 5">
+        <ion-item class="animated fadeIn main-items item-borderless dashitems">
+          <ion-slide-box show-pager>
+            <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
+                <p>{{event.bandName}}</p>
+                <h4>{{event.type}}</h4>
+                <h2>{{event.startTime}}</h2>
+               <i class="icon right ion-ios-arrow-forward"></i>
+            </ion-slide>
+            <ion-slide class="item item-icon-left item-icon-right">
+               <i class="icon right ion-ios-arrow-back"></i>
+               <div class="row">
+                 <div class="col">
+                  <p>{{event.bandName}}</p>
+                    <h2>{{event.title}}</h2>
+                    <h2>@{{event.location}}</h2>
+                    <h2 ng-if="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>
+                    <h2 ng-if="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</h2>
+                </div>
+                 <div class="col"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName)" class="button-icon icon right ion-ios-redo"></button></div>
                </div>
             </ion-slide>
           </ion-slide-box>

@@ -46,6 +46,9 @@ bandmates.factory('AuthFactory', function($http, $q, $location, $cordovaToast) {
       },
   		getFirstTime() {
 			return firstTime
+		},
+		setFirstTime(bool) {
+			firstTime = bool
 		}
 	}
 })
