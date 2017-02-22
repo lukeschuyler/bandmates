@@ -8,7 +8,7 @@
       <button class="button" ng-click="changeMode('day')">D</button>
    </ion-nav-buttons>
   <ion-content scroll="false" class="calback main-content">
-  <h4 class="cal-header">{{ band }}: {{ viewTitle }} </h4>
+  <h4 class="cal-header item-text-wrap">{{ band }}: {{ viewTitle }} </h4>
       <calendar ng-model="calendar.currentDate" calendar-mode="calendar.mode" event-source="events"
                 range-changed="reloadSource(startTime, endTime)"
                 event-selected="onEventSelected(event)" title-changed="onViewTitleChanged(title)"

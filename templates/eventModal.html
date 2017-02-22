@@ -32,23 +32,13 @@
               <input type="text" placeholder="Tour Locations" ng-model="tourLocation">
               <span on-tap="addLocation(tourLocation)"><i class="button button-icon icon right ion-ios-plus"></i></span>
         </label>
-<!--   		<label ng-show="type !== 'Tour'" class="item item-input">
-              <input ng-change="" type="text" placeholder="Location" ng-model="location">
-        </label> -->
 
-         <label class ="item item-input item-select">
-         	<input ng-model="location" ng-change="autoFillPlaces(location)" type="text" placeholder="location">
-		      <select ng-model="eventLocation" >
-		        <option ng-repeat="searchPlace in searchPlaces">{{searchPlace.description}}</option>
-		      </select>
-   		</label>
         <label class="item item-input">
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>
 
 
         <label class="item item-input">
-            <span class="input-label"></span>
             <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
                    ng-model="location"
                    item-value-key="name"

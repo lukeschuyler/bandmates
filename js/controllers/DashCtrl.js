@@ -17,9 +17,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 	  $cordovaSocialSharing
 		    .share(message) // Share via native share sheet
 		    .then(function(result) {
-		      alert('success', message)
+	 			$cordovaToast.show('Event Shared!', 'short', 'bottom')
 		    }, function(err) {
-		     alert('error', err)
+		    	
 		    });
 	 }
 

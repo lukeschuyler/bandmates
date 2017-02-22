@@ -1,17 +1,20 @@
 ion-content {
   background: linear-gradient(rgba(255,255,255, .95), rgba(255,255,255,.95)), url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTg_h1gD0qb2UcqTvGrIOKfOJ9-TI76qgmfJciY19k_4q2NliSd3D8nb0Q);
+    font-family: 'Play', sans-serif !important;
 }
 
 .upcoming {
   font-size: 20px;
   letter-spacing: 0px;
   margin-top: 15px;
-  font-family: 'Sarpanch', cursive;
+  font-family: 'Play', sans-serif;
 }
 
 .profile {
     height: 80px !important;
-  background: linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01))
+  background: -webkit-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
+  background: -o-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
+  background: linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
 }
 
 .smallPic {
@@ -22,11 +25,11 @@ ion-content {
 }
 
 [nav-view]  {
-  font-family: 'Sarpanch', cursive;
+  font-family: 'Play', sans-serif;
 }
 
 [nav-view] > .item {
-    font-family: 'Sarpanch', cursive;
+  font-family: 'Play', sans-serif;
 } 
 
 .dash-logo {
@@ -35,11 +38,11 @@ ion-content {
 }
 
 p {
-    font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 h1 {
-      font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 .log-header {
@@ -102,7 +105,7 @@ h1 {
 }
 
 .padding, .had-header {
-  font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 /*MODAL SLIDE*/
@@ -142,7 +145,7 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 }
 
 .cal-header {
-  font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 ion-item.slider-pager-page:only-of-type{
@@ -150,19 +153,19 @@ display:none;
 }
 
 input[type="text"]::-webkit-input-placeholder {
-    font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 input[type="text"]:-moz-placeholder { /* Firefox 18- */
-      font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
-    font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 input[type="text"]:-ms-input-placeholder {  
-     font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 .dashList {

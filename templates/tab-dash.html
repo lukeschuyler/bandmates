@@ -4,7 +4,7 @@
            <div class="row">  
             <div class="dash-logo">
                 <div class="animated dash-header">Bandmates <br> <div class="upcoming">Upcoming Events...</div></div>
-<!--                <ion-radio ng-model="upcoming" type="radio" name="shows">Upcoming</ion-radio>
+<!--           <ion-radio ng-model="upcoming" type="radio" name="shows">Upcoming</ion-radio>
                <ion-radio ng-model="recent" type="radio" name="shows">Recent</ion-radio> -->
             </div>
           </div>
@@ -29,11 +29,17 @@
       <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true">
         <ion-item class="animated fadeIn main-items item-borderless dashitems">
           <ion-slide-box show-pager>
-            <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
-                <p>{{event.bandName}}</p>
-                <h4>{{event.type}}</h4>
-                <h2>{{event.startTime}}</h2>
-               <i class="icon right ion-ios-arrow-forward"></i>
+            <ion-slide class="item-icon-left" on-slide-changed="showDets($index)">
+              <div class="row">
+                 <div class="col">
+                  <p>{{event.bandName}}</p>
+                </div>
+                <div class="col">
+                  <h4>{{event.type}}</h4>
+                  <h2>{{event.startTime}}</h2>
+                 <i class="icon right ion-ios-arrow-forward"></i>
+                </div>
+              </div>
             </ion-slide>
             <ion-slide class="item-icon-left">
                <i class="icon right ion-ios-arrow-back"></i>
@@ -62,11 +68,16 @@
       <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 5">
         <ion-item class="animated fadeIn main-items item-borderless dashitems">
           <ion-slide-box show-pager>
-            <ion-slide class="item-icon-right" on-slide-changed="showDets($index)">
-                <p>{{event.bandName}}</p>
-                <h4>{{event.type}}</h4>
-                <h2>{{event.startTime}}</h2>
+            <ion-slide class="item-icon-right item" on-slide-changed="showDets($index)">
+              <!-- ICONS DENOTING TYPE OF MEET -->
+               <div class="row"> 
+                <div class="col col-offset-3">
+                 <p>{{event.bandName}}</p>
+                  <h4>{{event.type}}</h4>
+                  <h2>{{event.startTime}}</h2>
+                </div>
                <i class="icon right ion-ios-arrow-forward"></i>
+              </div>
             </ion-slide>
             <ion-slide class="item item-icon-left item-icon-right">
                <i class="icon right ion-ios-arrow-back"></i>
