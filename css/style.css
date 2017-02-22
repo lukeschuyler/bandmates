@@ -12,6 +12,7 @@ ion-content {
 
 .profile {
     height: 80px !important;
+    margin-bottom: 20px !important;
   background: -webkit-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
   background: -o-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
   background: linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
@@ -35,6 +36,11 @@ ion-content {
 .dash-logo {
   text-align: center;
 
+}
+
+.dashitems {
+  box-shadow: 10px 20px 20px rgba(50,0,0, .4) !important;
+  margin-bottom: 10px;
 }
 
 p {
@@ -68,13 +74,23 @@ font-family: 'Play', sans-serif;
 
 .message-name {
   font-style: bold;
-  display: inline;
+  /*display: inline;*/
+  margin-right: 30px !important;
 }
 
 .message-img {
   width: 60px;
   height: 60px;
   border-radius: 100%;
+}
+
+.time {
+  font-size: 10px !important;
+  margin-left: 70% !important;
+}
+
+.message {
+  margin-bottom: 10px !important;
 }
 
 .main-pic {
@@ -169,5 +185,5 @@ font-family: 'Play', sans-serif;
 }
 
 .dashList {
-  margin-top: 80px !important;
+  margin-top: 100px !important;
 }
