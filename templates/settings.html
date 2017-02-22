@@ -1,14 +1,25 @@
 
 
 <ion-modal-view view-title="Settings">
-<<ion-header-bar class="bar bar-header bar-assertive">
+<ion-header-bar class="bar bar-header bar-assertive">
 	  <h1 class="title">Manage Account</h1>
 	  <button class="button button-clear button-cancel" ng-click="closeModal(2)">Cancel</button>
 	</ion-header-bar>
   <ion-content class="has-header">
-  	<ion-list>
-		<ion-item><a href="#/tab/settings/new-band"><h3>Manage Bands</h3></a></ion-item>
-		<ion-item><button ng-click="logout()" class="button button-assertive button-block">Logout</button></ion-item>
+  	<ion-list ng-repeat="band in bands">
+		<ion-item class="item item-avatar-right">	
+<!-- 			<i class="icon icon-left ios-arrow-forward"></i> -->
+			<img src="{{band.image}}">
+			<div class="col col-offset-33"><h2>{{ band.bandName }}</h2></div>
+			<ion-option-button class="button-positive"
+                       			ng-click="leaveBand(band.key, band.bandName)">
+		      Leave {{band.bandName}}
+		    </ion-option-button>
+		</ion-item>
 	</ion-list>
   </ion-content>
+
+	<ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+		<button ng-click="logout()" class="button button-assertive button-block">Logout</button>
+	</ion-footer-bar>
 </ion-modal-view>

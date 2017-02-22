@@ -2,7 +2,8 @@
   <ion-nav-back-button></ion-nav-back-button>
     <ion-nav-buttons side="right">      
       <button class="button button-icon ion-ios-plus" ng-click="openModal(1)"></button>
-      <button class="button button-icon button-clear ion-ios-person" ng-click="openModal(2)"></button>
+      <button ng-if="!userArray[0].image" class="button button-icon button-clear ion-ios-person" ng-click="openModal(2)"></button>
+      <i ng-if="userArray[0].image" class="icon-button" ng-click="openModal(2)"><img class="smallPic" src="{{userArray[0].image}}"></i>
     </ion-nav-buttons>
 </ion-nav-bar>
 
@@ -22,8 +23,8 @@
     <ion-nav-view name="tab-calenders"></ion-nav-view>
   </ion-tab>
 
-<!--   <ion-tab class="tabcolor" title="Musical Notes" icon-off="ion-ios-musical-note" icon-on="ion-ios-musical-notes" href="#/tab/musical-notes">
+  <ion-tab class="tabcolor" title="Musical Notes" icon-off="ion-ios-musical-note" icon-on="ion-ios-musical-notes" href="#/tab/musical-notes">
     <ion-nav-view name="tab-music"></ion-nav-view>
-  </ion-tab> -->
+  </ion-tab>
 
 </ion-tabs>

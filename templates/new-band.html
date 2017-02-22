@@ -20,10 +20,11 @@
             <label class="item item-input">
                 <input type="password" placeholder="Confirm Password" ng-model="password2">
             </label>
-            <label class="item item-input item-icon-right">
-              <input type="text" placeholder="Add Band Photo" ng-model="image">
-              <img ng-if="image" src="image">
-              <span on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
+            <label class="item item-input item-avatar-left item-icon-right"><span ng-if="!loadingPic && !picLoaded">Upload Band Image</span>
+              <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
+              <div ng-if="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
+              <span ng-if="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
+              <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
             </label>
         </div>
 
@@ -57,7 +58,7 @@
             </label>
         </div>
 
-        <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-assertive" ng-click="joinBand(bandNameSearch, passwordSearch, user.uid, userArray[0].firstName, userArray[0].lastName)">Join Band</button>
+        <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-assertive" ng-click="joinBand(bandNameSearch, passwordSearch, user.uid, userArray[0].firstName, userArray[0].lastName, userArray[0].image)">Join Band</button>
 
         <button class="button col-offset-50 col col-50 button-outline button-positive" ng-click="toggleRegister()">Register Band <i class="button button-icon icon left ion-ios-arrow-forward"></i></button>
 

@@ -32,13 +32,30 @@
               <input type="text" placeholder="Tour Locations" ng-model="tourLocation">
               <span on-tap="addLocation(tourLocation)"><i class="button button-icon icon right ion-ios-plus"></i></span>
         </label>
-        <label ng-show="type !== 'Tour'" class="item item-input">
-              <input type="text" placeholder="Location" ng-model="location">
-        </label>
+
         <label class="item item-input">
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>
-	    <button class="button button-full button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false)">Create Event</button>
+
+
+        <label class="item item-input">
+            <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                   ng-model="location"
+                   item-value-key="name"
+                   item-view-value-key="description"
+                   items-method="autoFillPlaces(query)"
+                   items-method-value-key="items"
+                   placeholder="Search Location"
+                   items-clicked-method="itemsClicked(callback)"
+                   items-removed-method="itemsRemoved(callback)"
+                   max-selected-items="5"/>
+        </label>
+
+
+	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false, clickedValueModel.item.description, tourLocations)"><i class="ion-ios-plus icon"></i>Create Event</button>
+<!-- 	            <div ng-repeat="place in tourLocations">
+         			 <button ng-click="deletePlace($index)" class="button button-small button-assertive">{{ place }}  x</button>
+              	</div> -->
 	  </div>
 	</ion-content>
 </ion-modal-view>

@@ -1,6 +1,7 @@
 bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicModal, CalFactory, $cordovaToast) {
 	$scope.user = user
 	$scope.tourLocations = []
+	$scope.searchPlaces;
 
 	$scope.$on("$ionicView.enter", function () {
 	firebase.database().ref('bands').on('child_added', function() {
@@ -11,8 +12,13 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		 })
     });
 
-	$scope.addLoaction = function(location) {
+	$scope.addLocation = function(location) {
 		$scope.tourLocations.push(location)
+		$scope.tourLocation = null
+	}
+
+	$scope.deletePlace = function($index) {
+		$scope.tourLocations.splice($index, 1)
 	}
 
 	$scope.bandsRef = firebase.database().ref('bands')
@@ -34,12 +40,12 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	$scope.openModal = function(bandName) {
 	  var boo= false
 	  $scope.id = bandName;
-		  $scope.modal.show();
+	$scope.modal.show();
 
-    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo) {
-    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo)
+    $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo, image, location, tourLocations) {
+    	console.log(startTimeValue)
+    	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, image, location, tourLocations)
     		.then(function() {
-    			console.log('created')
     			 $scope.modal.hide();
     			 $cordovaToast.show('Event Created!', 'short', 'bottom')
     		})
@@ -60,4 +66,28 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		  $scope.$on('modal.removed', function() {
 		    	
 		  });
+
+
+		  $scope.autoFillPlaces = function(query){
+			CalFactory.autoFillPlaces(query)
+				.then((val) => {
+					$scope.searchPlaces = val	
+				})
+				.then(function() {
+                    return {
+                      items: $scope.searchPlaces
+                    };
+				})
+		        return {
+                    items: $scope.searchPlaces
+                };
+		 }
+
+
+        $scope.itemsClicked = function (callback) {
+            $scope.clickedValueModel = callback;
+        };
+        $scope.itemsRemoved = function (callback) {
+            $scope.removedValueModel = callback;
+        };
 });

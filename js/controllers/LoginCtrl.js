@@ -1,5 +1,8 @@
 bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $state, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
 
+  $scope.loadingPic;
+  $scope.picLoaded = false;
+
 	$scope.login = function(email, password) {
 		AuthFactory.login(email, password)
 			.then(function() {
@@ -26,7 +29,7 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 		$location.url('/auth/register')
 	}
 
-	 		function saveToFirebase(_imageBlob, _filename, _callback) {
+	 function saveToFirebase(_imageBlob, _filename, _callback) {
 
 		var storageRef = firebase.storage().ref();
 
@@ -64,17 +67,19 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 
 		  $cordovaImagePicker.getPictures(options)
 		    .then(function (results) {
-		        console.log('Image URI: ' + results[0]);
+					
 		        var fileName = results[0].replace(/^.*[\\\/]/, '')
 		         $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
 			      .then(function (success) {
-			        // success
+					$scope.loadingPic = true;
 			        var imageBlob = new Blob([success], {type : 'image/jpeg'})
 
 			        saveToFirebase(imageBlob, fileName, function(_response) {
 			        	if(_response) {
 			        		$scope.image = _response.downloadURL
-			        		alert($scope.image)
+			                  $scope.loadingPic = false;
+			                  $scope.picLoaded = true;
+			                  $scope.$apply()
 			        	}
 			        })
 			      }, function (error) {

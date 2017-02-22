@@ -1,19 +1,40 @@
-bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast) {
-  
-  AuthFactory.getUserPic(user.uid)
+bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
+
+  $scope.loadingPic;
+  $scope.picLoaded = false;
+
+  $scope.registerView = false;
+
+	$scope.$on("$ionicView.enter", function () {
+		$scope.user = user
+    AuthFactory.getUserPic(user.uid)
     .then(function(val) {
       $scope.userArray = Object.keys(val).map(function(key) {
         return val[key]
       })
       $scope.name = $scope.userArray[0].firstName
     })
+    BandFactory.getBands(user.uid)
+      .then(function(val) {
+        $scope.keys = Object.keys(val)
+        $scope.bands = Object.keys(val).map(function(key) {
+        return val[key]
+      })
+        for (let i = 0; i < $scope.bands.length; i++) {
+          $scope.bands[i].key = $scope.keys[i];
+        }
+    })
+ });
 
-  $scope.registerView = false;
-
-	$scope.$on("$ionicView.enter", function () {
-		$scope.user = user
-    });
-
+  $scope.leaveBand = function(key, band) {
+    BandFactory.leaveBand(key)
+      .then(function() {
+        $cordovaToast.show("Successfully left " + band + ". Maybe one day you'll 'get the band back together.", 'long', 'bottom')
+      })
+      .catch(function(){
+        $cordovaToast.show("Sorry, there was an issue in remove you from the group. Please try again", 'long', 'bottom')
+      })
+}
   $scope.toggleRegister = function() {
     $scope.registerView = !$scope.registerView
   }
@@ -26,8 +47,8 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
       })
   } 
 
-	$scope.joinBand = function(band, password, uid, userFirstName, userLastName) {
-    NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName)
+	$scope.joinBand = function(band, password, uid, userFirstName, userLastName, image) {
+    NewBandFactory.joinBand(band, password, uid, userFirstName, userLastName, image)
       .then(function(val) {
         if (val) {
           $scope.oModal1.hide();
@@ -99,5 +120,71 @@ bandmates.controller('NewBandCtrl', function($scope, NewBandFactory, user, $ioni
 				console.log('toast')
 			})
 	}
+
+
+   function saveToFirebase(_imageBlob, _filename, _callback) {
+
+    var storageRef = firebase.storage().ref();
+
+    var uploadTask = storageRef.child('images/' + _filename).put(_imageBlob);
+
+    uploadTask.on('state_changed', function(snapshot){
+
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          console.log('Upload is running');
+          break;
+      }
+    }, function(error) {
+      // Handle unsuccessful uploads
+      alert(error.message)
+      _callback(null)
+    }, function() {
+      var downloadURL = uploadTask.snapshot.downloadURL;
+      _callback(uploadTask.snapshot)
+    });
+  }
+
+  $scope.getImage = function() {
+    var options = {
+       maximumImagesCount: 1,
+       width: 800,
+       height: 800,
+       quality: 80
+      };
+
+      $cordovaImagePicker.getPictures(options)
+        .then(function (results) {
+            $scope.loadingPic = true
+            var fileName = results[0].replace(/^.*[\\\/]/, '')
+             $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
+            .then(function (success) {
+              // success 
+              console.log('success')
+              var imageBlob = new Blob([success], {type : 'image/jpeg'})
+
+              saveToFirebase(imageBlob, fileName, function(_response) {
+                if(_response) {
+                  $scope.image = _response.downloadURL
+                  $scope.loadingPic = false;
+                  $scope.picLoaded = true;
+                  $scope.$apply()
+                }
+              })
+            }, function (error) {
+              // error
+              alert('error getting')
+            });
+
+        }, function(error) {
+          // error getting photos
+          alert('error getting')
+        });
+  }
 
 })

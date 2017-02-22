@@ -14,10 +14,12 @@
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="password">
           </label>
-          <label class="item item-input item-icon-right">
-              <input type="text" placeholder="Image Address" ng-model="image">
-                <span on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-camera"></i></span>
-          </label>
+            <label class="item item-input item-avatar-left item-icon-right"><span ng-if="!loadingPic && !picLoaded">Upload Profile Image</span>
+              <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
+              <div ng-if="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
+              <span ng-if="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
+              <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
+            </label>
       </div>
       <button ng-disabled="!email || !password || !firstName || !lastName" class="button button-block button-outline button-assertive" ng-click="register(email, password, image, firstName, lastName)">Register</button>
         <button class="button button-outline button-positive" ng-click="goToLogin()"><i class="button button-icon icon left ion-ios-arrow-back"></i>  Back To Login</button>

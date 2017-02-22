@@ -7,6 +7,13 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			$scope.name = $scope.userArray[0].firstName
 		})
 
+
+	// MessageFactory.getAvatars($stateParams.bandId)
+	// 	.then((val) => {
+	// 		$scope.members = val
+	// 		console.log($scope.members)
+	// 	})
+
 	$scope.band = $stateParams.bandId
 	$scope.visible = false
 
@@ -14,17 +21,26 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 
 	$scope.messageRef = firebase.database().ref('messages')
 
-	$scope.messageRef.on('child_added',function(snap) {
 
+	$scope.messageRef.on('child_added',function(snap) {
+	let data = snap.val()
+	let date = new Date(data.time)
+	$scope.now = new Date()
 	setTimeout(function() {
 		$ionicScrollDelegate.scrollBottom(true);
 		$scope.visible = true
 	}, 300)
-		$scope.messagez.push(snap.val())
+	if (date.getMinutes() < 10) {
+		data.newTime = date.toDateString() + ' ' + date.getHours() + ': 0' + date.getMinutes() 
+	} else {
+		data.newTime = date.toDateString() + ' ' + date.getHours() + ': ' + date.getMinutes() 	
+	}
+		$scope.messagez.push(data)
 		if(!$scope.$$phase) {
 			$scope.$apply()
 		}
 	})
+	
 	$scope.scroll = function() {
 		setTimeout(function() {
 			$ionicScrollDelegate.scrollBottom(true);

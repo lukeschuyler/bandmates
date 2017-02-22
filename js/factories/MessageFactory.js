@@ -20,6 +20,14 @@ bandmates.factory('MessageFactory', function($http) {
 				if(message) {
 					messageRef.push(data)
 			}
+		},
+		getAvatars(bandName) {
+			return $http.get(`https://mush-e7c8f.firebaseio.com/bandpass/${bandName}/userimages.json`)
+				.then((val) => {
+					return Object.keys(val.data).map(function(key) {
+						return val.data[key]
+					})
+				})
 		}
 	}
 })
