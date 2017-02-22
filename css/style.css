@@ -12,7 +12,7 @@ ion-content {
 
 .profile {
     height: 80px !important;
-    margin-bottom: 20px !important;
+    padding-bottom: 80px !important;
   background: -webkit-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
   background: -o-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
   background: linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
@@ -41,6 +41,8 @@ ion-content {
 .dashitems {
   box-shadow: 10px 20px 20px rgba(50,0,0, .4) !important;
   margin-bottom: 10px;
+  border-radius: 20px;
+  /*background-color: rgba(100,0,0,.7)*/
 }
 
 p {
@@ -110,6 +112,7 @@ font-family: 'Play', sans-serif;
 
 .tabs {
 	background-color: #ef473a;
+    /*background-color: maroon;*/
 }
 
 .tabcolor i {
@@ -184,6 +187,6 @@ input[type="text"]:-ms-input-placeholder {
 font-family: 'Play', sans-serif;
 }
 
-.dashList {
-  margin-top: 100px !important;
+.dashContent {
+  padding-top: 70px !important;
 }

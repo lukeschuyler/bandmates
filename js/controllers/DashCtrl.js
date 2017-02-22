@@ -13,11 +13,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
 	 $scope.share = function(title, type, location, time, bandName) {
 	 	let message = bandName + ' ' + title + ' ' + type + ' ' + location +  ' @' + time
-	 	alert(message)
 	 	  $cordovaSocialSharing
 		    .share(message) // Share via native share sheet
 		    .then(function(result) {
-	 			$cordovaToast.show('Event Shared!', 'short', 'bottom')
+
 		    }, function(err) {
 		    	
 		    });

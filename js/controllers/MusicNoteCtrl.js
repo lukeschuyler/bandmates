@@ -1,4 +1,14 @@
-bandmates.controller('MusicNoteCtrl', function($scope) {
+bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory) {
+	ProjectFactory.getProjects()
+		.then(function(val) {
+			$scope.projects = Object.keys(val).map(function(key) {
+				val[key].key = key
+				console.log(val[key].key)
+				return val[key]
+			})
+		})
+
+	$scope.postAudio = ProjectFactory.postAudio
 
 	$scope.getAudio = function() {
 

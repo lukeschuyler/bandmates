@@ -160,6 +160,15 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state('tab.music-notes-detail', {
+    url: '/musical-notes/:project',
+    views: {
+      'tab-music': {
+        templateUrl: 'templates/music-note-detail.html',
+        controller: 'MusicNoteDetailCtrl'
+      }
+    }
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/auth/login');
 

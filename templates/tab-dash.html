@@ -13,7 +13,7 @@
 
 
   <div ng-if="!userBandNames.length">
-    <ion-content class="has-subheader">
+    <ion-content class="dashContent has-subheader">
       <ion-item class="eventDash">
        <div ng-if="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner><span>Loading Events...</span></div> 
          <div ng-show="giveUp && !userBandNames.length">
@@ -64,7 +64,7 @@
         </ion-infinite-scroll>
     </ion-content>
 
-    <ion-content ng-show="scrolled" class="has-subheader">
+    <ion-content ng-show="scrolled" class="dashContent has-subheader">
       <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 5">
         <ion-item class="animated fadeIn main-items item-borderless">
           <ion-slide-box show-pager>
