@@ -18,7 +18,7 @@
               <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
               <div ng-if="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
               <span ng-if="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
-              <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i><span>Image Uploaded</span>
+              <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
             </label>
       </div>
       <button ng-disabled="!email || !password || !firstName || !lastName" class="button button-block button-outline button-assertive" ng-click="register(email, password, image, firstName, lastName)">Register</button>

@@ -1,5 +1,21 @@
 ion-content {
-  /*background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSRajQgfYJhxhtV4J9X5XwkZTHmeApmLiRbu8BbXY6X_d3nODLrB9hbAo4) no-repeat center / cover fixed*/
+  background: linear-gradient(rgba(255,255,255, .95), rgba(255,255,255,.95)), url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTg_h1gD0qb2UcqTvGrIOKfOJ9-TI76qgmfJciY19k_4q2NliSd3D8nb0Q);
+    font-family: 'Play', sans-serif !important;
+}
+
+.upcoming {
+  font-size: 20px;
+  letter-spacing: 0px;
+  margin-top: 15px;
+  font-family: 'Play', sans-serif;
+}
+
+.profile {
+    height: 80px !important;
+    margin-bottom: 20px !important;
+  background: -webkit-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
+  background: -o-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
+  background: linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
 }
 
 .smallPic {
@@ -10,11 +26,11 @@ ion-content {
 }
 
 [nav-view]  {
-  font-family: 'Sarpanch', cursive;
+  font-family: 'Play', sans-serif;
 }
 
 [nav-view] > .item {
-    font-family: 'Sarpanch', cursive;
+  font-family: 'Play', sans-serif;
 } 
 
 .dash-logo {
@@ -22,12 +38,17 @@ ion-content {
 
 }
 
+.dashitems {
+  box-shadow: 10px 20px 20px rgba(50,0,0, .4) !important;
+  margin-bottom: 10px;
+}
+
 p {
-    font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 h1 {
-      font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 .log-header {
@@ -38,11 +59,11 @@ h1 {
 
 .dash-header {
     font-family: 'Monofett', cursive;
-  text-shadow: 1px 40px rgba(50,0,200, .9), 1px 20px rgba(200,0,0, .7);
   font-size: 30px;
   color: rgba(0,0,0, .9);
     text-align: center;
     margin-left: 90px;
+    letter-spacing: 7px;
 }
 
 .main-logo {
@@ -51,20 +72,10 @@ h1 {
   margin-top: 50px;
 }
 
-/*.eventDash {
-  padding-top: 100px;
-}*/
-
-nav {
-  margin-bottom: 60px;
-}
-
-.item {
-  background: ;
-}
-
 .message-name {
   font-style: bold;
+  /*display: inline;*/
+  margin-right: 30px !important;
 }
 
 .message-img {
@@ -73,16 +84,20 @@ nav {
   border-radius: 100%;
 }
 
+.time {
+  font-size: 10px !important;
+  margin-left: 70% !important;
+}
+
+.message {
+  margin-bottom: 10px !important;
+}
+
 .main-pic {
   width: 80px;
   height: 80px;
   border-radius: 100%;
   box-shadow: 10px 10px 10px rgba(0,0,0, .4);
-}
-
-.myMessage {
-	background-color: rgba(0,0,230,.1);
-  border-radius: 5px;
 }
 
 [nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
@@ -106,10 +121,7 @@ nav {
 }
 
 .padding, .had-header {
-  font-family: 'Sarpanch', cursive;
-/*    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0, .9)),
-    url('https://upload.wikimedia.org/wikipedia/commons/8/89/The_Band_(1969).png')
-    no-repeat center / cover fixed*/
+font-family: 'Play', sans-serif;
 }
 
 /*MODAL SLIDE*/
@@ -134,9 +146,9 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
   margin-top: 94%;
 }
 
-.profile {
-  /*height: 50px;*/
-  /*background: linear-gradient(rgba(100, 20, 20, .7), rgba(100, 20, 20, .7)), url(http://i.imgur.com/Nr8t4RN.jpg) no-repeat top / cover fixed*/
+.myMessage {
+  background-color: rgba(52, 152, 219,.2);
+  border-radius: 5px;
 }
 
 .event-list {
@@ -149,7 +161,7 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 }
 
 .cal-header {
-  font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 ion-item.slider-pager-page:only-of-type{
@@ -157,24 +169,21 @@ display:none;
 }
 
 input[type="text"]::-webkit-input-placeholder {
-    font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 input[type="text"]:-moz-placeholder { /* Firefox 18- */
-      font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
-    font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
 input[type="text"]:-ms-input-placeholder {  
-     font-family: 'Sarpanch', cursive;
+font-family: 'Play', sans-serif;
 }
 
-.bar { background-image: none !important; }
-
-.dashitems {
-  /*background-color: #1e90ff;*/
-  /*color: rgba(255,255,255, .8);*/
+.dashList {
+  margin-top: 100px !important;
 }
