@@ -21,12 +21,12 @@
 	   <div class="item" ion-datetime-picker ng-model="startTimeValue">
                 <i class="icon"></i>
                 Start Time: 
-                <strong>{{startTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+                <strong>{{startTimeValue| date: "MM-dd-yyyy H:mm"}}</strong>
         </div>
  	   <div class="item" ion-datetime-picker ng-model="endTimeValue">
                 <i class="icon ion-icon-clock"></i>
                 End Time: 
-                <strong>{{endTimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+                <strong>{{endTimeValue| date: "MM-dd-yyyy H:mm"}}</strong>
         </div>
         <label ng-show="type === 'Tour'" class="item item-input">
               <input type="text" placeholder="Tour Locations" ng-model="tourLocation">
