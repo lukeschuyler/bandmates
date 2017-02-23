@@ -95,11 +95,9 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
     /* Listen for broadcasted messages */
 
     $scope.$on('modal.shown', function(event, modal) {
-      console.log('Modal ' + modal.id + ' is shown!');
     });
 
     $scope.$on('modal.hidden', function(event, modal) {
-      console.log('Modal ' + modal.id + ' is hidden!');
     });
 
     // Cleanup the modals when we're done with them (i.e: state change)
@@ -117,7 +115,6 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
 				$location.url('/auth/login')
 			})
 			.catch(function(){
-				console.log('toast')
 			})
 	}
 
@@ -131,13 +128,10 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
     uploadTask.on('state_changed', function(snapshot){
 
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
-          console.log('Upload is paused');
           break;
         case firebase.storage.TaskState.RUNNING: // or 'running'
-          console.log('Upload is running');
           break;
       }
     }, function(error) {
@@ -165,7 +159,6 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
              $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
             .then(function (success) {
               // success 
-              console.log('success')
               var imageBlob = new Blob([success], {type : 'image/jpeg'})
 
               saveToFirebase(imageBlob, fileName, function(_response) {
