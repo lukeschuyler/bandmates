@@ -17,6 +17,10 @@ ion-content {
     padding-bottom: 80px !important;
 }
 
+.timeRow {
+  height: 10px;
+}
+
 .smallPic {
   height: 32px;
   width: 32px;
@@ -87,7 +91,6 @@ font-family: 'Play', sans-serif;
 
 .timeStamp {
   font-size: 10px !important;
-  margin-left: 20% !important;
 }
 
 .message {
