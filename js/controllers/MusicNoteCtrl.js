@@ -25,7 +25,7 @@ bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory, $cordovaF
 		function success(data) {
 	      console.log(JSON.stringify(data.exportedurl));
 	      console.log(data.exportedurl)
-	       var fileName = data
+	       var fileName = JSON.stringify(data.exportedurl)
            $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
            		.then(function(success) {
 			       var audioBlob = new Blob([success], {type : 'audio/m4a'})
