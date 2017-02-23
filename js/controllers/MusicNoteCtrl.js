@@ -1,4 +1,4 @@
-bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory) {
+bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory, $cordovaFile) {
 	ProjectFactory.getProjects()
 		.then(function(val) {
 			$scope.projects = Object.keys(val).map(function(key) {
@@ -17,13 +17,32 @@ bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory) {
 	var icloud = 'false' // Will only show songs available locally on device.
 
 
-		function error(e) {
-	      console.log(e);
-	    }
+	function error(e) {
+      console.log(e);
+      console.log('error')
+    }
+
 		function success(data) {
-	      console.log(JSON.stringify(data));
+	      console.log(JSON.stringify(data.exportedurl));
+	      console.log(data.exportedurl)
+	       var fileName = data
+           $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
+           		.then(function(success) {
+			       var audioBlob = new Blob([success], {type : 'audio/m4a'})
+		              saveToFirebase(audioBlob, fileName, function(_response) {
+		                if(_response) {
+		                alert(_response)
+		                  $scope.loadingAudio = false;
+		                  $scope.audioLoaded = true;
+		                  $scope.$apply()
+		                } else {
+		                	alert('fail')
+		                }
+              })
+           		})
 	    }
-		window.plugins.iOSAudioPicker.getAudio(success,error,multiple,icloud);
+		window.plugins.mediapicker.getAudio(success,error,multiple,icloud);
+
 	}
 
 	function saveToFirebase(_audioBlob, _filename, _callback) {

@@ -15,9 +15,9 @@
               <input type="password" placeholder="Password" ng-model="password">
           </label>
             <label class="item item-input item-avatar-left item-icon-right"><span ng-show="!loadingPic && !picLoaded">Upload Profile Image</span>
-              <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
-              <div ng-show="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
-              <span ng-show="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
+              <img ng-if="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
+              <div ng-if="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
+              <span ng-if="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
               <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
             </label>
       </div>
