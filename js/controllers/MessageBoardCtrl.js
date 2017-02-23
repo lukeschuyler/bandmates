@@ -7,6 +7,7 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 			$scope.name = $scope.userArray[0].firstName
 		})
 
+	$scope.now;
 
 	// MessageFactory.getAvatars($stateParams.bandId)
 	// 	.then((val) => {

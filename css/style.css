@@ -1,21 +1,20 @@
 ion-content {
-  background: linear-gradient(rgba(255,255,255, .95), rgba(255,255,255,.95)), url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTg_h1gD0qb2UcqTvGrIOKfOJ9-TI76qgmfJciY19k_4q2NliSd3D8nb0Q);
     font-family: 'Play', sans-serif !important;
 }
 
 .upcoming {
   font-size: 20px;
-  letter-spacing: 0px;
-  margin-top: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  margin-left: 90px !important;
   font-family: 'Play', sans-serif;
+  text-shadow: 5px 5px 5px rgba(0,0,0,.3);
+
 }
 
 .profile {
     height: 80px !important;
     padding-bottom: 80px !important;
-  background: -webkit-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
-  background: -o-linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
-  background: linear-gradient(rgba(255,255,255, .99), rgba(255,255,255, .01));
 }
 
 .smallPic {
@@ -42,7 +41,7 @@ ion-content {
   box-shadow: 10px 20px 20px rgba(50,0,0, .4) !important;
   margin-bottom: 10px;
   border-radius: 20px;
-  /*background-color: rgba(100,0,0,.7)*/
+  background-color: rgba(255,255,255,.8);
 }
 
 p {
@@ -61,11 +60,12 @@ font-family: 'Play', sans-serif;
 
 .dash-header {
     font-family: 'Monofett', cursive;
-  font-size: 30px;
-  color: rgba(0,0,0, .9);
+    font-size: 30px;
+    color: rgba(0,0,0, .9);
     text-align: center;
-    margin-left: 90px;
-    letter-spacing: 7px;
+    margin-left: 84px;
+    letter-spacing: 10px;
+    text-shadow: 0px 25px #ef473a;
 }
 
 .main-logo {
@@ -76,7 +76,6 @@ font-family: 'Play', sans-serif;
 
 .message-name {
   font-style: bold;
-  /*display: inline;*/
   margin-right: 30px !important;
 }
 
@@ -86,9 +85,9 @@ font-family: 'Play', sans-serif;
   border-radius: 100%;
 }
 
-.time {
+.timeStamp {
   font-size: 10px !important;
-  /*margin-left: 70% !important;*/
+  margin-left: 20% !important;
 }
 
 .message {
@@ -150,7 +149,7 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 }
 
 .myMessage {
-  background-color: rgba(52, 152, 219,.2);
+  background-color: rgba(52, 100, 255,.2);
   border-radius: 5px;
 }
 
@@ -189,4 +188,259 @@ font-family: 'Play', sans-serif;
 
 .dashContent {
   padding-top: 70px !important;
+}
+
+/****************************************
+                  PARALLAX
+**********************************************/
+
+.text-muted{
+    color:#6d6d72 !important;
+}
+/* === Color Themes === */
+.color-gray {
+  color: #8e8e93 !important;
+}
+.color-red {
+  color: #ff3b30 !important;
+}
+
+.bg-color-red {
+  background-color: #ff3b30 !important;
+}
+.color-white {
+  color: #ffffff !important;
+}
+.color-yellow {
+  color: #ffcc00 !important;
+}
+.bg-color-yellow {
+  background-color: #ffcc00 !important;
+}
+.color-green {
+  color: #4cd964 !important;
+}
+
+.color-orange {
+  color: #ff9500 !important;
+}
+.bg-color-orange {
+  background-color: #ff9500 !important;
+}
+.color-blue {
+  color: #007aff !important;
+}
+.bg-color-blue {
+  background-color: #007aff !important;
+}
+.color-lightblue {
+  color: #5ac8fa !important;
+}
+.bg-color-lightblue {
+  background-color: #5ac8fa !important;
+}
+
+.color-bluegray{
+  color: #607d8b !important;
+}
+.bg-color-bluegray{
+  background-color: #607d8b !important;
+}
+.color-night{
+  color: #2B1B17 !important;
+}
+.color-black{
+  color: black !important; 
+}
+
+.bg-color-white {
+  background-color: #ffffff;
+}
+.bg-color-green {
+  background-color: #4cd964 !important;
+}
+
+/*Profile Starts*/
+.img-circle {
+  border-radius: 50%;
+}
+
+
+.about-header {
+  /*background-color: #444;*/
+  height: 60px;
+
+  overflow: hidden;
+}
+.about-image {
+  width: 100%;
+  /*height: 220px;*/
+  height: 100%;
+  object-fit:cover;
+}
+.like-btn{
+    top: 130px;
+    display: block;
+    position: absolute;
+}
+
+
+.like-button {
+    border-radius: 500px;
+    width: 70px;
+    float: right;
+    height: 70px;
+    z-index: -200;
+    text-align: center;
+    overflow: hidden;
+    clear: both;
+    color: white;
+    border: 5px solid #CBD0D3;
+}
+.like-button i{
+    font-size: 40px;
+    margin: 11px 0;
+    display: block;
+}
+.like-button-with-text {
+    border-radius: 500px;
+    width: 70px;
+    float: right;
+    height: 70px;
+    z-index: -200;
+    text-align: center;
+    overflow: hidden;
+    clear: both;
+    color: white;
+    border: 5px solid #CBD0D3;
+}
+.like-button-with-text i{
+    font-size: 35px;
+    margin: 4px 0;
+    display: block;
+    margin-bottom: -3px !important;
+}
+.like-button-with-text span{
+    font-size: 11px;
+}
+
+.profile-media {background: #000; min-height: 237px; overflow: hidden; position: relative;}
+.profile-media .profile-background-image {
+  opacity: 0.3;
+  position: absolute;
+  object-cover:fit;
+  top:-100%;
+  left:0;
+  right: 0;
+  bottom:-100%;
+  margin: auto;
+}
+.profile-media .profile-details {text-align: center; position: absolute; width: 100%; color: #fff; padding: 20px 5% 0 5%;}
+.profile-media .profile-details .profile-image {width: 76px;height:76px;object-cover:fit; border: 4px solid rgba(255, 255, 255, 0.9);}
+
+/* === Content Block === */
+.content-block {
+  margin: 20px 0;
+  color: #6d6d72;
+}
+.content-block-title {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #6d6d72;
+  margin: 35px 15px 10px;
+}
+.content-block-title + .list-block,
+.content-block-title + .content-block,
+.content-block-title + .card {
+  margin-top: 10px;
+}
+.content-block-inner {
+  background: #fff;
+  padding: 10px 15px;
+  /*margin-left: -15px;*/
+  width: 100%;
+  position: relative;
+  color: #000;
+}
+.content-block-inner:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #c8c7cc;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+html.ios-gt-6.pixel-ratio-2 .content-block-inner:before {
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+html.ios-gt-6.pixel-ratio-3 .content-block-inner:before {
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33);
+}
+.content-block-inner:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #c8c7cc;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+html.ios-gt-6.pixel-ratio-2 .content-block-inner:after {
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+html.ios-gt-6.pixel-ratio-3 .content-block-inner:after {
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33);
+}
+.content-block.inset {
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 7px;
+}
+.content-block.inset .content-block-inner {
+  border-radius: 7px;
+}
+.content-block.inset .content-block-inner:before {
+  display: none;
+}
+.content-block.inset .content-block-inner:after {
+  display: none;
+}
+@media all and (min-width: 768px) {
+  .content-block.tablet-inset {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 7px;
+  }
+  .content-block.tablet-inset .content-block-inner {
+    border-radius: 7px;
+  }
+  .content-block.tablet-inset .content-block-inner:before {
+    display: none;
+  }
+  .content-block.tablet-inset .content-block-inner:after {
+    display: none;
+  }
 }

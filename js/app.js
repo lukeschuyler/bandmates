@@ -176,58 +176,22 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
 
 
 bandmates.directive('headerShrink', function($document) {
-  var fadeAmt;
-
-  var shrink = function(header, content, amt, max) {
-    amt = Math.min(max, amt);
-    fadeAmt = 1 - amt / max;
-    ionic.requestAnimationFrame(function() {
-      header.style[ionic.CSS.TRANSFORM] = 'translate3d(0, -' + amt + 'px, 0)';
-      for(var i = 0, j = header.children.length; i < j; i++) {
-        header.children[i].style.opacity = fadeAmt;
-      }
-    });
-  };
-
   return {
     restrict: 'A',
     link: function($scope, $element, $attr) {
-      var starty = $scope.$eval($attr.headerShrink) || 0;
-      var shrinkAmt;
-
-      var amt;
-
-      var y = 0;
-      var prevY = 0;
-      var scrollDelay = 0.4;
-
-      var fadeAmt;
-      
-      var header = $document[0].body.querySelector('.bar-header');
-      var headerHeight = header.offsetHeight;
-      
-      function onScroll(e) {
-        var scrollTop = e.detail.scrollTop;
-
-        if(scrollTop >= 0) {
-          y = Math.min(headerHeight / scrollDelay, Math.max(0, y + scrollTop - prevY));
-        } else {
-          y = 0;
+      var resizeFactor, scrollFactor, blurFactor;
+      var header = $document[0].body.querySelector('.about-header');
+      $scope.$on('userDetailContent.scroll', function(event,scrollView) {
+        if (scrollView.__scrollTop >= 0) {
+          scrollFactor = scrollView.__scrollTop/3.5;
+          header.style[ionic.CSS.TRANSFORM] = 'translate3d(0, +' + scrollFactor + 'px, 0)';
+        } else if (scrollView.__scrollTop > -70) {
+          resizeFactor = -scrollView.__scrollTop/100 + 0.99;
+          // blurFactor = -scrollView.__scrollTop/50;
+          header.style[ionic.CSS.TRANSFORM] = 'scale('+resizeFactor+','+resizeFactor+')';
+          // header.style.webkitFilter = 'blur('+blurFactor+'px)';
         }
-        console.log(scrollTop);
-
-        ionic.requestAnimationFrame(function() {
-          fadeAmt = 1 - (y / headerHeight);
-          header.style[ionic.CSS.TRANSFORM] = 'translate3d(0, ' + -y + 'px, 0)';
-          for(var i = 0, j = header.children.length; i < j; i++) {
-            header.children[i].style.opacity = fadeAmt;
-          }
-        });
-
-        prevY = scrollTop;
-      }
-
-      $element.bind('scroll', onScroll);
+      });
     }
   }
 })

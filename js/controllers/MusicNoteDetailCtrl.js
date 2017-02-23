@@ -8,9 +8,4 @@ bandmates.controller('MusicNoteDetailCtrl', function($scope, ProjectFactory, use
 			$scope.explicitlyTrustedHtml = $sce.trustAsHtml(
 		`<iframe src="${$scope.project.url}"></iframe>`)
 		})  
-
-
-
-
-
 })

@@ -3,7 +3,6 @@ bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory) {
 		.then(function(val) {
 			$scope.projects = Object.keys(val).map(function(key) {
 				val[key].key = key
-				console.log(val[key].key)
 				return val[key]
 			})
 		})

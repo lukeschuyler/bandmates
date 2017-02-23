@@ -1,4 +1,8 @@
-bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory, $cordovaToast, $cordovaSocialSharing) {
+bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory, $cordovaToast, $cordovaSocialSharing, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
+
+	$scope.$on('$ionicView.enter', function(e) {
+ 		$scope.enter()
+ 	});
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
@@ -58,7 +62,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  	} 
 
  	$scope.enter = function() {
-		 $scope.$on('$ionicView.enter', function(e) {
 		    $scope.user = user
 			AuthFactory.getUserPic(user.uid)
 				.then(function(val) {
@@ -96,8 +99,17 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 					})
 				})
 			})
-		});
+
  	}
 
- 	$scope.enter()
+
+  $ionicSlideBoxDelegate.update();
+  $scope.onUserDetailContentScroll = onUserDetailContentScroll
+
+
+  function onUserDetailContentScroll(){
+    var scrollDelegate = $ionicScrollDelegate.$getByHandle('userDetailContent');
+    var scrollView = scrollDelegate.getScrollView();
+    $scope.$broadcast('userDetailContent.scroll', scrollView);
+  }
 })

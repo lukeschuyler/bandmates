@@ -3,7 +3,7 @@
     <ion-nav-buttons side="right">      
       <button class="button button-icon ion-ios-plus" ng-click="openModal(1)"></button>
       <button ng-if="!userArray[0].image" class="button button-icon button-clear ion-ios-person" ng-click="openModal(2)"></button>
-      <i ng-if="userArray[0].image" class="icon-button" ng-click="openModal(2)"><img class="smallPic" src="{{userArray[0].image}}"></i>
+      <i ng-if="userArray[0].image" class="icon-button" ng-click="openModal(2)"><img class="smallPic" src="{{userArray[0].image}}" ng-show="vm.isImageVisible" imageonLoad></i>
     </ion-nav-buttons>
 </ion-nav-bar>
 

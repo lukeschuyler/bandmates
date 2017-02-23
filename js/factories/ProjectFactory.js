@@ -7,7 +7,6 @@ bandmates.factory('ProjectFactory', function($http) {
 				})
 		},
 		getProject(key) {
-			console.log(key)
 			return $http.get(`https://mush-e7c8f.firebaseio.com/projects/${key}.json`)
 				.then(function (val) {
 					console.log(val)
