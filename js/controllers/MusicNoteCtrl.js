@@ -11,6 +11,7 @@ bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory, $cordovaF
 
 	$scope.getAudio = function() {
 
+	 window.plugins.mediapicker.getAudio(success,error,multiple,icloud);
 
 	var multiple = 'false' // Will allow user to select only one song.
 
@@ -22,27 +23,30 @@ bandmates.controller('MusicNoteCtrl', function($scope, ProjectFactory, $cordovaF
       console.log('error')
     }
 
-		function success(data) {
-	      console.log(JSON.stringify(data.exportedurl));
-	      console.log(data.exportedurl)
-	       var fileName = JSON.stringify(data.exportedurl)
-           $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
-           		.then(function(success) {
-			       var audioBlob = new Blob([success], {type : 'audio/m4a'})
-		              saveToFirebase(audioBlob, fileName, function(_response) {
-		                if(_response) {
-		                alert(_response)
-		                  $scope.loadingAudio = false;
-		                  $scope.audioLoaded = true;
-		                  $scope.$apply()
-		                } else {
-		                	alert('fail')
-		                }
-              })
-           		})
+	function success(data) {
+	   alert(data[0].exportedurl.replace(/^.*[\\\/]/, ''))
+ 	   var fileName = data[0].exportedurl.replace(/^.*[\\\/]/, '')
+ 	   alert(fileName, 'fileName')
+ 	   alert($cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName))
+       console.log($cordovaFile)
+       console.log(cordova.file.tempDirectory)
+       $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
+   		.then(function(success) {
+   			alert('success')
+   		   alert(success)
+	       var audioBlob = new Blob([success], {type : 'audio/m4a'})
+              saveToFirebase(audioBlob, fileName, function(_response) {
+                if(_response) {
+                alert(_response)
+                  $scope.loadingAudio = false;
+                  $scope.audioLoaded = true;
+                  $scope.$apply()
+                } else {
+                	alert('fail')
+                }
+      		})
+   		})
 	    }
-		window.plugins.mediapicker.getAudio(success,error,multiple,icloud);
-
 	}
 
 	function saveToFirebase(_audioBlob, _filename, _callback) {

@@ -4,7 +4,7 @@
   <div ng-show="!userBandNames.length">
     <ion-content class="dashContent has-subheader">
       <ion-item class="item-borderless eventDash">
-       <div ng-show="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner></div> 
+       <div ng-show="!userBandNames.length && !giveUp"><div class="spin"><ion-spinner icon="spiral"></ion-spinner></div></div> 
          <div ng-show="giveUp && !userBandNames.length">
            <h4>No Events in Calendar</h4>
          </div>
@@ -15,7 +15,7 @@
   <div ng-show="userBandNames.length">
   <ion-content overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5">
       <div class="about-header">
-          <div class="animated fadeIn profile">
+          <div class="profile">
                  <div class="row">  
                   <div class="dash-logo">
                       <div class="animated dash-header">Bandmates</div>

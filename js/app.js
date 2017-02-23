@@ -66,7 +66,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
     .state('tab', {
-      cache: false,
+      // cache: false,
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html',

@@ -2,12 +2,13 @@
   <ion-content class="padding">
 
 	<ion-list class="list-borderless" ng-if="visible" ng-repeat="message in messagez track by $index">
-		<div ng-if="message.newTime.setHours(0,0,0,0) == messagez[$index - 1].setHours(0,0,0,0)" class="timeRow row">
+		<div ng-if="message.band == band" >
+		<div class="timeRow row">
 			<div class="col col-50 col-offset-33 timeStamp">
 				<div>{{message.newTime}}</div>
 			</div>
 		</div>
-		<ion-item ng-if="message.band == band" ng-class="{ myMessage: message.name == name}" class="message animated fadeIn item-remove-animate item-avatar item-text-wrap item-icon-right item-borderless">
+		<ion-item ng-class="{ myMessage: message.name == name}" class="message animated fadeIn item-remove-animate item-avatar item-text-wrap item-icon-right item-borderless">
 			<img ng-if="message.userImage" class="message-img" src="{{ message.userImage }}">
 			<img ng-if="!message.userImage" class="message-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png">
 			
@@ -18,6 +19,7 @@
 				</div>
 			</div>
 		</ion-item>
+	</div>
 	</ion-list>
 	
   </ion-content>
