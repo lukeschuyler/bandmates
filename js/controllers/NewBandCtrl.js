@@ -123,7 +123,7 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
 
     var storageRef = firebase.storage().ref();
 
-    var uploadTask = storageRef.child('images/' + _filename).put(_imageBlob);
+    var uploadTask = storageRef.child('images/' +  new Date().getTime() + _filename).put(_imageBlob);
 
     uploadTask.on('state_changed', function(snapshot){
 
