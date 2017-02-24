@@ -40,12 +40,7 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	$scope.openModal = function(bandName, bandImage) {
 	  var boo = false
 	  $scope.id = bandName;
-	  $scope.image = null
-	  $scope.location = null
-	  $scope.startTimeValue = null
-	  $scope.type = null
-	  $scope.endTimeValue = null 
-	  $scope.eventName = null
+
 	  $scope.modal.show();
 
 
@@ -71,12 +66,7 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		  });
 		  // Execute action on hide modal
 		  $scope.$on('modal.hidden', function() {
-			  $scope.image = null
-			  $scope.location = null
-			  $scope.startTimeValue = null
-			  $scope.type = null
-			  $scope.endTimeValue = null 
-			  $scope.eventName = null
+
 		  });
 		  // Execute action on remove modal
 		  $scope.$on('modal.removed', function() {

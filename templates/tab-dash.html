@@ -28,7 +28,7 @@
           <ion-slide-box show-pager>
             <ion-slide class="item-icon-right item-avatar item dashitems" on-slide-changed="showDets($index)">
               <!-- ICONS DENOTING TYPE OF MEET -->
-              <img src="{{event.image}}">
+              <img ng-show="vm.isImageVisible" src="{{event.image}}" imageonLoad>
                <div class="row"> 
                 <div class="col col-offset-3">
                  <h2>{{event.bandName}}</h2>
