@@ -10,6 +10,4 @@ $scope.$on("$ionicView.enter", function () {
 		 	})
 		})
     });
-
-
 })
