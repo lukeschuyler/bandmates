@@ -25,16 +25,15 @@ bandmates.factory('NewBandFactory', function($http, $cordovaToast, $q) {
 					return $q ((resolve, reject) => {
 						if (val.data) {
 							if (val.data.password == password) {
-									$http({
+									 $http({
 										method : 'POST',
 										url : `https://mush-e7c8f.firebaseio.com/bands.json`,
 										data : { bandName : bandName, userId : userId, image: val.data.image }
 									})
 								// 	.then(function(){
-									
 								// 	$http({
 								// 		method : 'POST',
-								// 		url : `https://mush-e7c8f.firebaseio.com/bandpass/${bandName}/userimages.json`,
+								// 		url : `https://mush-e7c8f.firebaseio.com/${bandName}UserImages.json`,
 								// 		data : image
 								// 	})
 								// })

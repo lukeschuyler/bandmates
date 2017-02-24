@@ -29,6 +29,7 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
   $scope.leaveBand = function(key, band) {
     BandFactory.leaveBand(key)
       .then(function() {
+        $scope.closeModal(2)
         $cordovaToast.show("Successfully left " + band + ". Maybe one day you'll 'get the band back together.", 'long', 'bottom')
       })
       .catch(function(){
@@ -123,7 +124,7 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
 
     var storageRef = firebase.storage().ref();
 
-    var uploadTask = storageRef.child('images/' + _filename).put(_imageBlob);
+    var uploadTask = storageRef.child('images/' +  new Date().getTime() + _filename).put(_imageBlob);
 
     uploadTask.on('state_changed', function(snapshot){
 

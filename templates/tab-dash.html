@@ -22,13 +22,13 @@
                 </div>
           </div>
     </div>
-    <div class="upcoming">Upcoming Events...</div>
+    <div class="upcoming">Upcoming Events</div>
       <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 5">
         <ion-item class="animated fadeIn main-items item-borderless">
           <ion-slide-box show-pager>
             <ion-slide class="item-icon-right item-avatar item dashitems" on-slide-changed="showDets($index)">
               <!-- ICONS DENOTING TYPE OF MEET -->
-              <img src="{{bands[0].image}}">
+              <img ng-show="vm.isImageVisible" src="{{event.image}}" imageonLoad>
                <div class="row"> 
                 <div class="col col-offset-3">
                  <h2>{{event.bandName}}</h2>
@@ -48,7 +48,7 @@
                     <h2 ng-show="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>
                     <h2 ng-show="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</h2>
                 </div>
-                 <div class="col col-offset-20"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName)" class="button-icon icon right ion-ios-redo"><label>Share</label></button></div>
+                 <div class="col col-offset-20"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName, event.image)" class="button-icon icon right ion-ios-redo"><label>Share</label></button></div>
                </div>
             </ion-slide>
           </ion-slide-box>

@@ -2,7 +2,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
-	 $scope.giveUp = false;
+	 // $scope.giveUp = false;
 	 $scope.name;
 	 $scope.now;
 	 $scope.scrolled = false;
@@ -11,10 +11,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 	$scope.scrolled = !$scope.scrolled;
 	 }
 
-	 $scope.share = function(title, type, location, time, bandName) {
+	 $scope.share = function(title, type, location, time, bandName, image) {
 	 	let message = bandName + ' ' + title + ' ' + type + ' ' + location +  ' @' + time
 	 	  $cordovaSocialSharing
-		    .share(message) // Share via native share sheet
+		    .share(message, null, image) // Share via native share sheet
 		    .then(function(result) {
 
 		    }, function(err) {
@@ -35,11 +35,11 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  		}
 
 
-	setTimeout(function() {
-	 	if ($scope.userBandNames.length == 0) {
-	 		$scope.enter()
-	 	}
-	 }, 3000)
+	// setTimeout(function() {
+	//  	if ($scope.userBandNames.length == 0) {
+	//  		$scope.enter()
+	//  	}
+	//  }, 3000)
 
  	$scope.dateFilter = function(date){
  		return new Date(date)
@@ -49,17 +49,8 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
     	$ionicSlideBoxDelegate.next();
  	} 
 
- 	$scope.enter = function() {
-		    $scope.user = user
-			AuthFactory.getUserPic(user.uid)
-				.then(function(val) {
-					$scope.userArray = Object.keys(val).map(function(key) {
-						return val[key]
-					})
-					$scope.name = $scope.userArray[0].firstName + $scope.userArray[0].lastName
-				})
-				.then(function() {
-					BandFactory.getBands(user.uid, $scope.name)
+ 	 $scope.enter = function() {
+			BandFactory.getBands(user.uid)
 				.then(function(val) {
 					$scope.userBands = Object.keys(val).map(function(key) {
 						return val[key]
@@ -86,7 +77,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 						})
 					})
 				})
-			})
 
  	}
 
