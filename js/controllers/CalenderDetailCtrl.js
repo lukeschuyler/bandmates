@@ -41,7 +41,6 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
 
         $scope.changeMode = function (mode) {
             $scope.calendar.mode = mode;
-                console.log($scope.calendar)
         };
 
         $scope.loadEvents = function () {
@@ -54,7 +53,6 @@ bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $statePa
 
         $scope.onViewTitleChanged = function (title) {
             $scope.viewTitle = title;
-            console.log($scope.viewTitle)
         };
 
         $scope.today = function () {

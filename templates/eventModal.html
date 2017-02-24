@@ -10,7 +10,7 @@
 		      Event Type
 		      </div>
 		      <select ng-model="type">
-		        <option selected>Show</option>
+		      <option selected>Show</option>
 			    <option>Tracking Session</option>
 			    <option>Mixing Session</option>
 			    <option>Practice</option>
@@ -36,9 +36,12 @@
         <label class="item item-input">
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>
+        
+          <label ng-hide="type !== 'Practice'" class="item item-input">
+              <input type="text" placeholder="Location" ng-model="location">
+          </label>
 
-
-        <label class="item item-input">
+        <label ng-hide="type === 'Practice'" class="item item-input">
             <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
                    ng-model="location"
                    item-value-key="name"

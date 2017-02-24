@@ -56,6 +56,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     })
 
     .state('auth.register', {
+      cache: false,
       url: '/register',
       views: {
         'auth': {
@@ -66,7 +67,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
     .state('tab', {
-      // cache: false,
+      cache: false,
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html',
@@ -85,19 +86,12 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl',
-        // resolve: {
-        //   user (AuthFactory, $location) {
-        //     return AuthFactory.getUser()
-        //       .catch(() => $location.url('/auth/login'))
-        //   }
-        // }
+        controller: 'DashCtrl'
       }
     }
   })
 
   .state('tab.bands', {
-    // cache:false,
       url: '/bands',
       views: {
         'tab-messageboards': {
@@ -112,29 +106,17 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
       views: {
         'tab-messageboards': {
           templateUrl: 'templates/band-messages.html',
-          controller: 'MessageBoardCtrl',
-          resolve: {
-            messages (MessageFactory, $stateParams) {
-             return MessageFactory.getMessages($stateParams.bandId)
-            }
-          }
+          controller: 'MessageBoardCtrl'
         }
       }
     })
 
   .state('tab.calenders', {
-    // cache:false,
     url: '/calenders',
     views: {
       'tab-calenders': {
         templateUrl: 'templates/calenders.html',
-        controller: 'CalenderCtrl',
-        resolve: {
-            bands (BandFactory) {
-              const userId = firebase.auth().currentUser.uid
-              return BandFactory.getBands(userId)
-            }
-        }
+        controller: 'CalenderCtrl'
       }
     }
   })
@@ -172,45 +154,4 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/auth/login');
 
-});
-
-
-bandmates.directive('headerShrink', function($document) {
-  return {
-    restrict: 'A',
-    link: function($scope, $element, $attr) {
-      var resizeFactor, scrollFactor, blurFactor;
-      var header = $document[0].body.querySelector('.about-header');
-      $scope.$on('userDetailContent.scroll', function(event,scrollView) {
-        if (scrollView.__scrollTop >= 0) {
-          scrollFactor = scrollView.__scrollTop/3.5;
-          header.style[ionic.CSS.TRANSFORM] = 'translate3d(0, +' + scrollFactor + 'px, 0)';
-        } else if (scrollView.__scrollTop > -70) {
-          resizeFactor = -scrollView.__scrollTop/100 + 0.99;
-          // blurFactor = -scrollView.__scrollTop/50;
-          header.style[ionic.CSS.TRANSFORM] = 'scale('+resizeFactor+','+resizeFactor+')';
-          // header.style.webkitFilter = 'blur('+blurFactor+'px)';
-        }
-      });
-    }
-  }
-})
-
-
-bandmates.directive('imageonload', function() {
-    return {
-        restrict: 'A',
-        scope: {
-          ngShow : '='
-        },
-        link: function(scope, element, attrs) {
-            element.bind('load', function() {
-                scope.$apply(function(){
-                    scope.ngShow = true;  
-                });
-            });
-            element.bind('error', function(){
-            });
-        }
-    };
 });
