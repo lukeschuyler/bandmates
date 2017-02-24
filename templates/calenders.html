@@ -11,7 +11,7 @@
           <img ng-show="vm.isImageVisible" ng-if="band.image" src="{{ band.image }}" imageonload>
         <a href="#/tab/calenders/{{band.bandName}}">Go To Calendar</a>
         <h2 class="bandName">{{ band.bandName }}</h2>
-        <button ng-click="openModal(band.bandName)" class="button button-icon icon right ion-ios-plus"></button>
+        <button ng-click="openModal(band.bandName, band.image)" class="button button-icon icon right ion-ios-plus"></button>
       </ion-item>
 	     
     </ion-list>

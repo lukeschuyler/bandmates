@@ -22,13 +22,13 @@
                 </div>
           </div>
     </div>
-    <div class="upcoming">Upcoming Events...</div>
+    <div class="upcoming">Upcoming Events</div>
       <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 5">
         <ion-item class="animated fadeIn main-items item-borderless">
           <ion-slide-box show-pager>
             <ion-slide class="item-icon-right item-avatar item dashitems" on-slide-changed="showDets($index)">
               <!-- ICONS DENOTING TYPE OF MEET -->
-              <img src="{{bands[0].image}}">
+              <img src="{{event.image}}">
                <div class="row"> 
                 <div class="col col-offset-3">
                  <h2>{{event.bandName}}</h2>

@@ -35,11 +35,11 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  		}
 
 
-	setTimeout(function() {
-	 	if ($scope.userBandNames.length == 0) {
-	 		$scope.enter()
-	 	}
-	 }, 3000)
+	// setTimeout(function() {
+	//  	if ($scope.userBandNames.length == 0) {
+	//  		$scope.enter()
+	//  	}
+	//  }, 3000)
 
  	$scope.dateFilter = function(date){
  		return new Date(date)
@@ -49,17 +49,8 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
     	$ionicSlideBoxDelegate.next();
  	} 
 
- 	$scope.enter = function() {
-		    $scope.user = user
-			AuthFactory.getUserPic(user.uid)
-				.then(function(val) {
-					$scope.userArray = Object.keys(val).map(function(key) {
-						return val[key]
-					})
-					$scope.name = $scope.userArray[0].firstName + $scope.userArray[0].lastName
-				})
-				.then(function() {
-					BandFactory.getBands(user.uid, $scope.name)
+ 	 $scope.enter = function() {
+			BandFactory.getBands(user.uid)
 				.then(function(val) {
 					$scope.userBands = Object.keys(val).map(function(key) {
 						return val[key]
@@ -86,7 +77,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 						})
 					})
 				})
-			})
 
  	}
 

@@ -53,12 +53,15 @@
                    items-removed-method="itemsRemoved(callback)"
                    max-selected-items="5"/>
         </label>
+        
+        <label class="item item-input item-thumbnail-left item-icon-right"><span ng-if="!loadingPic && !picLoaded">Event Image/Poster</span>
+          <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
+              <div ng-if="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
+              <span ng-if="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
+              <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
+        </label>
 
-
-	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false, clickedValueModel.item.description, tourLocations)"><i class="ion-ios-plus icon"></i>Create Event</button>
-<!-- 	            <div ng-repeat="place in tourLocations">
-         			 <button ng-click="deletePlace($index)" class="button button-small button-assertive">{{ place }}  x</button>
-              	</div> -->
+	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false, clickedValueModel.item.description, image)"><i class="ion-ios-plus icon"></i>Create Event</button>
 	  </div>
 	</ion-content>
 </ion-modal-view>
