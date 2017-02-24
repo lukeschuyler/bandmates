@@ -2,7 +2,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
-	 $scope.giveUp = false;
+	 // $scope.giveUp = false;
 	 $scope.name;
 	 $scope.now;
 	 $scope.scrolled = false;
@@ -11,10 +11,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 	$scope.scrolled = !$scope.scrolled;
 	 }
 
-	 $scope.share = function(title, type, location, time, bandName) {
+	 $scope.share = function(title, type, location, time, bandName, image) {
 	 	let message = bandName + ' ' + title + ' ' + type + ' ' + location +  ' @' + time
 	 	  $cordovaSocialSharing
-		    .share(message) // Share via native share sheet
+		    .share(message, null, image) // Share via native share sheet
 		    .then(function(result) {
 
 		    }, function(err) {

@@ -48,7 +48,7 @@
                     <h2 ng-show="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>
                     <h2 ng-show="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</h2>
                 </div>
-                 <div class="col col-offset-20"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName)" class="button-icon icon right ion-ios-redo"><label>Share</label></button></div>
+                 <div class="col col-offset-20"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName, event.image)" class="button-icon icon right ion-ios-redo"><label>Share</label></button></div>
                </div>
             </ion-slide>
           </ion-slide-box>
