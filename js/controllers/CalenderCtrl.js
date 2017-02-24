@@ -46,8 +46,14 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 
 
     $scope.createEvent = function(id, eventName, type, startTimeValue, endTimeValue, boo, location, image) {
+    	console.log(location)
+    	console.log($scope.practice)
     	if (!image) {
     		image = bandImage;
+    	}
+    	if (!location) {
+    		console.log()
+    		location = $scope.practice
     	}
 
     	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, location, image)

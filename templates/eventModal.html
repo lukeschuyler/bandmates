@@ -7,7 +7,7 @@
 	  <div class="list">
 		 <label class ="item item-input item-select">
 		      <div class= "input-label">
-		      Event Type
+		        Event Type
 		      </div>
 		      <select ng-model="type">
 		      <option selected>Show</option>
@@ -18,31 +18,27 @@
 			    <option>Tour</option>
 		      </select>
    		</label>
-	   <div class="item" ion-datetime-picker ng-model="startTimeValue">
+	   <div class="item" ion-datetime-picker am-pm  ng-model="startTimeValue">
                 <i class="icon"></i>
                 Start Time: 
-                <strong>{{startTimeValue| date: "MM-dd-yyyy H:mm"}}</strong>
+                <strong>{{startTimeValue| date: "yyyy-MM-dd h:mm a"}}</strong>
         </div>
- 	   <div class="item" ion-datetime-picker ng-model="endTimeValue">
+ 	   <div class="item" ion-datetime-picker am-pm  ng-model="endTimeValue">
                 <i class="icon ion-icon-clock"></i>
                 End Time: 
-                <strong>{{endTimeValue| date: "MM-dd-yyyy H:mm"}}</strong>
+                <strong>{{endTimeValue| date: "yyyy-MM-dd h:mm a"}}</strong>
         </div>
-        <label ng-show="type === 'Tour'" class="item item-input">
-              <input type="text" placeholder="Tour Locations" ng-model="tourLocation">
-              <span on-tap="addLocation(tourLocation)"><i class="button button-icon icon right ion-ios-plus"></i></span>
-        </label>
 
         <label class="item item-input">
               <input type="text" placeholder="Event Name" ng-model="eventName">
           </label>
         
-          <label ng-hide="type !== 'Practice'" class="item item-input">
-              <input type="text" placeholder="Location" ng-model="location">
+          <label ng-if="type === 'Practice'" class="item item-input">
+              <input type="text" placeholder="Location" ng-model="practice">
           </label>
 
-        <label ng-hide="type === 'Practice'" class="item item-input">
-            <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+        <label ng-if="type !== 'Practice'" class="item item-input">
+            <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="on"
                    ng-model="location"
                    item-value-key="name"
                    item-view-value-key="description"
@@ -62,6 +58,7 @@
         </label>
 
 	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false, clickedValueModel.item.description, image)"><i class="ion-ios-plus icon"></i>Create Event</button>
+      
 	  </div>
 	</ion-content>
 </ion-modal-view>
