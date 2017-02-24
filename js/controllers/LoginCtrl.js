@@ -67,13 +67,11 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 
 		  $cordovaImagePicker.getPictures(options)
 		    .then(function (results) {
-					
 		        var fileName = results[0].replace(/^.*[\\\/]/, '')
 		         $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
 			      .then(function (success) {
 					$scope.loadingPic = true;
 			        var imageBlob = new Blob([success], {type : 'image/jpeg'})
-
 			        saveToFirebase(imageBlob, fileName, function(_response) {
 			        	if(_response) {
 			        		$scope.image = _response.downloadURL

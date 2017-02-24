@@ -1,22 +1,25 @@
 <ion-view view-title="{{ band }} Chat">
   <ion-content class="padding">
-	<!-- <ion-list class="list-borderless" ng-if="visible"> -->
-		<ion-item ng-if="message.band == band" ng-class="{ myMessage: message.name == name}" class="message animated fadeIn item-remove-animate item-avatar item-text-wrap item-icon-right item-borderless" ng-repeat="message in messagez track by $index">
-			<img ng-if="message.userImage" class="message-img" src="{{ message.userImage }}">
-			<img ng-if="!message.userImage" class="message-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png">
-			
-			<div class="row">
-				<div class="col-60 col">
-					<p class="message-name">{{ message.name }}</p>
-					<h4 class="messageContent">{{ message.message }}</h4>
-				</div>
-				<div class="col col-40 timeStamp">
+
+	<ion-list class="list-borderless" ng-if="visible" ng-repeat="message in messagez track by $index">
+		<div ng-if="message.band == band" >
+			<div ng-show="$index % 3 == 0" class="timeRow">
+				<div class="col col-50 col-offset-33 timeStamp">
 					<div>{{message.newTime}}</div>
 				</div>
 			</div>
-			<!-- <i ng-click="liked = !liked" class="icon ion-android-favorite-outline"></i> -->
-		</ion-item>
-	<!-- </ion-list> -->
+			<ion-item ng-class="{ myMessage: message.name == name}" class="message animated fadeIn item-remove-animate item-avatar item-text-wrap item-icon-right item-borderless">
+				<img ng-show="vm.isImageVisible"  ng-if="message.userImage" class="message-img" src="{{ message.userImage }}" imageonLoad>
+				<img ng-if="!message.userImage" class="message-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png">
+				<div class="row">
+					<div class="col-100 col">
+						<p class="message-name">{{ message.name }}</p>
+						<h4 class="messageContent bandName">{{ message.message }}</h4>
+					</div>
+				</div>
+			</ion-item>
+		</div>
+	</ion-list>
 	
   </ion-content>
    <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">

@@ -4,9 +4,8 @@
   <div ng-show="!userBandNames.length">
     <ion-content class="dashContent has-subheader">
       <ion-item class="item-borderless eventDash">
-       <div ng-show="!userBandNames.length && !giveUp"><ion-spinner icon="spiral"></ion-spinner></div> 
+       <div ng-show="!userBandNames.length && !giveUp"><div class="load-logo">Bandmates</div><div class="spin"><ion-spinner icon="spiral"></ion-spinner></div></div> 
          <div ng-show="giveUp && !userBandNames.length">
-           <h4>No Events in Calendar</h4>
          </div>
       </ion-item>
     </ion-content>
@@ -14,8 +13,8 @@
 
   <div ng-show="userBandNames.length">
   <ion-content overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5">
-      <div class="about-header">
-          <div class="animated fadeIn profile">
+      <div class="animated fadeIn about-header">
+          <div class="profile">
                  <div class="row">  
                   <div class="dash-logo">
                       <div class="animated dash-header">Bandmates</div>
@@ -27,11 +26,12 @@
       <ion-list class="dashList" ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 5">
         <ion-item class="animated fadeIn main-items item-borderless">
           <ion-slide-box show-pager>
-            <ion-slide class="item-icon-right item dashitems" on-slide-changed="showDets($index)">
+            <ion-slide class="item-icon-right item-avatar item dashitems" on-slide-changed="showDets($index)">
               <!-- ICONS DENOTING TYPE OF MEET -->
+              <img src="{{bands[0].image}}">
                <div class="row"> 
                 <div class="col col-offset-3">
-                 <p>{{event.bandName}}</p>
+                 <h2>{{event.bandName}}</h2>
                   <h4>{{event.type}}</h4>
                   <h2>{{event.startTime}}</h2>
                 </div>
@@ -41,14 +41,14 @@
             <ion-slide class="item item-icon-left item-icon-right dashitems">
                <i class="icon right ion-ios-arrow-back"></i>
                <div class="row">
-                 <div class="col">
-                  <p>{{event.bandName}}</p>
+                 <div class="col-75">
+                  <h2>{{event.bandName}}</h2>
                     <h2>{{event.title}}</h2>
                     <h2>@{{event.location}}</h2>
                     <h2 ng-show="event.time.slice(0, 2) < 12">{{event.time}} AM</h2>
                     <h2 ng-show="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</h2>
                 </div>
-                 <div class="col"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName)" class="button-icon icon right ion-ios-redo"></button></div>
+                 <div class="col col-offset-20"><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName)" class="button-icon icon right ion-ios-redo"><label>Share</label></button></div>
                </div>
             </ion-slide>
           </ion-slide-box>

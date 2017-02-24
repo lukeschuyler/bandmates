@@ -1,20 +1,10 @@
+/****************************************************************8
+                        GENERAL
+*******************************************************************/
+
 ion-content {
     font-family: 'Play', sans-serif !important;
-}
-
-.upcoming {
-  font-size: 20px;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  margin-left: 90px !important;
-  font-family: 'Play', sans-serif;
-  text-shadow: 5px 5px 5px rgba(0,0,0,.3);
-
-}
-
-.profile {
-    height: 80px !important;
-    padding-bottom: 80px !important;
+    /*background-color: #DDDDDD;*/
 }
 
 .smallPic {
@@ -24,32 +14,9 @@ ion-content {
   margin-bottom: 10px;
 }
 
-[nav-view]  {
-  font-family: 'Play', sans-serif;
-}
-
-[nav-view] > .item {
-  font-family: 'Play', sans-serif;
-} 
-
-.dash-logo {
-  text-align: center;
-
-}
-
-.dashitems {
-  box-shadow: 10px 20px 20px rgba(50,0,0, .4) !important;
-  margin-bottom: 10px;
-  border-radius: 20px;
-  background-color: rgba(255,255,255,.8);
-}
-
-p {
-font-family: 'Play', sans-serif;
-}
-
-h1 {
-font-family: 'Play', sans-serif;
+.bandName {
+  color: black !important;
+  text-shadow: 2px 2px 3px rgba(0,0,0, .2);
 }
 
 .log-header {
@@ -57,6 +24,45 @@ font-family: 'Play', sans-serif;
   text-shadow: 10px 100px 3px rgba(0,0,0, .5);
   font-size: 50px;
   }
+
+[nav-view] {
+    font-family: 'Play', sans-serif !important;
+}
+
+[nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
+   background-color: transparent;
+ }
+
+.modal-backdrop {
+  background-color: transparent;
+}
+
+/*TABS*/
+
+.tabs {
+  background-color: #ef473a;
+    /*background-color: maroon;*/
+}
+
+.tabcolor i {
+  color: white;
+}
+
+.tabcolor span {
+ color: white;
+}
+
+
+  /*****************************************************
+                    DASH
+  *****************************************************/
+
+.about-header {
+  background: linear-gradient(rgba(0,0,100, .4), rgba(0,0,100, .1)), url(http://images2.fanpop.com/images/photos/7000000/Woodstock-1969-woodstock-7053354-635-268.jpg) no-repeat center / cover transparent;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 20px;
+}
 
 .dash-header {
     font-family: 'Monofett', cursive;
@@ -68,11 +74,67 @@ font-family: 'Play', sans-serif;
     text-shadow: 0px 25px #ef473a;
 }
 
+.load-logo {
+    font-family: 'Monofett', cursive;
+    font-size: 30px;
+    color: rgba(200,0,0, .2);
+    margin-left: 18%;
+    font-size: 40px;
+}
+
 .main-logo {
   font-family: 'Monofett', cursive;
   font-size: 22px;
   margin-top: 50px;
 }
+
+.spin {
+  margin-left: 45% !important;
+}
+
+.dash-logo {
+  text-align: center;
+}
+
+.dashitems {
+  box-shadow: 0px 10px 20px rgba(50,60,70, .4) !important;
+  margin-bottom: 6px;
+  border-radius: 30px;
+  background-color: rgba(231, 76, 60, .9);
+}
+
+.dashitems > p, h4, h2{
+  color: white !important;
+  font-family: 'Play', sans-serif !important;
+  text-shadow: 5px 5px 5px rgba(0,0,0, .4);
+}
+
+.main-items {
+  /*background-color: rgba(200,0,0,.8) !important;*/
+}
+
+.upcoming {
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  margin-left: 36px !important;
+    font-family: 'Monofett', cursive;
+  text-shadow: 5px 5px 5px rgba(0,0,0,.3);
+  margin-top: 5%;
+  color: rgba(44, 62, 80,1.0);
+}
+
+.profile {
+    height: 80px !important;
+    padding-bottom: 80px !important;
+}
+
+.list > ion-slide-box {
+  background: rgba(50,0,0, .4) !important;
+}
+ /**********************************************
+                     MESSENGER
+ **********************************************/
 
 .message-name {
   font-style: bold;
@@ -87,46 +149,25 @@ font-family: 'Play', sans-serif;
 
 .timeStamp {
   font-size: 10px !important;
-  margin-left: 20% !important;
+}
+
+.timeRow {
+  height: 10px !important;
 }
 
 .message {
-  margin-bottom: 10px !important;
+  background: rgba(255,255,255, .1);
+  margin-bottom: 2px;
 }
 
-.main-pic {
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
-  box-shadow: 10px 10px 10px rgba(0,0,0, .4);
+.myMessage {
+  background-color: rgba(52, 100, 255,.2);
+  border-radius: 5px;
 }
 
-[nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
-   background-color: transparent;
- }
-
-.modal-backdrop {
-	background-color: transparent;
-}
-
-.tabs {
-	background-color: #ef473a;
-    /*background-color: maroon;*/
-}
-
-.tabcolor i {
-  color: white;
-}
-
-.tabcolor span {
- color: white;
-}
-
-.padding, .had-header {
-font-family: 'Play', sans-serif;
-}
-
-/*MODAL SLIDE*/
+/****************************************************
+                  MODAL SLIDE
+****************************************************/
 
 .slide-in-right {
   -webkit-transform: translateX(100%);
@@ -148,11 +189,6 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
   margin-top: 94%;
 }
 
-.myMessage {
-  background-color: rgba(52, 100, 255,.2);
-  border-radius: 5px;
-}
-
 .event-list {
   margin-top: 28%
 }
@@ -165,6 +201,8 @@ ion-content.event-detail-container.scroll-content.ionic-scroll {
 .cal-header {
 font-family: 'Play', sans-serif;
 }
+
+/*SLIDER BOX*/
 
 ion-item.slider-pager-page:only-of-type{
 display:none;
@@ -266,15 +304,9 @@ font-family: 'Play', sans-serif;
 }
 
 
-.about-header {
-  /*background-color: #444;*/
-  height: 60px;
 
-  overflow: hidden;
-}
 .about-image {
   width: 100%;
-  /*height: 220px;*/
   height: 100%;
   object-fit:cover;
 }

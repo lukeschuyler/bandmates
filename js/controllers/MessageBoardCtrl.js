@@ -1,4 +1,4 @@
-bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, $stateParams, MessageFactory, messages, user, AuthFactory) {
+bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, $stateParams, MessageFactory, user, AuthFactory) {
 	AuthFactory.getUserPic(user.uid)
 		.then(function(val) {
 			$scope.userArray = Object.keys(val).map(function(key) {

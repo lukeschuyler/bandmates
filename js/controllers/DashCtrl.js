@@ -1,9 +1,5 @@
 bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory, $cordovaToast, $cordovaSocialSharing, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
 
-	$scope.$on('$ionicView.enter', function(e) {
- 		$scope.enter()
- 	});
-
 	 $scope.userBandNames =  []
 	 $scope.events = []
 	 $scope.giveUp = false;
@@ -39,17 +35,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  		}
 
 
-	 setTimeout(function() {
-	 	$scope.$apply()
+	setTimeout(function() {
 	 	if ($scope.userBandNames.length == 0) {
 	 		$scope.enter()
-	 		setTimeout(function() {
-	 			if ($scope.firstTime !== true) {
-	 			$cordovaToast.show('Join/Create Your Band!', 'long', 'bottom')
-	 			$scope.openModal(1)
-	 			}
-		 		$scope.giveUp = true
-	 		}, 2000)
 	 	}
 	 }, 3000)
 
@@ -101,6 +89,10 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 			})
 
  	}
+
+ 	$scope.$on('$ionicView.enter', function(e) {
+ 		$scope.enter()
+ 	});
 
 
   $ionicSlideBoxDelegate.update();

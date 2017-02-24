@@ -7,10 +7,10 @@
 	</ion-header-bar>
   <ion-content class="has-header">
   	<ion-list ng-repeat="band in bands">
-		<ion-item class="item item-avatar-right">	
+		<ion-item class="item item-thumbnail-left">	
 <!-- 			<i class="icon icon-left ios-arrow-forward"></i> -->
 			<img src="{{band.image}}">
-			<div class="col col-offset-33"><h2>{{ band.bandName }}</h2></div>
+			<div class="col col-offset-33"><h2 class="bandName">{{ band.bandName }}</h2></div>
 			<ion-option-button class="button-positive"
                        			ng-click="leaveBand(band.key, band.bandName)">
 		      Leave {{band.bandName}}
