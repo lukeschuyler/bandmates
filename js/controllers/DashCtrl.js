@@ -72,7 +72,14 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 									val[key].time = date.getHours() + ': ' + date.getMinutes() 	
 								}
 								val[key].startTime = date.toDateString();
-								$scope.events.push(val[key]);
+								if (date.getTime() < $scope.now.getTime()) {
+									CalFactory.deleteEvent(key)
+										.then(function() {
+											CalFactory.archiveEvent(val[key])
+										})
+								} else {
+									$scope.events.push(val[key]);
+								}
 							})
 						})
 					})

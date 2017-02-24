@@ -52,7 +52,6 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
     		image = bandImage;
     	}
     	if (!location) {
-    		console.log()
     		location = $scope.practice
     	}
 
@@ -61,7 +60,7 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
     			 $scope.modal.hide();
     			 $cordovaToast.show('Event Created!', 'short', 'bottom')
     		})
-    }
+        }
 		  };
 		  $scope.closeModal = function() {
 		    $scope.modal.hide();

@@ -4,7 +4,6 @@
 
 ion-content {
     font-family: 'Play', sans-serif !important;
-    /*background-color: #DDDDDD;*/
 }
 
 .smallPic {
@@ -25,8 +24,16 @@ ion-content {
   font-size: 50px;
   }
 
-[nav-view] {
+[nav-view].title {
     font-family: 'Play', sans-serif !important;
+    text-shadow: 5px 7px 5px rgba(0,0,0, .4);
+    font-style: bold !important;
+}
+
+.title {
+    font-family: 'Play', sans-serif !important;
+    text-shadow: 5px 7px 5px rgba(0,0,0, .4);
+    font-style: bold !important;
 }
 
 [nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{

@@ -1,4 +1,4 @@
-bandmates.controller('MusicNoteDetailCtrl', function($scope, ProjectFactory, user, $stateParams, $sce) {
+bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, user, $stateParams, $sce) {
 
 	$scope.explicitlyTrustedHtml;
 
