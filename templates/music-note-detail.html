@@ -1,12 +1,11 @@
 <ion-view view-title="Musical Notes">
   <ion-content class="has-header padding">
-		<h1>{{project.name}}</h1>
-		<h4>{{project.band}}</h4>
 		<i ng-bind-html="explicitlyTrustedHtml" id="explicitlyTrustedHtml"></i>
-		<ion-list ng-repeat="note in project.notes">
-			<ion-item>
-				<ion-checkbox><h3>{{note}}</h3></ion-checkbox>
-			</ion-item>
-		</ion-list>
+		<ion-slide-box>
+			<ion-slide  ng-repeat="event in archivedEvents">
+				<p>{{event.title}}</p>
+				<img  style="width:200px;height:200px;margin:auto;display:block" src="{{event.image}}">
+			</ion-slide>
+		</ion-slide-box>
 	</ion-content>
 </ion-view>

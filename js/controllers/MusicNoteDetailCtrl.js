@@ -1,11 +1,9 @@
 bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, user, $stateParams, $sce) {
-
-	$scope.explicitlyTrustedHtml;
-
-	ProjectFactory.getProject($stateParams.project)
+	$scope.band = $stateParams.project
+	ArchiveFactory.getArchive($scope.band)
 		.then((val) => {
-			$scope.project = val
-			$scope.explicitlyTrustedHtml = $sce.trustAsHtml(
-		`<iframe src="${$scope.project.url}"></iframe>`)
-		})  
+			console.log(val)
+			$scope.archivedEvents = val
+		})
+
 })

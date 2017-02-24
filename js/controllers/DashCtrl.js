@@ -16,7 +16,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 	  $cordovaSocialSharing
 		    .share(message, null, image) // Share via native share sheet
 		    .then(function(result) {
-
+		    	
 		    }, function(err) {
 		    	
 		    });
@@ -35,11 +35,11 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  		}
 
 
-	// setTimeout(function() {
-	//  	if ($scope.userBandNames.length == 0) {
-	//  		$scope.enter()
-	//  	}
-	//  }, 3000)
+	setTimeout(function() {
+	 	if ($scope.userBandNames.length == 0) {
+	 		$scope.enter()
+	 	}
+	 }, 3000)
 
  	$scope.dateFilter = function(date){
  		return new Date(date)
