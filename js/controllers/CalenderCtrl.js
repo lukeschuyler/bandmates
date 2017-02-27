@@ -2,6 +2,7 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 	$scope.user = user
 	$scope.tourLocations = []
 	$scope.searchPlaces;
+	$scope.newEvent = {}
 
 	$scope.$on("$ionicView.enter", function () {
 	firebase.database().ref('bands').on('child_added', function() {
@@ -39,8 +40,11 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 
 	$scope.openModal = function(bandName, bandImage) {
 	  var boo = false
+	  $scope.picLoaded = false
+	  $scope.newEvent = {}
 	  $scope.id = bandName;
 	  $scope.modal.show();
+
 
 
 
@@ -68,11 +72,11 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		  });
 		  // Execute action on hide modal
 		  $scope.$on('modal.hidden', function() {
-
+		  	 $scope.newEvent = {}
 		  });
 		  // Execute action on remove modal
 		  $scope.$on('modal.removed', function() {
-		    	
+		    	 $scope.newEvent = {}
 		  });
 
 
@@ -143,7 +147,7 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 
               saveToFirebase(imageBlob, fileName, function(_response) {
                 if(_response) {
-                  $scope.image = _response.downloadURL
+                  $scope.newEvent.image = _response.downloadURL
                   $scope.loadingPic = false;
                   $scope.picLoaded = true;
                   $scope.$apply()

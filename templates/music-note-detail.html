@@ -12,14 +12,14 @@
 					<p>{{event.startTime}}</p>              	
                 </div>
                 	 <div ng-hide="event.setList" class="item item-input">
-		              	<input class="songAdd" type="text" placeholder="Add Song to Set List" ng-model="songName">
-		              	<i ng-click="addSongs(songName)" class="button button-icon icon right ion-ios-plus"></i>
+		              	<input class="songAdd" type="text" placeholder="Add Song to Set List" ng-model="setList.songName">
+		              	<i ng-click="addSongs(setList.songName)" class="button button-icon icon right ion-ios-plus"></i>
 		          	</div>
                 	<div class="row">
 		                <div class="col col-50 archive-image-wrapper">
 							<img src="{{event.image}}">       	
 		                </div>
-		             	<div ng-show="event.setList" class="col-50">
+		             	<div ng-show="event.setList" class="col-40">
 			                <h5 class="listHeader">Set List:</h5>
 							<ion-list class="setList" ng-repeat="song in event.setList">
 								<ion-item class="animated fadeInRight setlistItem item-borderless item-row-wrap">
@@ -31,8 +31,8 @@
 						</div>
 		             	<div ng-hide="event.setList" class="col-50">
 			                <h5 class="listHeader">Set List:</h5>
-							<ion-list class="setList" ng-repeat="song in songNames">
-								<ion-item class="animated fadeInRight setlistItem item-borderless item-row-wrap">
+							<ion-list class="setList" ng-repeat="song in songNames track by $index">
+								<ion-item class="animated fadeInRight setlistItem item-borderless item-text-wrap">
 									<li class="listSong">
 										{{song}}
 									</li>

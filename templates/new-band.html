@@ -30,7 +30,7 @@
 
         <button ng-disabled="!bandName || !password || !password2" class="button button-block button-positive" ng-click="registerBand(bandName, password, user.uid, image, userArray[0].firstName, userArray[0].lastName)">Register</button>
 
-       <button class="button button-outline col col-50 button-assertive" ng-click="toggleRegister()"><i class="button button-icon icon left ion-ios-arrow-back"></i>  Join Band</button>
+       <button class="button button-outline col col-50 button-assertive" ng-click="toggleRegister()"><i class="button button-icon icon left ion-ios-arrow-up"></i>  Join Band</button>
      </ion-content>
 
     </div>
@@ -60,7 +60,7 @@
 
         <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-assertive" ng-click="joinBand(bandNameSearch, passwordSearch, user.uid, userArray[0].firstName, userArray[0].lastName, userArray[0].image)">Join Band</button>
 
-        <button class="button col-offset-50 col col-50 button-outline button-positive" ng-click="toggleRegister()">Register Band <i class="button button-icon icon left ion-ios-arrow-forward"></i></button>
+        <button class="button col-offset-50 col col-50 button-outline button-positive" ng-click="toggleRegister()">Register Band <i class="button button-icon icon left ion-ios-arrow-down"></i></button>
 
       </ion-content>
 

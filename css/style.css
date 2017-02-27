@@ -48,7 +48,6 @@ ion-content {
 
 .tabs {
   background-color: #ef473a;
-    /*background-color: maroon;*/
 }
 
 .tabcolor i {
@@ -235,6 +234,16 @@ font-family: 'Play', sans-serif;
   padding-top: 70px !important;
 }
 
+.dash-logo-event {
+    font-family: 'Monofett', cursive;
+    font-size: 30px;
+    color: rgba(0,0,0, .9);
+    text-align: center;
+    /*margin-left: px;*/
+    letter-spacing: 10px;
+    text-shadow: 0px 25px #ef473a;
+}
+
 /*********************************************************
                   ARCHIVE
 *******************************************************/
@@ -245,8 +254,8 @@ font-family: 'Play', sans-serif;
 }
 
 .archbox img {
-  height: 200px !important;
-  width: 200px !important;
+  height: 150px !important;
+  width: 150px !important;
 }
 
 .archive-header-wrapper {
