@@ -235,6 +235,28 @@ font-family: 'Play', sans-serif;
   padding-top: 70px !important;
 }
 
+/*********************************************************
+                  ARCHIVE
+*******************************************************/
+
+.archbox {
+  margin-bottom: auto;
+  height: 450px;
+}
+
+.archbox img {
+  height: 200px !important;
+  width: 200px !important;
+}
+
+.archive-header-wrapper {
+  
+}
+
+.archive-image-wrapper {
+  /*border: 5px solid rgba(0,0,0, .3);*/
+}
+
 /****************************************
                   PARALLAX
 **********************************************/

@@ -1,11 +1,32 @@
-<ion-view view-title="Musical Notes">
+<ion-view view-title=" {{band}} Archive">
   <ion-content class="has-header padding">
-		<i ng-bind-html="explicitlyTrustedHtml" id="explicitlyTrustedHtml"></i>
-		<ion-slide-box>
-			<ion-slide  ng-repeat="event in archivedEvents">
-				<p>{{event.title}}</p>
-				<img  style="width:200px;height:200px;margin:auto;display:block" src="{{event.image}}">
-			</ion-slide>
-		</ion-slide-box>
+ 	<ion-slide-box class="has-header archbox" active-slide="activeSlide">
+        <ion-slide ng-repeat="event in archivedEvents | filter : band">
+            <ion-scroll direction="xy" scrollbar-x="false" scrollbar-y="false"
+                        zooming="true" min-zoom="{{ zoomMin }}" style="width: 100%; height: 100%"
+                        delegate-handle="scrollHandle{{$index}}" on-scroll="updateSlideStatus(activeSlide)"
+                        on-release="updateSlideStatus(activeSlide)">
+                <div class="archive-header-wrapper">
+	  				<h3>{{event.title}}</h3>
+					<p>{{event.location}}</p>
+					<p>{{event.startTime}}</p>              	
+                </div>
+                <div class="archive-image-wrapper">
+					<img src="{{event.image}}">       	
+                </div>
+                <h3>Set List:</h3>
+                <label class="item item-input">
+              		<input type="text" placeholder="Add Song to Set List" ng-model="songName">
+          		</label>
+          		<i ng-click="addSongs(songName)" class="button button-icon icon right ion-ios-plus"></i>
+				<ol ng-repeat="song in songs">
+					<li>
+						{{song}}
+					</li>
+				</ol>
+				<button ng-click="saveList(songNames, event.key)" class="button button-assertive">Save Setlist</button>
+            </ion-scroll>
+        </ion-slide>
+    </ion-slide-box>
 	</ion-content>
 </ion-view>

@@ -176,11 +176,10 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
 
       $cordovaImagePicker.getPictures(options)
         .then(function (results) {
-            $scope.loadingPic = true
             var fileName = results[0].replace(/^.*[\\\/]/, '')
              $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
             .then(function (success) {
-              // success 
+              $scope.loadingPic = true
               var imageBlob = new Blob([success], {type : 'image/jpeg'})
 
               saveToFirebase(imageBlob, fileName, function(_response) {

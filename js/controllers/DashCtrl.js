@@ -75,7 +75,9 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 								if (date.getTime() < $scope.now.getTime()) {
 									CalFactory.deleteEvent(key)
 										.then(function() {
-											CalFactory.archiveEvent(val[key])
+											if (val[key].type != 'Practice') {
+												CalFactory.archiveEvent(val[key])
+											}
 										})
 								} else {
 									$scope.events.push(val[key]);
