@@ -29,7 +29,7 @@
 								</ion-item>
 							</ion-list>
 						</div>
-		             	<div ng-hide="event.setList" class="col-50">
+<!-- 		             	<div ng-hide="event.setList" class="col-50">
 			                <h5 class="listHeader">Set List:</h5>
 							<ion-list class="setList" ng-repeat="song in songNames track by $index">
 								<ion-item class="animated fadeInRight setlistItem item-borderless item-text-wrap">
@@ -38,7 +38,17 @@
 									</li>
 								</ion-item>
 							</ion-list>
-						</div>
+						</div> -->
+					</div>
+					<div ng-hide="event.setList" class="col-50">
+		                <h5 class="listHeader">Set List:</h5>
+						<ion-list class="setList" ng-repeat="song in songNames track by $index">
+							<ion-item class="animated fadeInRight setlistItem item-borderless item-text-wrap">
+								<li class="listSong">
+									{{song}}
+								</li>
+							</ion-item>
+						</ion-list>
 					</div>
 				<div ng-hide="event.setList" class="col-offset-50 buttonSave"><button ng-click="saveList(songNames, event.key)" class="button button-assertive">Save Setlist</button></div>
 				<h3 ng-if="event.showimages">Images</h3>
