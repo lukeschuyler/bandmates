@@ -241,7 +241,7 @@ font-family: 'Play', sans-serif;
 
 .archbox {
   margin-bottom: auto;
-  height: 450px;
+  height: 520px;
 }
 
 .archbox img {
@@ -254,7 +254,28 @@ font-family: 'Play', sans-serif;
 }
 
 .archive-image-wrapper {
-  /*border: 5px solid rgba(0,0,0, .3);*/
+  display: inline;
+}
+
+.setList {
+  margin-top: 10px;
+}
+
+.listSong {
+  list-style: initial;
+}
+
+.setlistItem {
+  height: 20px;
+  /*margin-top: 0px;*/
+}
+
+.buttonSave {
+  margin-top: 40px;
+}
+
+.listHeader {
+  margin-left: 20px;
 }
 
 /****************************************

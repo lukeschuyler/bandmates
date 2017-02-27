@@ -1,7 +1,6 @@
 bandmates.controller('CalenderDetailCtrl', function($scope, CalFactory, $stateParams, BandFactory, user) {
     $scope.calendar = {};
 	$scope.band = $stateParams.calenderId
-
     if ($scope.band === 'all') {
         CalFactory.getAllEvents()
             .then(function(val) {

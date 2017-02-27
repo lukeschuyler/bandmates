@@ -7,7 +7,6 @@ bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, use
 						val[key].key = key
 						return val[key]
 					})
-			console.log($scope.archivedEvents)
 			$timeout(function() {
 				$ionicSlideBoxDelegate.slide(0);
                 $ionicSlideBoxDelegate.update();

@@ -2,6 +2,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
+	 // $scope.events;
 	 // $scope.giveUp = false;
 	 $scope.name;
 	 $scope.now;
