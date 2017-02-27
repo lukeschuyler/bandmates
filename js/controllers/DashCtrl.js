@@ -2,7 +2,6 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
-	 // $scope.giveUp = false;
 	 $scope.name;
 	 $scope.now;
 	 $scope.scrolled = false;
@@ -16,7 +15,7 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 	  $cordovaSocialSharing
 		    .share(message, null, image) // Share via native share sheet
 		    .then(function(result) {
-
+		    	
 		    }, function(err) {
 		    	
 		    });
@@ -35,11 +34,11 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
  		}
 
 
-	// setTimeout(function() {
-	//  	if ($scope.userBandNames.length == 0) {
-	//  		$scope.enter()
-	//  	}
-	//  }, 3000)
+	setTimeout(function() {
+	 	if ($scope.userBandNames.length == 0) {
+	 		$scope.enter()
+	 	}
+	 }, 3000)
 
  	$scope.dateFilter = function(date){
  		return new Date(date)
@@ -72,7 +71,16 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 									val[key].time = date.getHours() + ': ' + date.getMinutes() 	
 								}
 								val[key].startTime = date.toDateString();
-								$scope.events.push(val[key]);
+								if (date.getTime() < $scope.now.getTime()) {
+									CalFactory.deleteEvent(key)
+										.then(function() {
+											if (val[key].type != 'Practice') {
+												CalFactory.archiveEvent(val[key])
+											}
+										})
+								} else {
+									$scope.events.push(val[key]);
+								}
 							})
 						})
 					})

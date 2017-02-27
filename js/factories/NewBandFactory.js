@@ -30,13 +30,6 @@ bandmates.factory('NewBandFactory', function($http, $cordovaToast, $q) {
 										url : `https://mush-e7c8f.firebaseio.com/bands.json`,
 										data : { bandName : bandName, userId : userId, image: val.data.image }
 									})
-								// 	.then(function(){
-								// 	$http({
-								// 		method : 'POST',
-								// 		url : `https://mush-e7c8f.firebaseio.com/${bandName}UserImages.json`,
-								// 		data : image
-								// 	})
-								// })
 								resolve(true)
 							} else {
 								resolve(false)

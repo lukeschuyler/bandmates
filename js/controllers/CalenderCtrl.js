@@ -1,7 +1,8 @@
-bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicModal, CalFactory, $cordovaToast) {
+bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicModal, CalFactory, $cordovaToast, $cordovaFile, $cordovaImagePicker) {
 	$scope.user = user
 	$scope.tourLocations = []
 	$scope.searchPlaces;
+	$scope.newEvent = {}
 
 	$scope.$on("$ionicView.enter", function () {
 	firebase.database().ref('bands').on('child_added', function() {
@@ -39,9 +40,11 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 
 	$scope.openModal = function(bandName, bandImage) {
 	  var boo = false
+	  $scope.picLoaded = false
+	  $scope.newEvent = {}
 	  $scope.id = bandName;
-
 	  $scope.modal.show();
+
 
 
 
@@ -49,13 +52,16 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
     	if (!image) {
     		image = bandImage;
     	}
+    	if (!location) {
+    		location = $scope.practice
+    	}
 
     	CalFactory.addEvent(id, eventName, type, startTimeValue, endTimeValue, boo, location, image)
     		.then(function() {
     			 $scope.modal.hide();
     			 $cordovaToast.show('Event Created!', 'short', 'bottom')
     		})
-    }
+        }
 		  };
 		  $scope.closeModal = function() {
 		    $scope.modal.hide();
@@ -66,11 +72,11 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
 		  });
 		  // Execute action on hide modal
 		  $scope.$on('modal.hidden', function() {
-
+		  	 $scope.newEvent = {}
 		  });
 		  // Execute action on remove modal
 		  $scope.$on('modal.removed', function() {
-		    	
+		    	 $scope.newEvent = {}
 		  });
 
 
@@ -96,4 +102,65 @@ bandmates.controller('CalenderCtrl', function($scope, BandFactory, user, $ionicM
         $scope.itemsRemoved = function (callback) {
             $scope.removedValueModel = callback;
         };
+
+   function saveToFirebase(_imageBlob, _filename, _callback) {
+
+    var storageRef = firebase.storage().ref();
+
+    var uploadTask = storageRef.child('images/' +  new Date().getTime() + _filename).put(_imageBlob);
+
+    uploadTask.on('state_changed', function(snapshot){
+
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          break;
+      }
+    }, function(error) {
+      // Handle unsuccessful uploads
+      alert(error.message)
+      _callback(null)
+    }, function() {
+      var downloadURL = uploadTask.snapshot.downloadURL;
+      _callback(uploadTask.snapshot)
+    });
+  }
+
+  $scope.getImage = function() {
+    var options = {
+       maximumImagesCount: 1,
+       width: 800,
+       height: 800,
+       quality: 80
+      };
+
+      $cordovaImagePicker.getPictures(options)
+        .then(function (results) {
+            var fileName = results[0].replace(/^.*[\\\/]/, '')
+             $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
+            .then(function (success) {
+              // success 
+              $scope.loadingPic = true
+              var imageBlob = new Blob([success], {type : 'image/jpeg'})
+
+              saveToFirebase(imageBlob, fileName, function(_response) {
+                if(_response) {
+                  $scope.newEvent.image = _response.downloadURL
+                  $scope.loadingPic = false;
+                  $scope.picLoaded = true;
+                  $scope.$apply()
+                }
+              })
+            }, function (error) {
+              // error
+              alert('error getting')
+            });
+
+        }, function(error) {
+          // error getting photos
+          alert('error getting')
+        });
+  }
 });

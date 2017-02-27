@@ -9,9 +9,9 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 				$location.url('/tab/dash')
 			})
 			.catch(function() {
-				$cordovaToast
-	    			.show('Incorrect Email/Password', 'long', 'bottom')
-				  })
+			  $cordovaToast
+    			.show('Incorrect Email/Password', 'long', 'bottom')
+			  })
 	}
 	
 	$scope.register = function(email, password, firstName, image, lastName) {
@@ -29,7 +29,7 @@ bandmates.controller('LoginCtrl', function($scope, AuthFactory, $location, $stat
 		$location.url('/auth/register')
 	}
 
-	 function saveToFirebase(_imageBlob, _filename, _callback) {
+	function saveToFirebase(_imageBlob, _filename, _callback) {
 
 		var storageRef = firebase.storage().ref();
 

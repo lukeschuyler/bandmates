@@ -30,7 +30,7 @@
 
         <button ng-disabled="!bandName || !password || !password2" class="button button-block button-positive" ng-click="registerBand(bandName, password, user.uid, image, userArray[0].firstName, userArray[0].lastName)">Register</button>
 
-       <button class="button button-outline col col-50 button-assertive" ng-click="toggleRegister()"><i class="button button-icon icon left ion-ios-arrow-back"></i>  Join Band</button>
+       <button class="button button-outline col col-50 button-assertive" ng-click="toggleRegister()"><i class="button button-icon icon left ion-ios-arrow-up"></i>  Join Band</button>
      </ion-content>
 
     </div>
@@ -44,14 +44,6 @@
         <div class="list list-inset">
             <label class="item item-input">
                 <input type="text" placeholder="Band/Artist Name" ng-model="bandNameSearch">
- <!--                 <label class ="item item-input item-select">
-                    <div class= "input-label">
-                    Event Type
-                    </div>
-                    <select ng-model="bandNameSearch">
-                    <option ng-repeat="band"></option>
-                    </select>
-                </label> -->
             </label>
             <label class="item item-input">
                 <input type="password" placeholder="Password" ng-model="passwordSearch">
@@ -60,7 +52,7 @@
 
         <button ng-disabled="!bandNameSearch || !passwordSearch" class="button button-block button-assertive" ng-click="joinBand(bandNameSearch, passwordSearch, user.uid, userArray[0].firstName, userArray[0].lastName, userArray[0].image)">Join Band</button>
 
-        <button class="button col-offset-50 col col-50 button-outline button-positive" ng-click="toggleRegister()">Register Band <i class="button button-icon icon left ion-ios-arrow-forward"></i></button>
+        <button class="button col-offset-50 col col-50 button-outline button-positive" ng-click="toggleRegister()">Register Band <i class="button button-icon icon left ion-ios-arrow-down"></i></button>
 
       </ion-content>
 

@@ -3,13 +3,19 @@
 	  <h1 class="title">New Event: {{id}} </h1>
 	  <button class="button button-clear button-cancel" ng-click="modal.hide()">Cancel</button>
 	</ion-header-bar>
+
 	<ion-content class="padding">
-	  <div class="list">
+  <div class="has-header"> 
+      <div class="dash-logo-event">
+          <div class="animated zoomInDown">New Event</div>
+    </div>
+  </div>
+	  <div class="list has-header">
 		 <label class ="item item-input item-select">
 		      <div class= "input-label">
-		      Event Type
+		        Event Type
 		      </div>
-		      <select ng-model="type">
+		      <select ng-model="newEvent.type">
 		      <option selected>Show</option>
 			    <option>Tracking Session</option>
 			    <option>Mixing Session</option>
@@ -18,32 +24,26 @@
 			    <option>Tour</option>
 		      </select>
    		</label>
-	   <div class="item" ion-datetime-picker ng-model="startTimeValue">
-                <i class="icon"></i>
+	   <div class="timevaluestart item" ion-datetime-picker am-pm  ng-model="newEvent.startTimeValue">
                 Start Time: 
-                <strong>{{startTimeValue| date: "MM-dd-yyyy H:mm"}}</strong>
+                <strong>{{newEvent.startTimeValue| date: "yyyy-MM-dd h:mm a"}}</strong>
         </div>
- 	   <div class="item" ion-datetime-picker ng-model="endTimeValue">
-                <i class="icon ion-icon-clock"></i>
+ 	   <div class="timevalueend item" ion-datetime-picker am-pm  ng-model="newEvent.endTimeValue">
                 End Time: 
-                <strong>{{endTimeValue| date: "MM-dd-yyyy H:mm"}}</strong>
+                <strong>{{newEvent.endTimeValue| date: "yyyy-MM-dd h:mm a"}}</strong>
         </div>
-        <label ng-show="type === 'Tour'" class="item item-input">
-              <input type="text" placeholder="Tour Locations" ng-model="tourLocation">
-              <span on-tap="addLocation(tourLocation)"><i class="button button-icon icon right ion-ios-plus"></i></span>
-        </label>
 
         <label class="item item-input">
-              <input type="text" placeholder="Event Name" ng-model="eventName">
-          </label>
+              <input type="text" placeholder="Event Name" ng-model="newEvent.eventName">
+        </label>
         
-          <label ng-hide="type !== 'Practice'" class="item item-input">
-              <input type="text" placeholder="Location" ng-model="location">
+          <label ng-if="type === 'Practice'" class="item item-input">
+              <input type="text" class="practice" placeholder="Practice Location" ng-model="newEvent.practice">
           </label>
 
-        <label ng-hide="type === 'Practice'" class="item item-input">
-            <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
-                   ng-model="location"
+        <label ng-if="type !== 'Practice'" class="item item-input">
+            <input ion-autocomplete type="text" readonly="readonly" class="show ion-autocomplete" autocomplete="on"
+                   ng-model="newEvent.location"
                    item-value-key="name"
                    item-view-value-key="description"
                    items-method="autoFillPlaces(query)"
@@ -55,13 +55,14 @@
         </label>
         
         <label class="item item-input item-thumbnail-left item-icon-right"><span ng-if="!loadingPic && !picLoaded">Event Image/Poster</span>
-          <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="image" class="smallPic" src="{{ image }}" imageonload>
+          <img ng-show="vm.isImageVisible" class="animated fadeIn" ng-if="newEvent.image" class="smallPic" src="{{ newEvent.image }}" imageonload>
               <div ng-if="loadingPic"><ion-spinner icon="spiral"></ion-spinner></div>
               <span ng-if="!loadingPic && !picLoaded" on-tap="getImage()"><i ng-click="getImage()" class="button button-icon icon right ion-ios-plus"></i></span>
               <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
         </label>
 
-	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, eventName, type, startTimeValue, endTimeValue, false, clickedValueModel.item.description, image)"><i class="ion-ios-plus icon"></i>Create Event</button>
+	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, newEvent.eventName, newEvent.type, newEvent.startTimeValue, newEvent.endTimeValue, newEvent.false, clickedValueModel.item.description, newEvent.image)"><i class="ion-ios-plus icon"></i>Create Event</button>
+      
 	  </div>
 	</ion-content>
 </ion-modal-view>

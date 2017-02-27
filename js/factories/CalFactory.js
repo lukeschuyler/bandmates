@@ -43,10 +43,17 @@ bandmates.factory('CalFactory', function($http, $q) {
 				})
 		},
 		deleteEvent(key) {
-			return $http({
+			 return $http({
 				method: 'DELETE',
 				url : `https://mush-e7c8f.firebaseio.com/events/${key}.json`
 			})
+		},
+		archiveEvent(event) {
+			 return $http({
+				method: 'POST',
+				url : `https://mush-e7c8f.firebaseio.com/archive.json`,
+				data : event
+			})			
 		}
 	}
 })

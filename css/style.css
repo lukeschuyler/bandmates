@@ -4,7 +4,6 @@
 
 ion-content {
     font-family: 'Play', sans-serif !important;
-    /*background-color: #DDDDDD;*/
 }
 
 .smallPic {
@@ -25,8 +24,16 @@ ion-content {
   font-size: 50px;
   }
 
-[nav-view] {
+[nav-view].title {
     font-family: 'Play', sans-serif !important;
+    text-shadow: 5px 7px 5px rgba(0,0,0, .4);
+    font-style: bold !important;
+}
+
+.title {
+    font-family: 'Play', sans-serif !important;
+    text-shadow: 5px 7px 5px rgba(0,0,0, .4);
+    font-style: bold !important;
 }
 
 [nav-view-transition][nav-view-direction] [modal-view-transition] [modal-view-direction]{
@@ -41,7 +48,6 @@ ion-content {
 
 .tabs {
   background-color: #ef473a;
-    /*background-color: maroon;*/
 }
 
 .tabcolor i {
@@ -226,6 +232,59 @@ font-family: 'Play', sans-serif;
 
 .dashContent {
   padding-top: 70px !important;
+}
+
+.dash-logo-event {
+    font-family: 'Monofett', cursive;
+    font-size: 30px;
+    color: rgba(0,0,0, .9);
+    text-align: center;
+    /*margin-left: px;*/
+    letter-spacing: 10px;
+    text-shadow: 0px 25px #ef473a;
+}
+
+/*********************************************************
+                  ARCHIVE
+*******************************************************/
+
+.archbox {
+  margin-bottom: auto;
+  height: 520px;
+}
+
+.archbox img {
+  height: 150px !important;
+  width: 150px !important;
+}
+
+.archive-header-wrapper {
+  
+}
+
+.archive-image-wrapper {
+  display: inline;
+}
+
+.setList {
+  margin-top: 10px;
+}
+
+.listSong {
+  list-style: initial;
+}
+
+.setlistItem {
+  height: 20px;
+  /*margin-top: 0px;*/
+}
+
+.buttonSave {
+  margin-top: 40px;
+}
+
+.listHeader {
+  margin-left: 20px;
 }
 
 /****************************************

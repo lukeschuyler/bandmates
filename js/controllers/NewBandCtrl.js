@@ -1,4 +1,4 @@
-bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast, $cordovaImagePicker, $cordovaFile) {
+bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory, user, $ionicModal, AuthFactory, $location, $state, $ionicHistory, $cordovaToast, $cordovaImagePicker, $cordovaFile, $ionicPopup) {
 
   $scope.loadingPic;
   $scope.picLoaded = false;
@@ -36,6 +36,27 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
         $cordovaToast.show("Sorry, there was an issue in remove you from the group. Please try again", 'long', 'bottom')
       })
 }
+
+   $scope.showPopup = function(key, band) {
+
+   var myPopup = $ionicPopup.show({
+     title: 'Are you sure you want to leave?',
+     scope: $scope,
+     buttons: [
+       { text: 'Cancel' },
+       {
+         text: '<b>Leave</b>',
+         type: 'button-positive',
+         onTap: function(e) {
+             e.preventDefault();
+             $scope.leaveBand(key, band)
+             myPopup.close()
+         }
+       },
+     ]
+   });
+  };
+
   $scope.toggleRegister = function() {
     $scope.registerView = !$scope.registerView
   }
@@ -155,11 +176,10 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
 
       $cordovaImagePicker.getPictures(options)
         .then(function (results) {
-            $scope.loadingPic = true
             var fileName = results[0].replace(/^.*[\\\/]/, '')
              $cordovaFile.readAsArrayBuffer(cordova.file.tempDirectory, fileName)
             .then(function (success) {
-              // success 
+              $scope.loadingPic = true
               var imageBlob = new Blob([success], {type : 'image/jpeg'})
 
               saveToFirebase(imageBlob, fileName, function(_response) {

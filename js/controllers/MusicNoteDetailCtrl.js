@@ -1,11 +1,27 @@
-bandmates.controller('MusicNoteDetailCtrl', function($scope, ProjectFactory, user, $stateParams, $sce) {
+bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, user, $stateParams, $sce, $ionicSlideBoxDelegate, $timeout) {
+	$scope.band = $stateParams.project
+	$scope.songNames = []
+	$scope.setList = {}
 
-	$scope.explicitlyTrustedHtml;
-
-	ProjectFactory.getProject($stateParams.project)
+	ArchiveFactory.getArchive($scope.band)
 		.then((val) => {
-			$scope.project = val
-			$scope.explicitlyTrustedHtml = $sce.trustAsHtml(
-		`<iframe src="${$scope.project.url}"></iframe>`)
-		})  
+			$scope.archivedEvents = Object.keys(val).map(function(key) {
+						val[key].key = key
+						return val[key]
+					})
+			$timeout(function() {
+				$ionicSlideBoxDelegate.slide(0);
+                $ionicSlideBoxDelegate.update();
+			})
+		})
+
+	$scope.addSongs = function(songName) {
+		let newSong = songName
+		$scope.songNames.push(newSong)
+		$scope.setList.songName = null
+	}	
+
+	$scope.saveList = function(list, key) {
+		ArchiveFactory.saveList(list, key)
+	}
 })
