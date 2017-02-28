@@ -1,11 +1,6 @@
 <ion-view view-title=" {{band}} Archive">
   <ion-content class="has-header padding">
-<!--   <div class="animated zoomInDown has-header event-header"> 
-      <div class="dash-logo-event">
-          <div>Archive</div>
-    </div>
-  </div> -->
-<div class="has-subheader has-header" ng-repeat="event in archivedEvents | filter : band">
+<div class="has-subheader has-header" ng-repeat="event in archivedEvents | orderBy: '-milliTime':true | filter : band">
 	 <div class="card">
 	   <div class="item item-text-wrap item-avatar">
 	      <img src="{{event.bandImage}}">
@@ -15,7 +10,7 @@
 	  <div class="item item-body">
 	   	<div>{{event.startTime}}</div>
 		<p>{{event.location}}</p>
-	      <img class="full-image" src="{{event.image}}">
+	      <img ng-show="vm.isImageVisible" class="full-image" src="{{event.image}}" imageonLoad>
                 	<div ng-hide="event.setList" class="buttonSave"><button ng-click="saveList(songNames, event.key)" class="button button-positive">Save Setlist</button>
                 	</div>
                 	 <div ng-hide="event.setList" class="item item-input">

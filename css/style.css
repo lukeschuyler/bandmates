@@ -558,9 +558,9 @@ html.ios-gt-6.pixel-ratio-3 .content-block-inner:after {
   /*line-height: 90px;*/
 }
 
-.list .item.active {
+/*.list .item   {
   background-color: white;
-}
+}*/
 .list .item.item-accordion.ng-hide {
   line-height: 0px;
 }
