@@ -1,60 +1,52 @@
 <ion-view view-title=" {{band}} Archive">
   <ion-content class="has-header padding">
- 	<ion-slide-box class="archbox" active-slide="activeSlide">
-        <ion-slide ng-repeat="event in archivedEvents | filter : band">
-            <ion-scroll direction="xy" scrollbar-x="false" scrollbar-y="false"
-                        zooming="true" min-zoom="{{ zoomMin }}" style="width: 100%; height: 100%"
-                        delegate-handle="scrollHandle{{$index}}" on-scroll="updateSlideStatus(activeSlide)"
-                        on-release="updateSlideStatus(activeSlide)">
-                <div class="archive-header-wrapper">
-	  				<h3>{{event.title}}</h3>
-					<p>{{event.location}}</p>
-					<p>{{event.startTime}}</p>              	
-                </div>
+<!--   <div class="animated zoomInDown has-header event-header"> 
+      <div class="dash-logo-event">
+          <div>Archive</div>
+    </div>
+  </div> -->
+<div class="has-subheader has-header" ng-repeat="event in archivedEvents | filter : band">
+	 <div class="card">
+	   <div class="item item-text-wrap item-avatar">
+	      <img src="{{event.bandImage}}">
+	      <div class="archiveTitle">{{ event.title }}</div>
+
+	</div>
+	  <div class="item item-body">
+	   	<div>{{event.startTime}}</div>
+		<p>{{event.location}}</p>
+	      <img class="full-image" src="{{event.image}}">
+                	<div ng-hide="event.setList" class="buttonSave"><button ng-click="saveList(songNames, event.key)" class="button button-positive">Save Setlist</button>
+                	</div>
                 	 <div ng-hide="event.setList" class="item item-input">
 		              	<input class="songAdd" type="text" placeholder="Add Song to Set List" ng-model="setList.songName">
 		              	<i ng-click="addSongs(setList.songName)" class="button button-icon icon right ion-ios-plus"></i>
 		          	</div>
-                	<div class="row">
-		                <div class="col col-50 archive-image-wrapper">
-							<img src="{{event.image}}">       	
-		                </div>
-		             	<div ng-show="event.setList" class="col-40">
-			                <h5 class="listHeader">Set List:</h5>
-							<ion-list class="setList" ng-repeat="song in event.setList">
+                	<div class="listRow row">
+		             	<div ng-show="event.setList">
+			                <div class="listHeader">Set List:</div>
+							<ul class="setList" ng-repeat="song in event.setList track by $index">
 								<ion-item class="animated fadeInRight setlistItem item-borderless item-row-wrap">
-									<li class="listSong">
-										{{song}}
-									</li>
+									<div class="listSong">
+										{{$index + 1}}. {{song}}
+									</div>
 								</ion-item>
-							</ion-list>
+							</ul>
 						</div>
-<!-- 		             	<div ng-hide="event.setList" class="col-50">
+					</div>
+						<div ng-hide="event.setList">
 			                <h5 class="listHeader">Set List:</h5>
 							<ion-list class="setList" ng-repeat="song in songNames track by $index">
 								<ion-item class="animated fadeInRight setlistItem item-borderless item-text-wrap">
-									<li class="listSong">
-										{{song}}
-									</li>
+									<div class="listSong">
+										{{$index + 1}}. {{song}}
+									</div>
 								</ion-item>
 							</ion-list>
-						</div> -->
-					</div>
-					<div ng-hide="event.setList" class="col-50">
-		                <h5 class="listHeader">Set List:</h5>
-						<ion-list class="setList" ng-repeat="song in songNames track by $index">
-							<ion-item class="animated fadeInRight setlistItem item-borderless item-text-wrap">
-								<li class="listSong">
-									{{song}}
-								</li>
-							</ion-item>
-						</ion-list>
-					</div>
-				<div ng-hide="event.setList" class="col-offset-50 buttonSave"><button ng-click="saveList(songNames, event.key)" class="button button-assertive">Save Setlist</button></div>
+						</div>
 				<h3 ng-if="event.showimages">Images</h3>
 				<img ng-if="event.showimages" src="{{event.showimages}}">
-            </ion-scroll>
-        </ion-slide>
-    </ion-slide-box>
+				</div>
+			</div>
 	</ion-content>
 </ion-view>

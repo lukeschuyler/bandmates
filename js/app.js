@@ -143,6 +143,7 @@ bandmates.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.music-notes-detail', {
+    cache: false,
     url: '/musical-notes/:project',
     views: {
       'tab-music': {

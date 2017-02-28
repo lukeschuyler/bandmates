@@ -1,4 +1,4 @@
-bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory, BandFactory, $cordovaToast, $cordovaSocialSharing, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
+bandmates.controller('DashCtrl', function($timeout, $scope, user, AuthFactory, CalFactory, BandFactory, $cordovaToast, $cordovaSocialSharing, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
 
 	 $scope.userBandNames =  []
 	 $scope.events = []
@@ -6,9 +6,20 @@ bandmates.controller('DashCtrl', function($scope, user, AuthFactory, CalFactory,
 	 $scope.now;
 	 $scope.scrolled = false;
 
-	 $scope.loadMore = function() {
-	 	$scope.scrolled = !$scope.scrolled;
-	 }
+	  $scope.toggleGroup = function(group) {
+	    if ($scope.isGroupShown(group)) {
+	      $scope.shownGroup = null;
+	    } else {
+	      $scope.shownGroup = group;
+	    }
+			$timeout(function () {
+			  $ionicScrollDelegate.resize();
+			}, 100);
+	  };
+
+	  $scope.isGroupShown = function(group) {
+	    return $scope.shownGroup === group;
+	  };
 
 	 $scope.share = function(title, type, location, time, bandName, image) {
 	 	let message = bandName + ' ' + title + ' ' + type + ' ' + location +  ' @' + time

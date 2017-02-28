@@ -58,16 +58,19 @@ ion-content {
  color: white;
 }
 
-
   /*****************************************************
                     DASH
   *****************************************************/
 
+  .event-header {
+    height: 24px;
+    border-radius: 5px;
+  }
+
 .about-header {
-  background: linear-gradient(rgba(0,0,100, .4), rgba(0,0,100, .1)), url(http://images2.fanpop.com/images/photos/7000000/Woodstock-1969-woodstock-7053354-635-268.jpg) no-repeat center / cover transparent;
+  background: linear-gradient(rgba(0,0,100, .2), rgba(255,255,255, .99) 90%), url(http://images2.fanpop.com/images/photos/7000000/Woodstock-1969-woodstock-7053354-635-268.jpg) no-repeat center / cover transparent;
   height: 140px;
   overflow: hidden;
-  border-radius: 20px;
 }
 
 .dash-header {
@@ -124,7 +127,7 @@ ion-content {
   letter-spacing: 4px;
   margin-bottom: 15px;
   margin-left: 36px !important;
-    font-family: 'Monofett', cursive;
+  font-family: 'Monofett', cursive;
   text-shadow: 5px 5px 5px rgba(0,0,0,.3);
   margin-top: 5%;
   color: rgba(44, 62, 80,1.0);
@@ -167,7 +170,7 @@ ion-content {
 }
 
 .myMessage {
-  background-color: rgba(52, 100, 255,.2);
+  background-color: rgba(52, 100, 255,.1);
   border-radius: 5px;
 }
 
@@ -250,7 +253,7 @@ font-family: 'Play', sans-serif;
 
 .archbox {
   margin-bottom: auto;
-  height: 520px;
+  height: 800px;
 }
 
 .archbox img {
@@ -259,19 +262,24 @@ font-family: 'Play', sans-serif;
 }
 
 .archive-header-wrapper {
-  
+  margin-bottom:  0px;
 }
 
 .archive-image-wrapper {
   display: inline;
+  margin-bottom: 0px;
 }
 
 .setList {
   margin-top: 10px;
 }
 
-.listSong {
-  list-style: initial;
+ol > li {
+  display: inline;
+}
+
+ol {
+  list-style-type: decimal;
 }
 
 .setlistItem {
@@ -285,6 +293,12 @@ font-family: 'Play', sans-serif;
 
 .listHeader {
   margin-left: 20px;
+font-family: 'Play', sans-serif;
+}
+
+.archiveTitle {
+  font-size: 20px;
+  text-align: center;
 }
 
 /****************************************
@@ -534,4 +548,32 @@ html.ios-gt-6.pixel-ratio-3 .content-block-inner:after {
   .content-block.tablet-inset .content-block-inner:after {
     display: none;
   }
+}
+
+.list .item.item-accordion {
+  /*line-height: 38px;*/
+  padding-top: 5px;
+  padding-bottom: 5px;
+  transition: 0.09s all linear;
+  /*line-height: 90px;*/
+}
+
+.list .item.active {
+  background-color: white;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+
+ol {
+  list-style-type: decimal;
+}
+
+button {
+  font-family: 'Play', sans-serif !important;
 }

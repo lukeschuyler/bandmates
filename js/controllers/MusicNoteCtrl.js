@@ -7,5 +7,5 @@ bandmates.controller('MusicNoteCtrl', function($scope, user, ArchiveFactory, Ban
 			 		$scope.bandz = val
 			 	})
 			 })
-	    });
+	 });
 })

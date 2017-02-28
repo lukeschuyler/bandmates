@@ -1,4 +1,4 @@
-
+<!-- 
 <ion-view view-title="Home">
 
   <div ng-show="!userBandNames.length">
@@ -52,6 +52,59 @@
             </ion-slide>
           </ion-slide-box>
         </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-view>
+</div>
+
+ -->
+
+<ion-view view-title="Home">
+  <div ng-show="!userBandNames.length">
+    <ion-content class="dashContent has-subheader">
+      <ion-item class="item-borderless eventDash">
+       <div ng-show="!userBandNames.length && !giveUp"><div class="load-logo">Bandmates</div><div class="spin"><ion-spinner icon="spiral"></ion-spinner></div></div> 
+         <div ng-show="giveUp && !userBandNames.length">
+         </div>
+      </ion-item>
+    </ion-content>
+  </div>
+
+  <div ng-show="userBandNames.length">
+    <ion-content overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5">
+      <div class="animated fadeIn about-header">
+          <div class="profile">
+                 <div class="row">  
+                  <div class="dash-logo">
+                      <div class="animated dash-header">Bandmates</div>
+                  </div>
+                </div>
+          </div>
+    </div>
+    <div class="animated fadeIn upcoming">Upcoming Events</div>
+      <ion-list>
+        <div ng-repeat="event in events | orderBy: '-milliTime':true | limitTo : 8">
+          <ion-item ng-if="event.type != 'Practice' || event.type != 'Meeting'" class="mainThing animated fadeIn item item-avatar item-text-wrap item-icon-right"
+                    ng-click="toggleGroup(event)"
+                    ng-class="{'item-stable': isGroupShown(event)}">
+              <img ng-show="vm.isImageVisible" src="{{event.bandImage}}" imageonLoad>
+            &nbsp;
+            <div>{{event.type}}</div>
+            <div>{{event.bandName}}</div>
+              <div>{{event.startTime}}</div>
+           <i class="icon right ion-ios-arrow-down"></i>
+          </ion-item>
+          <ion-item class="item-thumbnail-left item item-text-wrap item-accordion"
+                    ng-show="isGroupShown(event)">
+           <img ng-if="event.image" ng-show="vm.isImageVisible" src="{{event.image}}" imageonLoad>
+           <img ng-if="!event.image" ng-show="vm.isImageVisible" src="{{event.bandImage}}" imageonLoad>
+           <div><b>{{event.title}}<b></div>
+            <div ng-show="event.location">@{{event.location}}</div>
+           <div ng-show="event.time.slice(0, 2) < 12">{{event.time}} AM</div>
+            <div ng-show="event.time.slice(0, 2) > 12">{{event.time.slice(0,2) - 12}}{{event.time.slice(2)}} PM</div>
+            <div class="col col-offset-20"><label>Share</label><button ng-click="share(event.title, event.type, event.startTime, event.location, event.bandName, event.image)" class="button-icon icon right ion-ios-redo"></button></div>
+          </ion-item>
+        </div>
       </ion-list>
     </ion-content>
   </ion-view>
