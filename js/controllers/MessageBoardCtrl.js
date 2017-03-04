@@ -9,12 +9,6 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 
 	$scope.now;
 
-	// MessageFactory.getAvatars($stateParams.bandId)
-	// 	.then((val) => {
-	// 		$scope.members = val
-	// 		console.log($scope.members)
-	// 	})
-
 	$scope.band = $stateParams.bandId
 	$scope.visible = false
 
@@ -37,6 +31,7 @@ bandmates.controller('MessageBoardCtrl', function($ionicScrollDelegate, $scope, 
 		data.newTime = date.toDateString() + ' ' + date.getHours() + ': ' + date.getMinutes() 	
 	}
 		$scope.messagez.push(data)
+
 		if(!$scope.$$phase) {
 			$scope.$apply()
 		}

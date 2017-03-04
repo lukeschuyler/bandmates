@@ -126,7 +126,6 @@ bandmates.controller('NewBandCtrl', function(BandFactory, $scope, NewBandFactory
     // Angular will broadcast a $destroy event just before tearing down a scope 
     // and removing the scope from its parent.
     $scope.$on('$destroy', function() {
-      console.log('Destroying modals...');
       $scope.oModal1.remove();
       $scope.oModal2.remove();
     });

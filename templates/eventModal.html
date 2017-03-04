@@ -5,9 +5,9 @@
 	</ion-header-bar>
 
 	<ion-content class="padding">
-  <div class="has-header"> 
+  <div class="animated zoomInDown has-header event-header"> 
       <div class="dash-logo-event">
-          <div class="animated zoomInDown">New Event</div>
+          <div>New Event</div>
     </div>
   </div>
 	  <div class="list has-header">
@@ -61,7 +61,7 @@
               <i ng-if="!loadingPic && picLoaded" class="icon ion-checkmark-circled"></i>
         </label>
 
-	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, newEvent.eventName, newEvent.type, newEvent.startTimeValue, newEvent.endTimeValue, newEvent.false, clickedValueModel.item.description, newEvent.image)"><i class="ion-ios-plus icon"></i>Create Event</button>
+	    <button class="button button-block button-outline button-positive" ng-click="createEvent(id, newEvent.eventName, newEvent.type, newEvent.startTimeValue, newEvent.endTimeValue, newEvent.false, clickedValueModel.item.description, bandimage, newEvent.image)"><i class="ion-ios-plus icon"></i>Create Event</button>
       
 	  </div>
 	</ion-content>

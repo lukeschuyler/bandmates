@@ -18,7 +18,7 @@ bandmates.factory('CalFactory', function($http, $q) {
 					return val.data
 				})
 		},
-		addEvent(bandName, name, type, startTime, endTime, allDay, location, image) {
+		addEvent(bandName, name, type, startTime, endTime, allDay, location, bandImage, image) {
 			return $q.resolve($http({
 				method : 'POST',
 				url : `https://mush-e7c8f.firebaseio.com/events.json`,
@@ -32,7 +32,8 @@ bandmates.factory('CalFactory', function($http, $q) {
 					milliTime: startTime.getTime(),
 					image : image,
 					location : location,
-					image : image
+					image : image,
+					bandImage : bandImage
 					}
 			}))
 		},
