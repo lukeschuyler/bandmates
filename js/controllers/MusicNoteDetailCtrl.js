@@ -1,4 +1,4 @@
-bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, user, $stateParams, $sce, $ionicSlideBoxDelegate, $timeout) {
+bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, user, $stateParams, $sce, $ionicSlideBoxDelegate, $timeout, $cordovaToast) {
 	$scope.band = $stateParams.project
 	$scope.songNames = []
 	$scope.setList = {}
@@ -23,5 +23,8 @@ bandmates.controller('MusicNoteDetailCtrl', function($scope, ArchiveFactory, use
 
 	$scope.saveList = function(list, key) {
 		ArchiveFactory.saveList(list, key)
+			.then(function() {
+	 			$cordovaToast.show('Set List Saved!', 'short', 'bottom')
+			})
 	}
 })
