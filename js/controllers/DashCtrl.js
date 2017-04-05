@@ -99,10 +99,9 @@ bandmates.controller('DashCtrl', function($timeout, $scope, user, AuthFactory, C
 
  	}
 
- 	$scope.$on('$ionicView.enter', function(e) {
+  $scope.$on('$ionicView.enter', function(e) {
  		$scope.enter()
  	});
-
 
   $ionicSlideBoxDelegate.update();
   $scope.onUserDetailContentScroll = onUserDetailContentScroll
