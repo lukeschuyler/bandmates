@@ -1,3 +1,4 @@
+
 # Bandmates
 
 ## Front-End Capstone: Mobile group application aiming to diffuse communication and scheduling issues between band members. Built with the Ionic framework using Firebase Realtime database.
@@ -25,4 +26,3 @@ After playing music in Nashville, TN for several years, I noticed a trend in com
 <img src="img/techs/pug.png" />
 <img src="img/techs/express.png" width="200px" />
 <img src="img/techs/passport.png" width="200px" />
-

@@ -146,8 +146,9 @@ ion-content {
  **********************************************/
 
 .message-name {
-  font-style: bold;
-  margin-right: 30px !important;
+  font-style: bold !important;;
+  color: black !important;
+  /*margin-right: 30px !important;*/
 }
 
 .message-img {
@@ -165,12 +166,13 @@ ion-content {
 }
 
 .message {
-  background: rgba(255,255,255, .1);
-  margin-bottom: 2px;
+  max-height: auto !important;
+  margin-bottom: 1px !important;
+  margin-top: 1px !important;
 }
 
 .myMessage {
-  background-color: rgba(52, 100, 255,.1);
+  background-color: rgba(0, 0, 200,.04) !important;
   border-radius: 5px;
 }
 
