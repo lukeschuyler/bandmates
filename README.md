@@ -21,7 +21,7 @@ After playing music in Nashville, TN for several years, I noticed a trend in com
 2. Firebase Database (featuring real-time interaction and authentiaction)
 
 <div align="center">
-  <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.05.21 PM.png" /> <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.06.05 PM.png" />
+  <img style="{margin-right: 5%}" src="img/Screen Shot 2017-04-13 at 11.05.21 PM.png" /> <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.06.05 PM.png" />
   <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.06.25 PM.png" /> <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.06.40 PM.png" />
   <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.07.19 PM.png" /> <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.07.35 PM.png" />
   <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.07.47 PM.png" /> <img style="{display: inline}" src="img/Screen Shot 2017-04-13 at 11.07.55 PM.png" />
